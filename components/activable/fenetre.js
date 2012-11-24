@@ -14,7 +14,10 @@
 				.textColor('#0F0')
 				.tween({alpha:'0.0'},70);
 
-				return this;
+
+			this.attract();
+			
+			return this;
 		}
 	})
 })(Crafty)
