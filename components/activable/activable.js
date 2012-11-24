@@ -20,6 +20,9 @@
 			if(this.__c['blocked']) {
 				locationIsBlocked = true;
 				this.removeComponent('blocked');
+			} else if (this.__c['window']) {
+				locationIsBlocked = true;
+				this.removeComponent('window');
 			}
 
 			location = this;
@@ -35,6 +38,8 @@
 				attracted.setMovePath(path);
 				attracted.moveTo();
 			}
+
+			Jeu.panique.addPanique(15);
 		}
 	})
 })(Crafty)
