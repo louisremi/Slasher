@@ -4,7 +4,7 @@
 		init: function() {
 			this.requires('Color');
 			this.requires('Delay');
-			this.alpha=0.3;
+			this.alpha=0.1;
 
 			this.hue=231;
 			this.saturation=66;
@@ -32,13 +32,13 @@
 		changeAlpha: function() {
 			if (this.nightDirection === 'asc') {
 				this.alpha = this.alpha + 0.01;
-				if(this.alpha > 0.6)
+				if(this.alpha > 0.4)
 					this.nightDirection = 'desc';
 			}
 
 			if (this.nightDirection === 'desc' && this.alpha > 0){
 				
-				if (this.alpha<0.3) {
+				if (this.alpha<0.1) {
 					this.hue = this.hue + this.hueStep;
 					if (this.hue > 360) {
 						this.hue = 0;

@@ -52,7 +52,7 @@ window.onload = function () {
 			map[this._x/tileSize][this._y/tileSize] = this; 
 		});
 		
-		//initPersos(map);
+		initPersos(map);
 		
 	}
 
@@ -64,15 +64,6 @@ window.onload = function () {
 	Crafty.sprite( 54, "perso.png", {
 		perso1: [0,0],
 		perso2: [1,0]
-    });
-
-    Crafty.scene("main", function () {
-        generateWorld();
-
-        createTrap();
-        
-        //create our player entity with some premade components
-        
     });
     
     //the loading screen that will display while our assets load
