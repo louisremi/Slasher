@@ -48,7 +48,7 @@
       }
       return null;
     },
-    tiledLevel: function(levelURL, drawType) {
+    tiledLevel: function(levelURL, drawType, callback) {
       var _this = this;
       $.ajax({
         type: 'GET',
@@ -79,6 +79,7 @@
               layer = lLayers[_j];
               _this.makeLayer(layer);
             }
+            callback(layer);
             return null;
           });
           return null;
