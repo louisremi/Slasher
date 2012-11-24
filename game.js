@@ -5,7 +5,7 @@ window.onload = function () {
     //Crafty.canvas.init();
     
     var mapSize = 32;
-    var tileSize = 20;
+    var tileSize = 32;
     /*
     var persos = {
     	perso1: {
@@ -48,7 +48,9 @@ window.onload = function () {
 		var map = [];
 		for( i=0;i<  mapSize; i++)
 			map[i] = [];
-		Crafty("MapTile").each(function(){map[this._x/20][this._y/20] = this; });
+		Crafty("MapTile").each(function(){
+			map[this._x/tileSize][this._y/tileSize] = this; 
+		});
 		
 		initPersos(map);
 		
@@ -63,11 +65,13 @@ window.onload = function () {
 		perso1: [0,0],
 		perso2: [1,0]
     });
-
+    
     //the loading screen that will display while our assets load
     Crafty.scene("loading", function () {
     	
-    	Crafty.load(['perso.png','assets/sprites/traps.png'],function() {Crafty.scene("main");});
+    	Crafty.load(['perso.png','assets/sprites/traps.png'],function() {
+    		Crafty.scene("main");
+    		});
 
         //black background with some loading text
         Crafty.background("#fff");
@@ -77,11 +81,12 @@ window.onload = function () {
     });
 
 
-
     Crafty.scene("main", function () {
         generateWorld();
 
         createTrap();
+
+        createNight();
         
         //create our player entity with some premade components
         

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="30" height="30" tilewidth="20" tileheight="20">
+ <tileset firstgid="1" name="decor" tilewidth="20" tileheight="20">
+  <image source="decor.png" trans="ffffff" width="1280" height="1024"/>
+  <tile id="128">
+   <properties>
+    <property name="components" value="unblocked"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="Calque de Tile 1" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztlIsKgDAIRdfrw5r92P68BQoSM4I0WtwDFzYRDk5YSSmV4LSIdsIL7xe8Q814kcmoPfWuRr+wGTVPr+WI8OYa4p6Zz3Inrh3ofXi/c2u2Fm+8sxA571089yu7JJVFnc99vf4b8P7DCwAAvbADO8rLnQ==
+  </data>
+ </layer>
+</map>
