@@ -63,31 +63,31 @@ Crafty.c("Musique",{
 			  
 			  this.traps = {
 			  		floorTrap:{ 
-			  			musique: null, 
+			  			musique: [], 
 			  			play: function(){
 							Crafty.audio.play( "floorTrap", 1, 1);
 			  			}
 			  		},
 					pieux:{ 
-			  			musique: null, 
+			  			musique: [], 
 			  			play: function(){
 							Crafty.audio.play( "pieux", 1, 1);
 			  			}
 			  		},
 					marijuana:{ 
-			  			musique: null, 
+			  			musique: [], 
 			  			play: function(){
 							Crafty.audio.play( "marijuana", 1, 1);
 			  			}
 			  		},
 					wolfTrap:{ 
-			  			musique: null, 
+			  			musique: [], 
 			  			play: function(){
 							Crafty.audio.play( "wolfTrap", 1, 1);
 			  			}
 			  		},
 					acid:{ 
-			  			musique: null, 
+			  			musique: [], 
 			  			play: function(){
 							Crafty.audio.play( "acid", 1, 1);
 			  			}
@@ -104,35 +104,35 @@ Crafty.c("Musique",{
 			  
 			  this.leurres = {
 			  		telephone:{ 
-			  			musique: null, 
+			  			musique: [], 
 			  			play: function(){
 							Crafty.audio.play( "telephone", 1, 1);
 							console.log("appel piege : telephone");
 			  			}
 			  		},
 					porte:{ 
-			  			musique: null, 
+			  			musique: [], 
 			  			play: function(){
 							Crafty.audio.play( "porte", 1, 1);
 							console.log("appel piege : porte");
 			  			}
 			  		},
 					robinet:{ 
-			  			musique: null, 
+			  			musique: [], 
 			  			play: function(){
 							Crafty.audio.play( "robinet", 1, 1);
 							console.log("appel piege : robinet");
 			  			}
 			  		},
 					toilettes:{ 
-			  			musique: null, 
+			  			musique: [], 
 			  			play: function(){
 							Crafty.audio.play( "toilettes", 1, 1);
 							console.log("appel piege : toilettes");
 			  			}
 			  		},
 					fenetre:{ 
-			  			musique: null, 
+			  			musique: [], 
 			  			play: function(){
 							Crafty.audio.play( "fenetre", 1, 1);
 							console.log("appel piege : fenetre");
@@ -142,11 +142,11 @@ Crafty.c("Musique",{
 			  }
 			  
 			  
-			  this.load( "telephone", this.traps.telephone.musique, "assets/GLASSBRK.WAV" );//["assets/telephone.wav","assets/telephone.ogg"] );
-			  this.load( "porte", this.traps.porte.musique, "assets/GLASSBRK.WAV" );//["assets/porte.wav","assets/porte.ogg"] );
-			  this.load( "robinet", this.traps.robinet.musique, "assets/GLASSBRK.WAV" );//["assets/robinet.wav","assets/robinet.ogg"] );
-			  this.load( "toilettes", this.traps.toilettes.musique, "assets/GLASSBRK.WAV" );//["assets/toilettes.wav","assets/toilettes.ogg"] );
-			  this.load( "fenetre", this.traps.fenetre.musique, "assets/GLASSBRK.WAV" );//["assets/fenetre.wav","assets/fenetre.ogg"] );
+			  this.load( "telephone", this.leurres.telephone.musique, "assets/GLASSBRK.WAV" );//["assets/telephone.wav","assets/telephone.ogg"] );
+			  this.load( "porte", this.leurres.porte.musique, "assets/GLASSBRK.WAV" );//["assets/porte.wav","assets/porte.ogg"] );
+			  this.load( "robinet", this.leurres.robinet.musique, "assets/GLASSBRK.WAV" );//["assets/robinet.wav","assets/robinet.ogg"] );
+			  this.load( "toilettes", this.leurres.toilettes.musique, "assets/GLASSBRK.WAV" );//["assets/toilettes.wav","assets/toilettes.ogg"] );
+			  this.load( "fenetre", this.leurres.fenetre.musique, "assets/GLASSBRK.WAV" );//["assets/fenetre.wav","assets/fenetre.ogg"] );
 			  
 			  
 
