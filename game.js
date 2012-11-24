@@ -20,6 +20,7 @@ window.onload = function () {
 		
 		Crafty.PathFinder = Crafty.e('AStar, PathFinder').setTiles(map);
 
+        var move = true;
         Crafty('Teenager').each(function() {
             this.moveRandom();
         })
