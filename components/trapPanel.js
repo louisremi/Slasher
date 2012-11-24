@@ -7,13 +7,7 @@
 
 		init: function() {
 
-			this.numberOfTraps = 0;
-
-			this.requires("Collision")
-				.collision()
-				.onHit("Teenager", function( teenager ) {
-					this.triggerTrap( teenager );
-				});
+			this.numberOfTraps = 0;				
 		},
 
 		setEffect: function(callback) {
@@ -21,14 +15,11 @@
 			return this;
 		},
 
-		triggerTrap: function( teenagers ) {//console.log(teenagers, Object.keys(teenagers[0]))
+		triggerTrap: function( teenager ) {//console.log(teenagers, Object.keys(teenagers[0]))
 			var self = this;
 
 			this.trapAnimation(function() {
-				teenagers[0].obj.each(function() {
-					this.trigger( self.event || "die" );
-				});
-
+				//teenager.trigger( self.event || "die" );
 			}, function() {
 				self.destroy();
 			});
@@ -47,6 +38,11 @@
 			this._drawNumber();
 
 			return this;
+		},
+
+		trapAnimation: function(callback1,callback2) {
+			callback1();
+			callback2();
 		},
 
 		_drawNumber: function() {
@@ -76,17 +72,15 @@
 			var offset = 1;
 
 			var self = this;
-				
-			console.log(traps);
+
 			$.each(traps,function(key,value) {
 
-				console.log('key:'+key+',value:'+value);
 				var trap = Crafty.e('2D, DOM, Trap, Mouse, '+key+', Selectable')
 						.attr({x:16,y:offset*self.basicOffset,z:self._z+1})
 						.postNumber(value.value)
 						.setEffect(value.callback)
 						.bind('Click',function(e){
-							this.selectEntity();
+							this.selectEntity(function() {});
 						});
 
 				self.inventory.push(trap);

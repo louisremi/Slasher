@@ -9,6 +9,16 @@
 			this.bind("piked", function() {
 				console.log("piked")
 			});
+
+			this.requires('Collision')
+				.collision()
+				.onHit("Trap", function( trap ) {
+					console.log('Hit');
+					var self = this;
+					trap[0].obj.each(function() {
+						this.triggerTrap(self);
+					});
+				})
 		},
 
 		moveRandom: function() {
@@ -42,7 +52,7 @@
 
 				this.movePath.splice(0,1);
 
-				this.delay(this.initiateMovement,500);
+				this.delay(this.initiateMovement,700);
 			} else 
 				return
 		}

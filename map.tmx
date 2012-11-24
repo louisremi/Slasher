@@ -82,9 +82,20 @@
     <property name="blocked" value="true"/>
    </properties>
   </tile>
+  <tile id="34">
+   <properties>
+    <property name="components" value="chiotte"/>
+   </properties>
+  </tile>
+  <tile id="35">
+   <properties>
+    <property name="components" value="chiotte"/>
+   </properties>
+  </tile>
   <tile id="36">
    <properties>
     <property name="blocked" value="true"/>
+    <property name="components" value="telephone"/>
    </properties>
   </tile>
   <tile id="37">
@@ -125,6 +136,11 @@
   <tile id="54">
    <properties>
     <property name="components" value="Teenager"/>
+   </properties>
+  </tile>
+  <tile id="57">
+   <properties>
+    <property name="components" value="door"/>
    </properties>
   </tile>
   <tile id="58">
