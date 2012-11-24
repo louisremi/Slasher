@@ -15,7 +15,9 @@
 				.tween({alpha:'0.0'},70);
 			Jeu.musique.leurres.toilettes.play();
 
-				return this;
+
+			this.attract();
+			return this;
 		}
 	})
 })(Crafty)

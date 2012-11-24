@@ -9,6 +9,7 @@ window.onload = function () {
 
     Crafty.mapSize = {w:32,h:20};
     Crafty.tileSize = 32;
+    Crafty.npc = [];
 
 	function finicharger() {
 		var map = [];
@@ -17,13 +18,14 @@ window.onload = function () {
 		Crafty("MapTile").each(function(){
 			map[this._x/Crafty.tileSize][this._y/Crafty.tileSize] = this.tilePos(); 
 		});
-		
-		/*Crafty.PathFinder = Crafty.e('AStar, PathFinder').setTiles(map);
 
-        var move = true;
+        Crafty.PathFinder = Crafty.e('AStar, PathFinder').setTiles(map);
+		
         Crafty('Teenager').each(function() {
-            this.moveRandom();
-        })*/
+            Crafty.npc.push(this);
+        })
+
+        
 
         Crafty('telephone').each(function() {
             this.addComponent('Telephone, Range, Mouse')

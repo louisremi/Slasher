@@ -15,6 +15,10 @@
 				.tween({alpha:'0.0'},70);
 			Jeu.musique.leurres.porte.play();
 				return this;
+
+			this.attract();
+
+			return this;
 		}
 	})
 })(Crafty)

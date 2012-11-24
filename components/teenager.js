@@ -21,10 +21,12 @@
 				})
 		},
 
-		moveRandom: function() {
-			this.tilePos();
+		setMovePath: function (path) {
+			this.movePath = path;
+		},
 
-			this.movePath = Crafty.PathFinder.calculatePath(this,Crafty.PathFinder.tiles[3][3]);
+		moveTo: function() {
+			this.tilePos();
 
 			if (this.movePath.length > 0)
 				this.movePath.splice(0,1);
@@ -53,8 +55,11 @@
 				this.movePath.splice(0,1);
 
 				this.delay(this.initiateMovement,700);
-			} else 
-				return
+			} else {
+				this.tilePos();
+			}
+
+			return this;
 		}
 	});
 })(Crafty);

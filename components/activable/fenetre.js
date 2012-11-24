@@ -15,6 +15,11 @@
 				.tween({alpha:'0.0'},70);
 			Jeu.musique.leurres.fenetre.play();
 				return this;
+
+
+			this.attract();
+			
+			return this;
 		}
 	})
 })(Crafty)
