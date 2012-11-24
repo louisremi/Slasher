@@ -6,7 +6,6 @@ window.onload = function () {
     //Crafty.canvas.init();
     
     var mapSize = 32;
-    var tileSize = 32;
 
     Crafty.mapSize = {w:32,h:20};
     Crafty.tileSize = 32;
@@ -17,7 +16,7 @@ window.onload = function () {
 		for( i=0;i<  mapSize; i++)
 			map[i] = [];
 		Crafty("MapTile").each(function(){
-			map[this._x/tileSize][this._y/tileSize] = this.tilePos(); 
+			map[this._x/Crafty.tileSize][this._y/Crafty.tileSize] = this.tilePos(); 
 		});
 
         Crafty.PathFinder = Crafty.e('AStar, PathFinder').setTiles(map);
@@ -67,7 +66,10 @@ window.onload = function () {
         Crafty.e("TiledLevel, Input").tiledLevel('assets/map.json?v'+ (Math.random() * 1E9 |0) ,'DOM',finicharger)
         	.bind('KeyDown', function (e) { 
 			  	if (e.key == Crafty.keys['ESC']) 
-			  		Jeu.Pause(); 
+			  		if( Jeu.paused )
+			  			Jeu.Resume();
+			  		else
+			  			Jeu.Pause(); 
 			  });;
     }
 

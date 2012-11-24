@@ -8577,6 +8577,9 @@ Crafty.extend({
 			s.obj.play();
 			s.played++;
 			s.obj.addEventListener("ended", function() {
+				
+				if( callback && typeof callback == "function" )
+					callback( id );
 				if (s.played < repeat || repeat == -1) {
 					if (this.currentTime)
 						this.currentTime = 0;
@@ -8584,8 +8587,6 @@ Crafty.extend({
 					s.played++;
 				}
 			}, true);
-			if( callback && typeof callback == "function" )
-				callback( id );
 		},
 		/**@
 		 * #Crafty.audio.stop
