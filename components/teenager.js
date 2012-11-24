@@ -6,8 +6,9 @@
 			this.requires('TilePos');
 			this.requires('Tween');
 			this.requires('Delay');
-
-			this.bind("")
+			this.bind("piked", function() {
+				console.log("piked")
+			});
 		},
 
 		moveRandom: function() {
