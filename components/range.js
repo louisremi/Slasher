@@ -31,7 +31,7 @@ Crafty.c("Range", {
 
 	},
 
-	searchInRange: function( filter ) {
+	search: function( filter ) {
 		var self = this,
 			all = Crafty( filter || "*" ),
 			inRange = [];
