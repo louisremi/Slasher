@@ -8565,7 +8565,7 @@ Crafty.extend({
 		 * Crafty.audio.play("explosion",1,0.5); //play sound once with volume of 50%
 		 * ~~~
 		 */
-		play : function(id, repeat, volume) {
+		play : function(id, repeat, volume, callback) {
 			if (repeat == 0 || !Crafty.support.audio || !this.sounds[id])
 				return;
 			var s = this.sounds[id];
@@ -8584,6 +8584,8 @@ Crafty.extend({
 					s.played++;
 				}
 			}, true);
+			if( callback && typeof callback == "function" )
+				callback( id );
 		},
 		/**@
 		 * #Crafty.audio.stop

@@ -35,7 +35,7 @@ Crafty.c("AStar",{
 		var open = [];
 		var closed = [];
 		var g = 0;
-		var h = this._heuristic(start.tile, destination.tile);
+		var h = this._heuristic(start.tile, destination.tile,start);
 		var f = g+h;
 		open.push(start);
 		while(open.length > 0){
@@ -65,7 +65,7 @@ Crafty.c("AStar",{
 						new_node.g = 0;
 						if(weighted != undefined)
 							new_node.g += weighted(current_node.tile,new_node.tile);
-						new_node.h = this._heuristic(new_node.tile, destination.tile);
+						new_node.h = this._heuristic(new_node.tile, destination.tile,start);
 						new_node.f = new_node.g+new_node.h;
 
 						open.push(new_node);
