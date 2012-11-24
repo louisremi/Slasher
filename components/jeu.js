@@ -44,8 +44,10 @@ Crafty.c("Jeu",{
 			},
 			TourPNJ:function(){
 				if( this.teens )
-			  		for( i in this.teens)
+			  		for( i in this.teens){
+			  			if( this.teens[i]
 			  			this.teens[i].resume();
+			  		}
 				if( this.slasher )
 			  		this.slasher.resume();
 				if( this.animations )
