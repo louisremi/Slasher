@@ -59,9 +59,9 @@ window.onload = function () {
 
 
     Crafty.scene("main", function () {
-    	/*Jeu = Crafty.e("Jeu");
+    	Jeu = Crafty.e("Jeu");
     	Jeu.musique = Crafty.e("Musique");
-    	Jeu.musique.jeu();*/
+    	Jeu.musique.jeu();
     	
         generateWorld();
 

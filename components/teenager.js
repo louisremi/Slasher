@@ -16,12 +16,6 @@
 
 			this.movePath = Crafty.PathFinder.calculatePath(this,Crafty.PathFinder.tiles[3][3]);
 
-			for (var self in this.movePath) {
-				Crafty.e('2D,DOM,Color')
-					.color('#f00')
-					.attr({x:self._x,y:self._y,w:32,h:32,z:140});
-			}
-
 			if (this.movePath.length > 0)
 				this.movePath.splice(0,1);
 
