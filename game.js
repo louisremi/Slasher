@@ -1,3 +1,4 @@
+window.Jeu = null;
 window.onload = function () {
 
     //start crafty
@@ -21,29 +22,9 @@ window.onload = function () {
     		width: 27,
     	}];
 */
-			Crafty.c("Personnage",{
-              _height: 54,
-	          _width: 54,
-	    	  _originX: 50,
-	    	  _originY: 27,
-	    	  _posTileX: 0,
-	    	  _posTileY: 0,
-	    	  _posX: 0,
-	    	  _posY: 0,
-              MoveToTile:function(x,y){
-                this._posTileX = x;
-                this._posTileY = y;
-                this._posX = this._posTileX * tileSize - this._originX;
-                this._posY = this._posTileY * tileSize - this._originY;
-                this.attr({x:this._posX});
-                this.attr({y:this._posY});
-                return this;
-              },
-              init:function(){
-                this.requires("2D");
-              }
-            })
-
+		
+		
+		
 	function finicharger() {
 		var map = [];
 		for( i=0;i<  mapSize; i++)
@@ -58,7 +39,11 @@ window.onload = function () {
 
     //method to generate the map
     function generateWorld() {
-        Crafty.e("TiledLevel").tiledLevel('assets/map.json','DOM',finicharger);
+        Crafty.e("TiledLevel, Input").tiledLevel('assets/map.json','DOM',finicharger)
+        	.bind('KeyDown', function (e) { 
+			  	if (e.key == Crafty.keys['ESC']) 
+			  		Jeu.Pause(); 
+			  });;
     }
 
 	Crafty.sprite( 54, "perso.png", {
@@ -70,18 +55,21 @@ window.onload = function () {
     Crafty.scene("loading", function () {
     	
     	Crafty.load(['perso.png','assets/sprites/traps.png'],function() {
+    		
     		Crafty.scene("main");
-    		});
+    		
+    	});
 
         //black background with some loading text
         Crafty.background("#fff");
-        Crafty.e("2D, DOM, Text").attr({ w: 100, h: 20, x: 150, y: 120 })
+        Crafty.e("2D, DOM, Text, color").attr({ w: 100, h: 20, x: 150, y: 120 })
                 .text("Loading")
                 .css({ "text-align": "center" });
     });
 
 
     Crafty.scene("main", function () {
+    	Jeu = Crafty.e("Jeu");
         generateWorld();
 
         createTrap();
@@ -90,7 +78,7 @@ window.onload = function () {
         
         //create our player entity with some premade components
         
-    });
+    })
 
     //automatically play the loading scene
     Crafty.scene("loading");
