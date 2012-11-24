@@ -6,7 +6,6 @@ window.onload = function () {
     //Crafty.canvas.init();
     
     var mapSize = 32;
-    var tileSize = 32;
 
     Crafty.mapSize = {w:32,h:20};
     Crafty.tileSize = 32;
@@ -16,7 +15,7 @@ window.onload = function () {
 		for( i=0;i<  mapSize; i++)
 			map[i] = [];
 		Crafty("MapTile").each(function(){
-			map[this._x/tileSize][this._y/tileSize] = this.tilePos(); 
+			map[this._x/Crafty.tileSize][this._y/Crafty.tileSize] = this.tilePos(); 
 		});
 		
 		Crafty.PathFinder = Crafty.e('AStar, PathFinder').setTiles(map);

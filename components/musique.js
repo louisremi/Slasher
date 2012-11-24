@@ -7,20 +7,17 @@ Crafty.c("Musique",{
 			gamewin: null,
 			slasher: null,
 			playing: null,
+			traps: null,
 			menu:function( precedent ){
 				for( id in this.playing ) {
 					Crafty.audio.togglePause(this.playing[id]);
-				/*if( precedent){
-					for( id in this.playing ) {
-						Crafty.audio.stop(precedent);
-					}*/
 				}
 				this.playing = [];
 				
 				//var musique = this.titre[Math.floor((Math.random()*this.titre.length))]; 
-				Crafty.audio.play( "ingame4", 1, 0.5, this.menu.bind( this));
+				Crafty.audio.play( "ingame4", 1, 0.5);
 				this.playing[this.playing.length] = "ingame4";
-				Crafty.audio.play( "titre", 1, 0.7, this.menu.bind( this));
+				Crafty.audio.play( "titre", 1, 0.7);
 				this.playing[this.playing.length] = "titre";
 				
 				return this;

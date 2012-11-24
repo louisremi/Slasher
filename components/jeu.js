@@ -4,6 +4,7 @@ Crafty.c("Jeu",{
 			teens: null,
 			slasher: null,
 			musique: null,
+			panique: null,
 			paused: false,
 			Pause:function(){
 				if( this.menu )
@@ -19,7 +20,9 @@ Crafty.c("Jeu",{
 			  		this.musique.menu();
 				if( this.animations )
 			  		this.animations.pause();
-			  paused = true;
+				if( this.panique )
+			  		this.panique.pause();
+			  this.paused = true;
 			  return this;
 			},
 			Resume:function(){
@@ -36,7 +39,9 @@ Crafty.c("Jeu",{
 			  		this.musique.jeu();
 				if( this.animations )
 			  		this.animations.resume();
-			  paused = false;
+				if( this.panique )
+			  		this.panique.resume();
+			  this.paused = false;
 			  return this;
 			},
 			init:function(){
@@ -44,19 +49,51 @@ Crafty.c("Jeu",{
 			  this.requires("2D");
 			  this.teens = [];
 			  this.menu = Crafty.e("2D, DOM, Text, Color").attr({ w: 1024, h: 600, x: 0, y: 0, z: 990 })
-			  					 .color("#ddd")
-				                 .text("Pause")
-				                 .css({ "text-align": "center"
-				                 	, "padding-top": "250px"
-				                 	, "font-size": "64pt"
-				                 	,"display": "none" });
+			     .color("#ddd")
+                 .text("Pause")
+                 .css({ "text-align": "center"
+                 	, "padding-top": "250px"
+                 	, "font-size": "64pt"
+                 	,"display": "none" });
 			  this.bouton = Crafty.e("2D, DOM, Text, Color, Mouse").attr({ w: 200, h: 40, x: 412, y: 500, z: 991 })
-			  					 .color("#4F4")
-				                 .text("<p>Revenir au jeu</p>")
-				                 .css({ "text-align": "center"
-				                 	,"display": "none"})
-				                 .bind("Click", function() {
-				                 	_this.Resume();
-				                 } );
-			}
+ 			     .color("#4F4")
+                 .text("<p>Revenir au jeu</p>")
+                 .css({ "text-align": "center"
+                 	,"display": "none"})
+                 .bind("Click", function() {
+                 	_this.Resume();
+                 } );
+			  
+			  // Panique barre et gestion
+			  this.panique = { 
+			  	  nbpanique: 0,
+			  	  //_timeoutpanik : null,
+				  resume: function(){
+				  	
+				  }, 
+				  pause: function() {
+				  	
+				  },
+				  addPanique: function( pourcent ) {
+				  	this.nbpanique += pourcent;
+				  	if( this.nbpanique < 0 )
+				  		this.nbpanique = 0;
+				  	//clearTimeout( this._timeoutpanik );
+				  	this.refreshPanique();
+				  },
+				  refreshPanique: function() {
+				  	this.reglette.w = parseInt(this.barre.w/(100/this.nbpanique));
+				  	/*this._timeoutpanik = setTimeout( function() {
+				  		this.addPanique( -1 );
+				  	}.bind( this), 1000 );*/
+				  },
+				  barre: Crafty.e("2D, DOM, Image")
+		             .attr({w: 481, h: 45, x: 80, y: 0, z: 50})
+		             .image("assets/barrepanik.png")
+		          ,
+				  reglette: Crafty.e("2D, DOM, Color")
+		             .attr({w: 0, h: 15, x: 80, y: 15, z: 50})
+		             .color("#00F")
+		          };
+			  }
 		});
