@@ -64,7 +64,7 @@
  "tilesets":[
         {
          "firstgid":1,
-         "image":"texture.png",
+         "image":"assets/texture.png",
          "imageheight":320,
          "imagewidth":320,
          "margin":0,
