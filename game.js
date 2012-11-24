@@ -6,7 +6,7 @@ window.onload = function () {
 
     //method to generate the map
     function generateWorld() {
-        Crafty.e("TiledLevel").tiledLevel('map-test.json','DOM');
+        Crafty.e("TiledLevel").tiledLevel('assets/map.json','DOM');
     }
 
 Crafty.sprite( 1, "perso.png", {
@@ -15,7 +15,7 @@ Crafty.sprite( 1, "perso.png", {
     //the loading screen that will display while our assets load
     Crafty.scene("loading", function () {
     	
-    	Crafty.load(['perso.png'],function() {Crafty.scene("main");});
+    	Crafty.load(['perso.png','assets/sprites/traps.png'],function() {Crafty.scene("main");});
 
         //black background with some loading text
         Crafty.background("#fff");
@@ -28,6 +28,8 @@ Crafty.sprite( 1, "perso.png", {
 
     Crafty.scene("main", function () {
         generateWorld();
+
+        createTrap();
         
         //create our player entity with some premade components
         var perso = Crafty.e("2D, DOM, Ape, perso")
