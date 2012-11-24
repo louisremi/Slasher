@@ -37,7 +37,7 @@ window.onload = function () {
 
     //method to generate the map
     function generateWorld() {
-        Crafty.e("TiledLevel, Input").tiledLevel('assets/map.json','DOM',finicharger)
+        Crafty.e("TiledLevel, Input").tiledLevel('assets/map.json?v'+ (Math.random() * 1E9 |0) ,'DOM',finicharger)
         	.bind('KeyDown', function (e) { 
 			  	if (e.key == Crafty.keys['ESC']) 
 			  		Jeu.Pause(); 
@@ -51,7 +51,7 @@ window.onload = function () {
     
     //the loading screen that will display while our assets load
     Crafty.scene("loading", function () {
-    	
+
     	Crafty.load(['assets/sprites/perso.png','assets/sprites/traps.png'],function() {
     		
     		Crafty.scene("main");

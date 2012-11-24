@@ -16,6 +16,8 @@
 				.bind('Click',function() {
 					this._action();
 				});
+
+				return this;
 		},
 	})
 })(Crafty)

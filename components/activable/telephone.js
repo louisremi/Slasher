@@ -11,6 +11,8 @@
 				.text('Action')
 				.textColor('#0F0')
 				.tween({alpha:'0.0'},200);
+
+				return this;
 		}
 	})
 })(Crafty)
