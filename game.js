@@ -6,11 +6,16 @@ window.onload = function () {
 
     //method to generate the map
     function generateWorld() {
-        Crafty.e("TiledLevel").tiledLevel('.json','DOM');
+        Crafty.e("TiledLevel").tiledLevel('map-test.json','DOM');
     }
 
+Crafty.sprite( 1, "perso.png", {
+	perso: [ 26, 54 ,0,0]
+	});
     //the loading screen that will display while our assets load
     Crafty.scene("loading", function () {
+    	
+    	Crafty.load('perso.png',function() {Crafty.scene("main");});
 
         //black background with some loading text
         Crafty.background("#000");
@@ -25,19 +30,11 @@ window.onload = function () {
         generateWorld();
         
         /*//create our player entity with some premade components
-        var player1 = Crafty.e("2D, DOM, Ape, player, LeftControls, BombDropper")
-                .attr({ x: 16, y: 304, z: 1 })
-                .leftControls(1)
-                .Ape();
+        var perso = Crafty.e("2D, DOM, Ape, perso")
+                .attr({ x: 10, y: 10, z: 1 });
         
-        //create our player entity with some premade components
-        var player2 = Crafty.e("2D, DOM, Ape, player, RightControls, BombDropper")
-                .attr({ x: 368, y: 16, z: 1 })
-                .rightControls(1)
-                .bombDropper(Crafty.keys.ENTER)
-                .Ape();*/
     });
 
     //automatically play the loading scene
-    Crafty.scene("main");
+    Crafty.scene("loading");
 };
