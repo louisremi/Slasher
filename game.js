@@ -62,7 +62,7 @@ window.onload = function () {
 	Crafty.sprite( 54, "perso.png", {
 		perso1: [0,0],
 		perso2: [1,0]
-    }
+    });
 
     //the loading screen that will display while our assets load
     Crafty.scene("loading", function () {
