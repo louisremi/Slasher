@@ -1,7 +1,7 @@
 window.onload = function () {
 
     //start crafty
-    Crafty.init(400, 336);
+    Crafty.init(1000, 500);
     //Crafty.canvas.init();
     
     var mapSize = 32;
@@ -62,7 +62,8 @@ window.onload = function () {
 	Crafty.sprite( 54, "perso.png", {
 		perso1: [0,0],
 		perso2: [1,0]
-	});
+    }
+
     //the loading screen that will display while our assets load
     Crafty.scene("loading", function () {
     	
@@ -73,6 +74,10 @@ window.onload = function () {
 
         //black background with some loading text
         Crafty.background("#007");
+    	Crafty.load(['perso.png'],function() {Crafty.scene("main");});
+
+        //black background with some loading text
+        Crafty.background("#fff");
         Crafty.e("2D, DOM, Text").attr({ w: 100, h: 20, x: 150, y: 120 })
                 .text("Loading")
                 .css({ "text-align": "center" });
@@ -83,6 +88,7 @@ window.onload = function () {
     Crafty.scene("main", function () {
         generateWorld();
         
+        //create our player entity with some premade components
         
     });
 
