@@ -1,3 +1,53 @@
+(function(Crafty) {
+
+  Crafty.c("Personnage",{
+    _height: 54,
+    _width: 54,
+    _originX: 50,
+    _originY: 27,
+    _posTileX: 0,
+    _posTileY: 0,
+    _posX: 0,
+    _posY: 0,
+
+    MoveToTile:function(x,y){
+      this._posTileX = x;
+      this._posTileY = y;
+      this._posX = this._posTileX * tileSize - this._originX;
+      this._posY = this._posTileY * tileSize - this._originY;
+      this.attr({x:this._posX});
+      this.attr({y:this._posY});
+      return this;
+    },
+
+    init:function(){
+      this.requires("2D");
+    }
+  });
+
+  Crafty.c("TilePos",{
+        _tileX:0,
+        _tileY:0,
+        _tile: null,
+        blocked: false,
+        setBlocked: function( item ) {
+          if( item )
+          blocked = item.blocked;
+            return this;
+        },
+        tilePos:function(){
+            this._tileX = this._x / Crafty.tileSize;
+            this._tileY = this._y / Crafty.tileSize;
+            return this;
+        },
+        init:function(){
+            this.requires("2D");
+        }
+    });
+
+})(Crafty);
+
+
 var initPersos = function(map) {
     var mapSize = 30;
     var tileSize = 32;
@@ -8,27 +58,7 @@ var initPersos = function(map) {
         var perso2 = Crafty.e("2D, DOM, Ape, Personnage, perso2")
                 .MoveToTile(4, 10);
                 
-    Crafty.c("TilePos",{
-        _posL:0,
-        _posC:0,
-        _tile: null,
-        blocked: false,
-        setBlocked: function( item ) {
-        	if( item )
-        	blocked = item.blocked;
-            return this;
-        },
-        tilePos:function(l,c){
-            this._posL = l;
-            this._posC = c;
-            this.attr({x:this._posC * tileSize});
-            this.attr({y:this._posL * tileSize});
-            return this;
-        },
-        init:function(){
-            this.requires("2D");
-        }
-    })
+    
     var end;
     
     for(var l = 0;l < map.length;l++){
@@ -94,28 +124,6 @@ var initPersos = function(map) {
 	            	this.alpha=1;
 	            })
 	            
-	            var ignore = function(a,b){
-	                //@param a: The current tile.
-	                //@param b: One of a's adjacents.
-	                //@return: false if the tile can be a part of the path, true if the
-	                //    the algorithm should ignore it (walls for instance). 
-	                if(b.__c['blocked']) 
-	                    return true;
-	                if(a._posC != b._posC && a._posL != b._posL) //we ignore diagonals
-	                    return true;
-	                return false;
-	            }
-	            
-	            var weighted = function(a,b){
-	                //@param a: The current tile.
-	                //@param b: One of a's adjacents.
-	                //@return: the extra weight that should be added to the tile or
-	                //    the value it takes from one normal tile to another.
-	                if(b._color == "#aaf"){
-	                    return 10;
-	                }
-	                return 0;
-	            }
 	            
 	            //findPath(ignore function, weighted function, beggining of path, end of path)
 	            //@return: array of your tile objects with the path from beggining to end or

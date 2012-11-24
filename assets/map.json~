@@ -64,7 +64,7 @@
  "tilesets":[
         {
          "firstgid":1,
-         "image":"texture.png",
+         "image":"/texture.png",
          "imageheight":320,
          "imagewidth":320,
          "margin":0,
@@ -133,18 +133,6 @@
                 {
                  "blocked":"true"
                 },
-             "43":
-                {
-                 "components":"Teenager"
-                },
-             "44":
-                {
-                 "components":"Teenager"
-                },
-             "45":
-                {
-                 "components":"Teenager"
-                },
              "49":
                 {
                  "blocked":"true"
@@ -152,14 +140,6 @@
              "5":
                 {
                  "blocked":"true"
-                },
-             "53":
-                {
-                 "components":"Teenager"
-                },
-             "54":
-                {
-                 "components":"Teenager"
                 },
              "58":
                 {

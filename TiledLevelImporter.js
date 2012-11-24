@@ -16,15 +16,15 @@
         sName = "tileSprite" + tNum;
         tName = "tile" + tNum;
         sMap[sName] = [posx, posy];
-        components = "2D, " + drawType + ", " + sName + ", Mouse, MapTile,Trapable";
+        components = "2D, " + drawType + ", " + sName + ", Mouse, MapTile,Trapable, TilePos";
 
         if (tsProperties) {
           if (tsProperties[tNum - 1]) {
             if (tsProperties[tNum - 1]["components"]) {
               components += ", " + tsProperties[tNum - 1]["components"];
             }
-            if (tsProperties[tNum - 1]["blocked"] == "false") {
-              blocked = false;
+            if (tsProperties[tNum - 1]["blocked"] == 'true') {
+              components += ', blocked';
             }
           }
         }
@@ -53,9 +53,6 @@
           
           tile.x = (i % lWidth) * tile.w;
           tile.y = (i / lWidth | 0) * tile.h;
-          if (tile.blocked) {
-          	Crafty.e("2D,Color,DOM").color("#00f").attr({x:tile.x,y:tile.y,w:32,h:32,z:tile._z+1});
-          }
         }
       }
       return null;
