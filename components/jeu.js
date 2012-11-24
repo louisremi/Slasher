@@ -78,6 +78,8 @@ Crafty.c("Jeu",{
 				  	this.nbpanique += pourcent;
 				  	if( this.nbpanique < 0 )
 				  		this.nbpanique = 0;
+				  	if( this.nbpanique > 100 )
+				  		this.nbpanique = 100;
 				  	//clearTimeout( this._timeoutpanik );
 				  	this.refreshPanique();
 				  },
