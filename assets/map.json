@@ -64,7 +64,7 @@
  "tilesets":[
         {
          "firstgid":1,
-         "image":"texture.png",
+         "image":"assets/texture.png",
          "imageheight":320,
          "imagewidth":320,
          "margin":0,
@@ -119,7 +119,8 @@
                 },
              "36":
                 {
-                 "blocked":"true"
+                 "blocked":"true",
+                 "components":"telephone"
                 },
              "37":
                 {
@@ -160,6 +161,10 @@
              "54":
                 {
                  "components":"Teenager"
+                },
+             "57":
+                {
+                 "components":"door"
                 },
              "58":
                 {

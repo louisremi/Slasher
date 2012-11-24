@@ -19,12 +19,20 @@ window.onload = function () {
 			map[this._x/tileSize][this._y/tileSize] = this.tilePos(); 
 		});
 		
-		Crafty.PathFinder = Crafty.e('AStar, PathFinder').setTiles(map);
+		/*Crafty.PathFinder = Crafty.e('AStar, PathFinder').setTiles(map);
 
         var move = true;
         Crafty('Teenager').each(function() {
             this.moveRandom();
-        })
+        })*/
+
+        Crafty('telephone').each(function() {
+            this.addComponent('Telephone, Range, Mouse')
+                .range(5)
+                .bind('Click', function() {
+                    this.selectEntity(this.addButton);
+                });
+        });
 	}
 
     //method to generate the map
@@ -44,7 +52,7 @@ window.onload = function () {
     //the loading screen that will display while our assets load
     Crafty.scene("loading", function () {
     	
-    	Crafty.load(['perso.png','assets/sprites/traps.png'],function() {
+    	Crafty.load(['assets/sprites/perso.png','assets/sprites/traps.png'],function() {
     		
     		Crafty.scene("main");
     		

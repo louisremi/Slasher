@@ -2,7 +2,7 @@
 
 	Crafty.c('Selectable',{
 		
-		selectEntity: function() {
+		selectEntity: function(callback) {
 			if (!this.selectionOverlay){
 				var attrSelect = {x:this._x,y:this._y,w:this._w,h:this._h,z:this._z+1};
 
@@ -19,6 +19,8 @@
 
 			this._toggleOverlay();
 			Crafty.selectedEntity = this;
+
+			callback();
 
 			return this;
 		},
