@@ -6,18 +6,34 @@
 		numberOffset:40,
 
 		init: function() {
+
 			this.numberOfTraps = 0;
+
+			this.requires("Collision")
+				.collision()
+				.onHit("Teenager", function( teenager ) {
+					this.triggerTrap( teenager );
+				});
 		},
 
 		setEffect: function(callback) {
 			this.effectCallback = callback;
-			return this
+			return this;
 		},
 
-		triggerTrap: function(npc) {
-			this.destroy();
-			callback(npc);
-			return this
+		triggerTrap: function( teenagers ) {//console.log(teenagers, Object.keys(teenagers[0]))
+			var self = this;
+
+			this.trapAnimation(function() {
+				teenagers[0].obj.each(function() {
+					this.trigger( self.event || "die" );
+				});
+
+			}, function() {
+				self.destroy();
+			});
+
+			return this;
 		},
 
 		postNumber: function(value) {
