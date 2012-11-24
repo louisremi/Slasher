@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="100" height="100" tilewidth="20" tileheight="20">
+ <tileset firstgid="1" name="perso" tilewidth="26" tileheight="54">
+  <image source="perso.png" trans="ffffff" width="127" height="54"/>
+ </tileset>
+ <tileset firstgid="5" name="decor" tilewidth="20" tileheight="20">
+  <image source="decor.png" trans="ffffff" width="1280" height="1024"/>
+ </tileset>
+ <layer name="Calque de Tile 1" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJzt0UsKgDAQRMFs/FxM4/1PZDZuhYiYBquglwMDrxQAAODO1DZ3bhny6T9sD26O17/gokcWPbLokUWPLHpk2dtq59YhnwIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHznBCq4B0U=
+  </data>
+ </layer>
+</map>
