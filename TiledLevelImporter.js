@@ -2,7 +2,7 @@
 
   Crafty.c("TiledLevel", {
     makeTiles: function(ts, drawType) {
-      var components, i, posx, posy, sMap, sName, tHeight, tName, tNum, tWidth, tsHeight, tsImage, tsProperties, tsWidth, xCount, yCount, _ref;
+      var components, i, posx, posy, sMap, sName, tHeight, tName, tNum, tWidth, tsHeight, tsImage, tsProperties, tsWidth, xCount, yCount, _ref, blocked;
       tsImage = ts.image, tNum = ts.firstgid, tsWidth = ts.imagewidth;
       tsHeight = ts.imageheight, tWidth = ts.tilewidth, tHeight = ts.tileheight;
       tsProperties = ts.tileproperties;
@@ -10,23 +10,30 @@
       yCount = tsHeight / tHeight | 0;
       sMap = {};
       for (i = 0, _ref = yCount * xCount; i < _ref; i += 1) {
+      	blocked = true;
         posx = i % xCount;
         posy = i / xCount | 0;
         sName = "tileSprite" + tNum;
         tName = "tile" + tNum;
         sMap[sName] = [posx, posy];
-        components = "2D, " + drawType + ", " + sName + ", MapTile";
+        components = "2D, " + drawType + ", " + sName + ", Mouse, MapTile";
         if (tsProperties) {
           if (tsProperties[tNum - 1]) {
             if (tsProperties[tNum - 1]["components"]) {
               components += ", " + tsProperties[tNum - 1]["components"];
             }
+            if (tsProperties[tNum - 1]["blocked"] == "false") {
+              blocked = false;
+            }
           }
         }
         Crafty.c(tName, {
           comp: components,
+          blocked: blocked,
           init: function() {
             this.addComponent(this.comp);
+            if (this.blocked)
+            	this.addComponent('blocked');
             return this;
           }
         });
@@ -42,8 +49,12 @@
         tDatum = lData[i];
         if (tDatum) {
           tile = Crafty.e("tile" + tDatum);
+          
           tile.x = (i % lWidth) * tile.w;
           tile.y = (i / lWidth | 0) * tile.h;
+          if (tile.blocked) {
+          	Crafty.e("2D,Color,DOM").color("#00f").attr({x:tile.x,y:tile.y,w:32,h:32,z:tile._z+1});
+          }
         }
       }
       return null;
