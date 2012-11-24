@@ -30,7 +30,32 @@ window.onload = function () {
             this.addComponent('Telephone, Range, Mouse')
                 .range(5)
                 .bind('Click', function() {
-                    this.selectEntity(this.addButton);
+                    this.selectEntity(this.addButton.bind(this));
+                });
+        });
+
+        Crafty('door').each(function() {
+            this.addComponent('Door, Range, Mouse')
+                .range(5)
+                .bind('Click', function() {
+                    this.selectEntity(this.addButton.bind(this));
+                });
+        });
+
+        Crafty('chiotte').each(function() {
+            this.addComponent('Chiotte, Range, Mouse')
+                .range(5)
+                .bind('Click', function() {
+                    this.selectEntity(this.addButton.bind(this));
+                });
+        });
+
+
+        Crafty('window').each(function() {
+            this.addComponent('Fenetre, Range, Mouse')
+                .range(5)
+                .bind('Click', function() {
+                    this.selectEntity(this.addButton.bind(this));
                 });
         });
 	}
