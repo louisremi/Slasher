@@ -48,9 +48,9 @@ window.onload = function () {
 		var map = [];
 		for( i=0;i<  mapSize; i++)
 			map[i] = [];
-		Crafty("MapTile").each(function(){map[this._x/20][this._y/20] = this; });
+		//Crafty("MapTile").each(function(){map[this._x/20][this._y/20] = this; });
 		
-		initPersos(map);
+		//initPersos(map);
 		
 	}
 
@@ -82,6 +82,8 @@ window.onload = function () {
         generateWorld();
 
         createTrap();
+
+        createNight();
         
         //create our player entity with some premade components
         

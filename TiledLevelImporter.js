@@ -15,7 +15,7 @@
         sName = "tileSprite" + tNum;
         tName = "tile" + tNum;
         sMap[sName] = [posx, posy];
-        components = "2D, " + drawType + ", " + sName + ", MapTile";
+        components = "2D, " + drawType + ", " + sName + ", MapTile,Trapable";
         if (tsProperties) {
           if (tsProperties[tNum - 1]) {
             if (tsProperties[tNum - 1]["components"]) {

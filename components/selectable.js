@@ -4,7 +4,7 @@
 		
 		selectEntity: function() {
 			if (!this.selectionOverlay){
-				var attrSelect = {x:this._x,y:this._y,w:this._w,h:this._h,z:4};
+				var attrSelect = {x:this._x,y:this._y,w:this._w,h:this._h,z:this._z+1};
 
 				this.selectionOverlay = Crafty.e('2D,DOM,Color')
 					.color("#00F")
