@@ -18,9 +18,9 @@ Crafty.c("Musique",{
 				this.playing = [];
 				
 				//var musique = this.titre[Math.floor((Math.random()*this.titre.length))]; 
-				Crafty.audio.play( "ingame4");
+				Crafty.audio.play( "ingame4", 1, 0.5, this.menu.bind( this));
 				this.playing[this.playing.length] = "ingame4";
-				Crafty.audio.play( "titre");
+				Crafty.audio.play( "titre", 1, 0.7, this.menu.bind( this));
 				this.playing[this.playing.length] = "titre";
 				
 				return this;
@@ -32,7 +32,7 @@ Crafty.c("Musique",{
 					
 				var musique = this.ingame[Math.floor((Math.random()*this.ingame.length))]; 
 				this.playing[this.playing.length] = musique;
-				Crafty.audio.play( musique);
+				Crafty.audio.play( musique, 1, 1.0, this.jeu.bind( this));
 				
 			  return this;
 			},

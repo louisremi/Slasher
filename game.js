@@ -32,7 +32,10 @@ window.onload = function () {
         Crafty.e("TiledLevel, Input").tiledLevel('assets/map.json','DOM',finicharger)
         	.bind('KeyDown', function (e) { 
 			  	if (e.key == Crafty.keys['ESC']) 
-			  		Jeu.Pause(); 
+			  		if( Jeu.paused )
+			  			Jeu.Resume();
+			  		else
+			  			Jeu.Pause(); 
 			  });;
     }
 

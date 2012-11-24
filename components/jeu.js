@@ -4,6 +4,7 @@ Crafty.c("Jeu",{
 			teens: null,
 			slasher: null,
 			musique: null,
+			paused: false,
 			Pause:function(){
 				if( this.menu )
 			  		this.menu.css({ "display": "block" });
@@ -18,6 +19,7 @@ Crafty.c("Jeu",{
 			  		this.musique.menu();
 				if( this.animations )
 			  		this.animations.pause();
+			  paused = true;
 			  return this;
 			},
 			Resume:function(){
@@ -34,6 +36,7 @@ Crafty.c("Jeu",{
 			  		this.musique.jeu();
 				if( this.animations )
 			  		this.animations.resume();
+			  paused = false;
 			  return this;
 			},
 			init:function(){
