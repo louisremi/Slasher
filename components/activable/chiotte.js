@@ -13,6 +13,7 @@
 				.text('Fluuuuuuuuussshhh !')
 				.textColor('#0F0')
 				.tween({alpha:'0.0'},70);
+			Jeu.musique.leurres.toilettes.play();
 
 				return this;
 		}

@@ -6,6 +6,7 @@ Crafty.c("Jeu",{
 			musique: null,
 			panique: null,
 			paused: false,
+			tour: "pnj",
 			Pause:function(){
 				if( this.menu )
 			  		this.menu.css({ "display": "block" });
@@ -23,27 +24,44 @@ Crafty.c("Jeu",{
 				if( this.panique )
 			  		this.panique.pause();
 			  this.paused = true;
+			  Crafty.pause();
 			  return this;
 			},
 			Resume:function(){
+				if( this.musique )
+			  		this.musique.jeu();
 				if( this.menu )
 			  		this.menu.css({ "display": "none" });
 				if( this.bouton )
 			  		this.bouton.css({ "display": "none" });
+				if( this.tour == "pnj" )
+				{
+					this.TourPNJ();
+				} else {
+					this.TourJoueur();
+				}
+			  return this;
+			},
+			TourPNJ:function(){
 				if( this.teens )
 			  		for( i in this.teens)
 			  			this.teens[i].resume();
 				if( this.slasher )
 			  		this.slasher.resume();
-				if( this.musique )
-			  		this.musique.jeu();
 				if( this.animations )
 			  		this.animations.resume();
 				if( this.panique )
 			  		this.panique.resume();
 			  this.paused = false;
+			  Crafty.pause();
 			  return this;
 			},
+			TourJoueur:function(){
+			  this.paused = false;
+			  
+			  return this;
+			},
+			
 			init:function(){
 			  var _this = this;
 			  this.requires("2D");

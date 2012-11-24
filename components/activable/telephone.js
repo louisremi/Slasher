@@ -13,6 +13,7 @@
 				.text('Dring !')
 				.textColor('#0F0')
 				.tween({alpha:'0.0'},70);
+			Jeu.musique.leurres.telephone.play();
 
 				return this;
 		}
