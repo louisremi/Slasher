@@ -7,6 +7,7 @@ window.onload = function () {
     
     var mapSize = 32;
     var tileSize = 32;
+    Crafty.tileSize = 32;
     /*
     var persos = {
     	perso1: {
