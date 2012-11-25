@@ -34,9 +34,10 @@
         	.attr(position)
         	.slasher(1)
         	.collision(
-        		new Crafty.polygon([0,64],[64,64],[64,0],[0,0]))
+        		new Crafty.polygon([0+16,64+32],[64+16,64+32],[64+16,0+32],[0+16,0+32]))
         	.bind('Moved', function(from) {
-			    if(this.hit('blocked')){
+        		var collision = this.hit('blocked')
+			    if(collision){
 			        this.attr({x: from.x, y:from.y});
 			    }
 			});
