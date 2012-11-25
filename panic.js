@@ -25,7 +25,7 @@
 
         Crafty.PathFinder.enterPanicMode();
 
-        var position = {x:0,y:0,z:40};
+        var position = {x:9*Crafty.tileSize,y:9*Crafty.tileSize,z:40};
         Crafty('Door').each(function(door) {
         	position.x = door._x;
         	position.y = door._y;

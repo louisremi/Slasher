@@ -21,7 +21,7 @@ Crafty.c("Teenagers", {
 					z: 20,
 					name: key,
 					offsetY: data.offsetY
-				})
+				}).tilePos();
 		});
 
 		// Don't forget the corroded sprite
@@ -36,23 +36,23 @@ Crafty.c("Teenagers", {
 
 Crafty.Teenagers = {
 	Quarterback: {
-		initialPosition: [5,2],
+		initialPosition: [12,6],
 		offsetY: 0
 	},
 	Cheerleader: {
-		initialPosition: [5,3],
+		initialPosition: [10,8],
 		offsetY: 1
 	},
 	Geek: {
-		initialPosition: [5,4],
+		initialPosition: [11,8],
 		offsetY: 2
 	},
 	Emo: {
-		initialPosition: [5,5],
+		initialPosition: [11,7],
 		offsetY: 3
 	},
 	Gangsta: {
-		initialPosition: [5,6],
+		initialPosition: [12,7],
 		offsetY: 4
 	}
 };
