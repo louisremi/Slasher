@@ -112,7 +112,7 @@ Crafty.c("Jeu",{
 					this.teens[t].moveTo();
 				}
 
-				setTimeout( this.TourPNJ.bind( this), 5000 );
+				setTimeout( this.TourPNJ.bind( this), 10000 );
 				
 				this.tourPnjStarted = true;
 				

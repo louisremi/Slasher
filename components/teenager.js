@@ -22,7 +22,7 @@
 					console.log('Hit');
 					var self = this;
 					trap[0].obj.each(function() {
-						this.triggerTrap(self);
+						this.trigger("trigger");
 					});
 				});
 		},
@@ -72,7 +72,7 @@
 				else if (dest._y > this._y)
 					this.move('s',Crafty.tileSize);*/
 
-				this.movePath.splice(0,1);
+				this.delay( function(){ this.movePath.splice(0,1);}.bind(this), 30 );
 
 				this.trigger('teenMoved');
 
