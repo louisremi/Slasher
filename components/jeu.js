@@ -10,6 +10,7 @@ Crafty.c("Jeu",{
 			tourPnjStarted: false,
 			tourPnjNbMouvementsFinis: 0,
 			stimulis: null,
+
 			Pause:function(){
 				if( this.menu )
 			  		this.menu.css({ "display": "block" });
@@ -69,12 +70,12 @@ Crafty.c("Jeu",{
 				Crafty('Door').each(function(){
 					destPossibles[destPossibles.length] = this;
 				});
-				/*Crafty('Telephone').each(function(){
+				Crafty('Telephone').each(function(){
 					destPossibles[destPossibles.length] = this;
 				});
 				Crafty('Fenetre').each(function(){
 					destPossibles[destPossibles.length] = this;
-				});*/
+				});
 				//dans la cuisine
 				destPossibles[destPossibles.length] = Crafty.PathFinder.tiles[11][7];
 				//dans la chambre
@@ -82,11 +83,13 @@ Crafty.c("Jeu",{
 				//devant le canapé
 				destPossibles[destPossibles.length] = Crafty.PathFinder.tiles[16][11];
 
-				
+				var pasfini = false
 				//boucle sur les teens
 				for( var t in this.teens ) {
-					if( this.teens[t].movePath.length != 0 )
+					if( this.teens[t].movePath.length != 0 ){
+						pasfini = true;
 						continue;
+					}
 					//on copie les destinations (dans le doute)
 					var tempDest = destPossibles;
 					var destRestantes = [];
@@ -124,6 +127,9 @@ Crafty.c("Jeu",{
 					this.teens[t].setMovePath(path);
 					this.teens[t].moveTo();
 				}
+
+				if( pasfini )
+					setTimeout( this.TourPNJ().bind( this), 5000 );
 				
 				this.tourPnjStarted = true;
 				
@@ -176,7 +182,7 @@ Crafty.c("Jeu",{
                  .bind("Click", function() {
                  	_this.Resume();
                  } );
-			  
+
 			  // Panique barre et gestion
 			  this.panique = { 
 			  	  nbpanique: 0,
@@ -209,6 +215,11 @@ Crafty.c("Jeu",{
 				  reglette: Crafty.e("2D, DOM, Color")
 		             .attr({w: 0, h: 15, x: 80, y: 15, z: 50})
 		             .color("#00F")
-		          };
-			  }
+		        };
+
+			  //Début du jeu
+			  this.TourPNJ();
+
+			}
+
 		});
