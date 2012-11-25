@@ -66,6 +66,20 @@ window.onload = function () {
         });
 	}
 
+    function enterPanicMode() {
+        this.screen = Crafty.e("2D, DOM, Text, Color,Tween").attr({ w: 1024, h: 600, x: 0, y: 0, z: 990 })
+                 .color("#ddd")
+                 .text("PANIC THE FUCK OUT")
+                 .css({ "text-align": "center"
+                    , "padding-top": "250px"
+                    , "font-size": "64pt"})
+                 .tween({alpha:0.0},100);
+
+        Jeu.musique.panic();
+
+        Crafty.PathFinder.enterPanicMode();
+    }
+
     //method to generate the map
     function generateWorld() {
         Crafty.e("TiledLevel, Input").tiledLevel('assets/map.json?v'+ (Math.random() * 1E9 |0) ,'DOM',finicharger)
@@ -107,16 +121,11 @@ window.onload = function () {
     	
         generateWorld();
 
-        createTrap();
-
-        //createNight();
-        
-        //create our player entity with some premade components
-        
+        createTrap();        
     })
 
     //automatically play the loading scene
     Crafty.scene("loading");
 
-    Crafty.debugBar.show();
+    Crafty.bind('PANIC',enterPanicMode);
 };

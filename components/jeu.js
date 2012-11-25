@@ -151,8 +151,10 @@ Crafty.c("Jeu",{
 				  	this.nbpanique += pourcent;
 				  	if( this.nbpanique < 0 )
 				  		this.nbpanique = 0;
-				  	if( this.nbpanique > 100 )
+				  	if( this.nbpanique > 100 ) {
 				  		this.nbpanique = 100;
+				  		Crafty.trigger('PANIC');
+				  	}
 				  	//clearTimeout( this._timeoutpanik );
 				  	this.refreshPanique();
 				  },

@@ -2,15 +2,19 @@
 
 	Crafty.c("Teenager",{
 		init: function() {
-			this.requires('Move');
-			this.requires('TilePos');
-			this.requires('Tween');
-			this.requires('Delay');
-			this.bind("piked", function() {
-				console.log("piked")
-			})
-				.bind('checkFriendOver',function() {
-					this.delay(this.checkFriend,4000);
+			this.requires('Move')
+				.requires('TilePos')
+				.requires('Tween')
+				.requires('Delay')
+				.requires('Afraidable')
+				.bind("piked", function() {
+					console.log("piked")
+				})
+				.bind('teenMoved',function() {
+					this.checkFriend;
+				})
+				.bind('pleaseMove',function() {
+					this.initiateMovement();
 				});
 
 			this.requires('Collision')
@@ -43,7 +47,6 @@
 		},
 
 		moveTo: function() {
-			this.tilePos();
 
 			if (this.movePath.length > 0)
 				this.movePath.splice(0,1);
@@ -54,6 +57,8 @@
 		},
 
 		initiateMovement: function() {
+
+			this.tilePos();
 			if (this.movePath.length > 0) {
 				
 				var dest = this.movePath[0];
@@ -61,15 +66,17 @@
 				this.tween({x:dest._x,y:dest._y},30);
 
 				/*if (dest._x < this._x)
-					this.tween({x:dest._x},30);
+					this.move('w',Crafty.tileSize);
 				else if (dest._x > this._x)
-					this.tween({x:this._x + 1*Crafty.tileSize},30);
+					this.move('e',Crafty.tileSize);
+				else if (dest._y < this._y)
+					this.move('n',Crafty.tileSize);
 				else if (dest._y > this._y)
-					this.tween({y:this._y - 1*Crafty.tileSize},30);
-				else if (dest._y > this._y)
-					this.tween({y:this._y + 1*Crafty.tileSize},30);*/
+					this.move('s',Crafty.tileSize);*/
 
 				this.movePath.splice(0,1);
+
+				this.trigger('teenMoved');
 
 				this.delay(this.initiateMovement,700);
 			} else {

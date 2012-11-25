@@ -28,6 +28,24 @@
                 return true;
             return false;
         },
+
+        enterPanicMode: function() {
+        	this.ignore = function(a,b) {
+
+        	if(b.__c['blocked']) 
+                return true;
+            if(a._posC != b._posC && a._posL != b._posL) //we ignore diagonals
+                return true;
+            return false;
+        	}
+
+        	this.weighted = function(a,b) {
+        		if (b.__c['window'])
+        			return 4;
+
+        		return 0;
+        	}
+        },
 	            
         weighted: function(a,b){
             return 0;
