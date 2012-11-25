@@ -6,12 +6,9 @@
 			this.requires('TilePos');
 			this.requires('Tween');
 			this.requires('Delay');
-			this.bind("piked", function() {
-				console.log("piked")
-			})
-				.bind('checkFriendOver',function() {
-					this.delay(this.checkFriend,4000);
-				});
+			this.bind('checkFriendOver',function() {
+				this.delay(this.checkFriend,4000);
+			});
 
 			this.requires('Collision')
 				.collision()
@@ -20,7 +17,7 @@
 					trap[0].obj.each(function() {
 						this.trigger("trigger", self);
 					});
-				})
+				});
 		},
 
 		checkFriend: function() {
@@ -78,4 +75,5 @@
 			return this;
 		}
 	});
+
 })(Crafty);

@@ -4,7 +4,7 @@ window.onload = function () {
     //start crafty
     Crafty.init(1024, 640);
     //Crafty.canvas.init();
-    
+
     var mapSize = 32;
 
     Crafty.mapSize = {w:32,h:20};
@@ -75,7 +75,7 @@ window.onload = function () {
 			  			Jeu.Resume();
 			  		else
 			  			Jeu.Pause(); 
-			  });;
+			  });
     }
 
 	Crafty.sprite( 54, "assets/sprites/perso.png", {
@@ -107,7 +107,7 @@ window.onload = function () {
     	
         generateWorld();
 
-        createTrap();
+        Crafty.e("Inventory");
 
         //createNight();
         
@@ -117,6 +117,4 @@ window.onload = function () {
 
     //automatically play the loading scene
     Crafty.scene("loading");
-
-    Crafty.debugBar.show();
 };
