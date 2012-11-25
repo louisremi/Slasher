@@ -1,10 +1,10 @@
 (function(Crafty) {
 
-Crafty.c("Pikes", {
+Crafty.c("Wolftrap", {
 	init: function() {
 		this.requires("Trap");
 
-		this.event = "piked";
+		this.event = "Wolftraped";
 	}
 });
 

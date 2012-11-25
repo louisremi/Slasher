@@ -36,8 +36,8 @@
             return this;
         },
         tilePos:function(){
-            this._tileX = this._x / Crafty.tileSize;
-            this._tileY = this._y / Crafty.tileSize;
+            this._tileX = (this._x / Crafty.tileSize)|0;
+            this._tileY = (this._y / Crafty.tileSize)|0;
             return this;
         },
         init:function(){
