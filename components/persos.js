@@ -49,8 +49,7 @@
 
 
 var initPersos = function(map) {
-    var mapSize = 30;
-    var tileSize = 32;
+  
     
         var perso1 = Crafty.e("2D, DOM, Ape, Personnage, perso1")
                 .MoveToTile(5, 2);

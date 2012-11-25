@@ -2,18 +2,17 @@ window.Jeu = null;
 window.onload = function () {
 
     //start crafty
-    Crafty.init(1024, 640);
+    Crafty.init(1408, 896);
     //Crafty.canvas.init();
 
-    var mapSize = 32;
 
-    Crafty.mapSize = {w:32,h:20};
-    Crafty.tileSize = 32;
+    Crafty.mapSize = {w:22,h:14};
+    Crafty.tileSize = 64;
     Crafty.npc = [];
 
 	function finicharger() {
 		var map = [];
-		for( i=0;i<  mapSize; i++)
+		for( i=0;i<  Crafty.mapSize.w; i++)
 			map[i] = [];
 		Crafty("MapTile").each(function(){
 			map[this._x/Crafty.tileSize][this._y/Crafty.tileSize] = this.tilePos(); 
@@ -30,8 +29,6 @@ window.onload = function () {
             this.checkFriend();
         })
 
-
-        
 
         Crafty('telephone').each(function() {
             this.addComponent('Telephone, Range, Mouse')
@@ -60,6 +57,14 @@ window.onload = function () {
 
         Crafty('window').each(function() {
             this.addComponent('Fenetre, Range, Mouse')
+                .range(5)
+                .bind('Click', function() {
+                    this.selectEntity(this.addButton.bind(this));
+                });
+        });
+
+        Crafty('television').each(function() {
+            this.addComponent('Television, Range, Mouse')
                 .range(5)
                 .bind('Click', function() {
                     this.selectEntity(this.addButton.bind(this));
@@ -98,16 +103,20 @@ window.onload = function () {
 			  			Jeu.Pause(); 
 			  });
     }
-
-	Crafty.sprite( 54, "assets/sprites/perso.png", {
-		perso1: [0,0],
-		perso2: [1,0]
-    });
     
     //the loading screen that will display while our assets load
     Crafty.scene("loading", function () {
 
-    	Crafty.load(['assets/sprites/perso.png','assets/sprites/traps.png'],function() {
+    	Crafty.load([
+            'assets/sprites/texture64.png',
+            'assets/sprites/textureTeenagers64.png',
+            'assets/sprites/zob.png',
+            'assets/map.json',
+            'assets/sprites/barreEmpty.png',
+            'assets/sprites/barreFull.png',
+            'assets/sprites/slasher.png',
+            'assets/sprites/traps.png'
+            ],function() {
     		
     		Crafty.scene("main");
     		
