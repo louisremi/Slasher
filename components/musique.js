@@ -8,7 +8,7 @@ Crafty.c("Musique",{
 			slasher: null,
 			playing: null,
 			traps: null,
-			menu:function( precedent ){
+			menu:function(){
 				for( id in this.playing ) {
 					Crafty.audio.togglePause(this.playing[id]);
 				}
@@ -22,7 +22,7 @@ Crafty.c("Musique",{
 				
 				return this;
 			},
-			jeu:function( precedent ){
+			jeu:function(){
 				for( id in this.playing ) 
 					Crafty.audio.togglePause(this.playing[id]);
 				this.playing = [];
