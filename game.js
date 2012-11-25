@@ -16,6 +16,11 @@ window.onload = function () {
 			map[this._x/Crafty.tileSize][this._y/Crafty.tileSize] = this.tilePos(); 
 		});
 
+        Crafty('blocked').each(function() {
+            this.addComponent('Collision');
+            this.collision([0,64],[64,64],[64,0],[0,0]);
+        })
+
         Crafty.PathFinder = Crafty.e('AStar, PathFinder').setTiles(map);
         Crafty.RayTracer = Crafty.e('RayTracing');
 		

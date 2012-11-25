@@ -4,7 +4,7 @@
 		movePath:[],
 		init: function() {
 
-			this.requires('2D, DOM, Move, TilePos, Tween, Delay, Afraidable')
+			this.requires('2D, DOM, Move, TilePos, Tween, Delay, Afraidable, SpriteAnimation')
 				.bind("piked", function() {
 					this.addComponent("PikesSprite");
 				})
@@ -26,7 +26,15 @@
 						//console.log( "Hit", this._element );
 						this.trigger( "trigger", self );
 					});
+				})
+				.onHit("Slasher",function() {
+					this.dieAHorribleDeath();
+					Crafty.trigger('NpcDead');
 				});
+		},
+
+		dieAHorribleDeath: function() {
+			this.animate('deathBySlasher', 3, 0, 6).animate('deathBySlasher',120,0);
 		},
 
 		checkFriend: function() {

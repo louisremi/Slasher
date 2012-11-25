@@ -10,11 +10,15 @@
                 .image("assets/sprites/uiPanic.png");
         this.screen.tween({alpha:1.0},200).tween({alpha:0.0},200).tween({x: 0},50).tween({x: 300},50);
 
-
         Jeu.musique.panic();
 
         Crafty.sprite(104, "assets/sprites/teenagers.png", {
         	SlasherSprite:[1,5],
+        });
+
+        Crafty.sprite(64, "assets/sprites/texture.png", {
+            upWindowBreak:[4,4],
+            downWindowBreak:[4,5],
         });
 
         Crafty.PathFinder.enterPanicMode();
@@ -25,13 +29,14 @@
         	position.y = door._y;
         })
 
-        Crafty.e('2D,DOM,Slasher, SlasherSprite,Keyboard,Collision,WiredHitBox')
+        Crafty.e('2D,DOM,Slasher, SlasherSprite,Keyboard,Collision')
         	.attr(position)
-        	.slasher(1)
+        	.slasher(4)
         	.collision(
-        		new Crafty.polygon([0,64],[64,64],[64,0],[0,0]))
+        		new Crafty.polygon([1+16,63+32],[63+16,63+32],[63+16,1+32],[1+16,1+32]))
         	.bind('Moved', function(from) {
-			    if(this.hit('blocked')){
+        		var collision = this.hit('blocked')
+			    if(collision){
 			        this.attr({x: from.x, y:from.y});
 			    }
 			});
