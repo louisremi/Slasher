@@ -3,15 +3,29 @@
 	Crafty.c("Teenager",{
 		movePath:[],
 		dead:false,
+		speed: 1,
 		init: function() {
 
 			this.requires('2D, DOM, Move, TilePos, Tween, Delay, Afraidable, SpriteAnimation')
 				.bind("piked", function() {
-					this.switchSprite("Piked");
+					this.switchSprite( this.name + "Piked");
 					this.die( true );
 				})
 				.bind("wolfed", function() {
-					this.switchSprite("Wolfed");
+					this.switchSprite( this.name + "Wolfed");
+					this.die( true );
+				})
+				.bind("trapped", function() {
+					this.switchSprite( "Trapped");
+					this.die( true );
+				})
+				.bind("gazzed", function() {
+					this.switchSprite( this.name + "Gazzed");
+					this.speed = .5;
+					//this.die( true );
+				})
+				.bind("acided", function() {
+					this.switchSprite("Acided");
 					this.die( true );
 				})
 				.bind('teenMoved',function() {
@@ -39,9 +53,9 @@
 				});
 		},
 
-		switchSprite: function( state ) {
+		switchSprite: function( state ) {console.log("Switch" + state)
 			this.removeComponent( this.name );
-			this.addComponent( this.name + state + "Sprite" );
+			this.addComponent( state + "Sprite" );
 
 			return this;
 		},
@@ -141,7 +155,7 @@
 				
 				var dest = this.movePath[0];
 
-				this.tween({x:dest._x-16,y:dest._y-32},30);
+				this.tween({x:dest._x-16,y:dest._y-32},30 / this.speed);
 
 				/*if (dest._x < this._x)
 					this.move('w',Crafty.tileSize);
@@ -156,7 +170,7 @@
 
 				this.trigger('teenMoved');
 
-				this.delay(this.initiateMovement,700);
+				this.delay(this.initiateMovement,700 / this.speed);
 			} else {
 				this.tilePos();
 				this.isMoving = false;
