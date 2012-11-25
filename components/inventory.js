@@ -1,36 +1,54 @@
 (function(Crafty) {
 
+var menuItemSize = 100;
+
 Crafty.c("Inventory", {
 
 	basicOffset: 40,
-	width: 100,
-	height: 640,
 
 	init: function() {
-		this.requires('2D,DOM,Color');
+		//this.requires('2D,DOM');
+
 		this.inventory = [];
 
 		this.setupInventory();
 	},
 
 	setupInventory:function() {
-		this.color("#999")
-			.attr({w:this.width,h:this.height,z:50});
+		/*this.color("#999")
+			.attr({w:this.width,h:this.height,z:50});*/
 
-		var offset = 1;
+		var offset = 0;
 
 		var self = this;
 
 		$.each( Crafty.Inventory, function( key, data ) {
-			var sprite = {};
-			sprite[ key + "Sprite" ] = data.offset;
-			Crafty.sprite(Crafty.tileSize,"assets/sprites/zob.png", sprite );
+			var trapSprite = {},
+				menuItemSprite = {};
+			
+			trapSprite[ key + "Sprite" ] = [ 0, data.offsetY ];
+			menuItemSprite[ key + "MenuSprite" ] = [ 0, data.offsetY ];
+			
+			Crafty.sprite(Crafty.tileSize,"assets/sprites/traps.png", trapSprite );
+			Crafty.sprite(108,"assets/sprites/trapmenu.png", menuItemSprite );
+
+			var menuItem = Crafty.e( ["2D", "DOM", key + "MenuSprite" ].join() )
+				.attr({w: menuItemSize, h: menuItemSize+8, x: 0, y: offset * menuItemSize, z: 50 });
 
 			while( data.available-- ) {
 				var trap = Crafty.e( [ "Trap", key + "Sprite" ].join() )
-					.attr({w: Crafty.tileSize, h: Crafty.tileSize, x:16 + data.available * 3,y:offset*self.basicOffset + data.available * 3,z:self._z+1})
+					.attr({
+						w: Crafty.tileSize,
+						h: Crafty.tileSize,
+						x: menuItem._x + 18,
+						y: menuItem._y + 18,
+						z:menuItem._z + 1
+					})
 					.saveOrigin()
 					.attr({offset: data.offset, effect: data.effect});
+
+				// ugly hack, means we're going fast
+				trap._element.style.opacity = 0;
 			}
 			offset++;
 		});
@@ -50,17 +68,29 @@ Crafty.c("Inventory", {
 Crafty.Inventory = {
 	Pikes: {
 		available: 3,
-		offset: [0,0],
+		offsetY: 0,
 		effect: "piked"
 	},
-	Wolftrap: {
+	Wolf: {
 		available: 3,
-		offset: [0,1],
+		offsetY: 1,
+		effect: "wolfed"
+	},
+	Trap: {
+		available: 3,
+		offsetY: 2,
 		effect: "trapped"
-	}/*,
-	Hole: 3,
-	Smoke: 3,
-	Acid: 3*/
+	},
+	Gaz: {
+		available: 3,
+		offsetY: 3,
+		effect: "gazzed"
+	},
+	Acid: {
+		available: 3,
+		offsetY: 4,
+		effect: "acided"
+	}
 };
 
 })(Crafty);

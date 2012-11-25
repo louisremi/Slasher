@@ -84,7 +84,7 @@ Crafty.c("Musique",{
 					marijuana:{ 
 			  			musique: [], 
 			  			play: function(){
-							Crafty.audio.play( "marijuana", 1, 1);
+							//Crafty.audio.play( "marijuana", 1, 1);
 			  			}
 			  		},
 					wolfTrap:{ 
@@ -102,11 +102,11 @@ Crafty.c("Musique",{
 			  	
 			  }
 			  
-			  this.load( "floorTrap", this.traps.floorTrap.musique, "assets/sounds/GLASSBRK.WAV" );//["assets/sounds/floorTrap.wav","assets/sounds/floorTrap.ogg"] );
-			  this.load( "pieux", this.traps.pieux.musique, "assets/sounds/GLASSBRK.WAV" );//["assets/sounds/pieux.wav","assets/sounds/pieux.ogg"] );
-			  this.load( "marijuana", this.traps.marijuana.musique, "assets/sounds/GLASSBRK.WAV" );//["assets/marijuana.wav","assets/sounds/marijuana.ogg"] );
-			  this.load( "wolfTrap", this.traps.wolfTrap.musique, "assets/sounds/GLASSBRK.WAV" );//["assets/sounds/wolfTrap.wav","assets/sounds/wolfTrap.ogg"] );
-			  this.load( "acid", this.traps.acid.musique, "assets/sounds/GLASSBRK.WAV" );//["assets/sounds/acid.wav","assets/sounds/acid.ogg"] );
+			  this.load( "floorTrap", this.traps.floorTrap.musique, ["assets/sounds/porte.mp3","assets/sounds/porte.ogg"] );
+			  this.load( "pieux", this.traps.pieux.musique, ["assets/sounds/piege a loup.mp3","assets/sounds/piege a loup.ogg"] );
+			  //this.load( "marijuana", this.traps.marijuana.musique, ["assets/marijuana.mp3","assets/sounds/marijuana.ogg"] );
+			  this.load( "wolfTrap", this.traps.wolfTrap.musique, ["assets/sounds/piege a loup.mp3","assets/sounds/piege a loup.ogg"] );
+			  this.load( "acid", this.traps.acid.musique, ["assets/sounds/acide.mp3","assets/sounds/acide.ogg"] );
 			  
 			  
 			  this.leurres = {
@@ -150,12 +150,12 @@ Crafty.c("Musique",{
 			  }
 			  
 			  
-			  this.load( "telephone", this.leurres.telephone.musique, "assets/sounds/GLASSBRK.WAV" );//["assets/sounds/telephone.wav","assets/sounds/telephone.ogg"] );
-			  this.load( "porte", this.leurres.porte.musique, "assets/sounds/GLASSBRK.WAV" );//["assets/sounds/porte.wav","assets/sounds/porte.ogg"] );
-			  this.load( "robinet", this.leurres.robinet.musique, "assets/sounds/GLASSBRK.WAV" );//["assets/sounds/robinet.wav","assets/sounds/robinet.ogg"] );
-			  this.load( "toilettes", this.leurres.toilettes.musique, "assets/sounds/GLASSBRK.WAV" );//["assets/sounds/toilettes.wav","assets/sounds/toilettes.ogg"] );
-			  this.load( "fenetre", this.leurres.fenetre.musique, "assets/sounds/GLASSBRK.WAV" );//["assets/sounds/fenetre.wav","assets/sounds/fenetre.ogg"] );
-			  this.load( "television", this.leurres.television.musique, "assets/sounds/GLASSBRK.WAV" );//["assets/sounds/television.wav","assets/sounds/television.ogg"] );
+			  this.load( "telephone", this.leurres.telephone.musique, ["assets/sounds/telephone1.mp3","assets/sounds/telephone1.ogg"] );
+			  this.load( "porte", this.leurres.porte.musique, ["assets/sounds/fenetre1.mp3","assets/sounds/fenetre1.ogg"] );
+			  this.load( "robinet", this.leurres.robinet.musique, ["assets/sounds/FlushWater_01.mp3","assets/sounds/FlushWater_01.ogg"] );
+			  this.load( "toilettes", this.leurres.toilettes.musique, ["assets/sounds/FlushWater_02.mp3","assets/sounds/FlushWater_02.ogg"] );
+			  this.load( "fenetre", this.leurres.fenetre.musique, ["assets/sounds/fenetre1.mp3","assets/sounds/fenetre1.ogg"] );
+			  this.load( "television", this.leurres.television.musique, ["assets/sounds/tvvintage.mp3","assets/sounds/tvvintage.ogg"] );
 			  
 			  
 

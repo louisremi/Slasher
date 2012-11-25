@@ -34,7 +34,7 @@ window.onload = function () {
 
         Crafty('telephone').each(function() {
             this.addComponent('Telephone, Mouse')
-                .range(5)
+                .range(3)
                 .bind('Click', function() {
                     this.selectEntity(this.addButton.bind(this));
                 });
@@ -42,7 +42,7 @@ window.onload = function () {
 
         Crafty('door').each(function() {
             this.addComponent('Door, Mouse')
-                .range(5)
+                .range(3)
                 .bind('Click', function() {
                     this.selectEntity(this.addButton.bind(this));
                 });
@@ -50,7 +50,7 @@ window.onload = function () {
 
         Crafty('chiotte').each(function() {
             this.addComponent('Chiotte, Mouse')
-                .range(5)
+                .range(3)
                 .bind('Click', function() {
                     this.selectEntity(this.addButton.bind(this));
                 });
@@ -59,7 +59,7 @@ window.onload = function () {
 
         Crafty('window').each(function() {
             this.addComponent('Fenetre, Mouse')
-                .range(5)
+                .range(3)
                 .bind('Click', function() {
                     this.selectEntity(this.addButton.bind(this));
                 });
@@ -67,7 +67,7 @@ window.onload = function () {
 
         Crafty('television').each(function() {
             this.addComponent('Television, Mouse')
-                .range(5)
+                .range(3)
                 .bind('Click', function() {
                     this.selectEntity(this.addButton.bind(this));
                 });
@@ -102,7 +102,6 @@ window.onload = function () {
     	Crafty.load([
             'assets/sprites/texture64.png',
             'assets/sprites/teenagers.png',
-            //'assets/sprites/zob.png',
             'assets/map.json',
             'assets/sprites/barreEmpty.png',
             'assets/sprites/barreFull.png',
@@ -128,7 +127,7 @@ window.onload = function () {
 
 
     Crafty.scene("main", function () {
-        //Crafty.e("Inventory");
+        Crafty.e("Inventory");
         Crafty.e("Teenagers");
 
         generateWorld();
