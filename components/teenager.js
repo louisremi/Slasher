@@ -19,7 +19,9 @@
 					//this.attr({x: this._x + 16, y: this._y + 32, w: 64, h: 64});
 					this.switchSprite( "Trapped" );
 					this.die( true );
-					//this.attr({x: this.x + 16, y: this.y + 32});
+					// gros hack
+					this._element.style.left = "16px";
+					this._element.style.top = "32px";
 				})
 				.bind("gazzed", function() {
 					this.switchSprite( this.name + "Gazzed");
