@@ -10,7 +10,8 @@
                 .image("assets/sprites/uiPanic.png");
         this.screen.tween({alpha:1.0},200).tween({alpha:0.0},200).tween({x: 0},50).tween({x: 300},50);
 
-        Jeu.musique.panic();
+        Jeu.musique.panik();
+        
 
         Crafty.sprite(104, "assets/sprites/teenagers.png", {
         	SlasherSprite:[1,5],

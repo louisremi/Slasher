@@ -100,6 +100,7 @@ window.onload = function () {
     	Crafty.load([
             'assets/sprites/ecran-accueil.png',
             'assets/sprites/ecran-credits.png',
+            'assets/sprites/ecran-scores.png',
             'assets/sprites/texture64.png',
             'assets/sprites/teenagers.png',
             'assets/map.json',
@@ -161,6 +162,19 @@ window.onload = function () {
         //create our player entity with some premade components
     });
 
+    Crafty.scene("over", function () {
+        Jeu.musique.doubt();
+        Crafty.e("2D, DOM, Image, Mouse").attr({ w: 1440, h: 900, x: 0, y: 0 })
+                .image("assets/sprites/ecran-scores.png").bind("Click", function() {
+                    Jeu.musique.stop();
+                    Crafty.scene("ecran");
+                });
+
+        //createNight();
+        
+        //create our player entity with some premade components
+    });
+
     Crafty.scene("main", function () {
         Crafty.e("Inventory");
         Crafty.e("Teenagers");
@@ -175,7 +189,8 @@ window.onload = function () {
     Crafty.bind('NpcDead', function() {
         deaths++;
         if(deaths >=5) {
-            Crafty.pause();
+            //Crafty.pause();
+            Crafty.scene("over");
         }
     })
 
