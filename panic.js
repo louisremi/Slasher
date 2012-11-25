@@ -17,6 +17,14 @@
         Jeu.musique.panic();
 
         Crafty.PathFinder.enterPanicMode();
+
+        Crafty.npc.each(function(teenager) {
+        	if(Math.round(Math.random())) {
+
+        	} else {
+        		
+        	}
+        })
     }
 
 })(Crafty)
