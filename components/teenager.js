@@ -1,25 +1,26 @@
 (function(Crafty) {
 
 	Crafty.c("Teenager",{
-		movePath: [],
 		init: function() {
-			this.requires('Move');
-			this.requires('TilePos');
-			this.requires('Tween');
-			this.requires('Delay');
-			this.bind("piked", function() {
-				console.log("piked")
-			})
-				.bind('checkFriendOver',function() {
-					this.delay(this.checkFriend,4000);
+			this.requires('Move')
+				.requires('TilePos')
+				.requires('Tween')
+				.requires('Delay')
+				.requires('Afraidable')
+				.bind("piked", function() {
+					console.log("piked")
+				})
+				.bind('teenMoved',function() {
+					this.checkFriend();
 				});
 
 			this.requires('Collision')
 				.collision()
 				.onHit("Trap", function( trap ) {
+					console.log('Hit');
 					var self = this;
 					trap[0].obj.each(function() {
-						this.trigger("trigger", self);
+						this.triggerTrap(self);
 					});
 				})
 		},
@@ -28,14 +29,12 @@
 			var self = this;
 			Crafty.npc.forEach(function(teenager) {
 				if (teenager !== self) {
-					/*if (Crafty.RayTracer.isVisible('blocked',Crafty.RayTracer.trace(self,teenager)))
+					if (Crafty.RayTracer.isVisible('blocked',Crafty.RayTracer.trace(self,teenager)))
 						console.log(self[0]+" sees "+teenager[0]);
 					else
-						console.log(self[0]+" does not see "+teenager[0]);*/
+						console.log(self[0]+" does not see "+teenager[0]);
 				}
 			});
-
-			this.trigger('checkFriendOver');
 		},
 
 		setMovePath: function (path) {
@@ -43,7 +42,6 @@
 		},
 
 		moveTo: function() {
-			this.tilePos();
 
 			if (this.movePath.length > 0)
 				this.movePath.splice(0,1);
@@ -54,6 +52,8 @@
 		},
 
 		initiateMovement: function() {
+
+			this.tilePos();
 			if (this.movePath.length > 0) {
 				
 				var dest = this.movePath[0];
@@ -61,15 +61,17 @@
 				this.tween({x:dest._x,y:dest._y},30);
 
 				/*if (dest._x < this._x)
-					this.tween({x:dest._x},30);
+					this.move('w',Crafty.tileSize);
 				else if (dest._x > this._x)
-					this.tween({x:this._x + 1*Crafty.tileSize},30);
+					this.move('e',Crafty.tileSize);
+				else if (dest._y < this._y)
+					this.move('n',Crafty.tileSize);
 				else if (dest._y > this._y)
-					this.tween({y:this._y - 1*Crafty.tileSize},30);
-				else if (dest._y > this._y)
-					this.tween({y:this._y + 1*Crafty.tileSize},30);*/
+					this.move('s',Crafty.tileSize);*/
 
 				this.movePath.splice(0,1);
+
+				this.trigger('teenMoved');
 
 				this.delay(this.initiateMovement,700);
 			} else {
