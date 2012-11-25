@@ -53,6 +53,8 @@
 					});
 
 					this.preventTrigger = false;
+					this.addComponent("TrapActive");
+
 				}
 				
 			});
@@ -71,6 +73,7 @@
 			this.attr(this.origin);
 			this.alpha = 0;
 			this.preventTrigger = true;
+			this
 		}/*,
 
 		setEffect: function(callback) {

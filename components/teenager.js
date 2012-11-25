@@ -6,10 +6,16 @@
 
 			this.requires('2D, DOM, Move, TilePos, Tween, Delay, Afraidable')
 				.bind("piked", function() {
-					this.addComponent("PikesSprite");
+					this.switchSprite("Piked");
+					this.dead = true;
+					this.movePath = [];
+					this.stop();
 				})
-				.bind("trapped", function() {
-					this.addComponent("WolftrapSprite");
+				.bind("wolfed", function() {
+					this.switchSprite("Wolfed");
+					this.dead = true;
+					this.movePath = [];
+					this.stop();
 				})
 				.bind('teenMoved',function() {
 					this.checkFriend();
@@ -20,13 +26,20 @@
 
 			this.requires('Collision')
 				.collision()
-				.onHit("Trap", function( trap ) {
-					var self = this;
-					trap[0].obj.each(function() {
-						//console.log( "Hit", this._element );
-						this.trigger( "trigger", self );
-					});
+				.onHit("TrapActive", function( trap ) {
+					//if ( trap && ( trap[0].overlap > ( Crafty.tileSize * 0.75 ) ) ) {
+						var self = this;
+						trap[0].obj.each(function() {
+							//console.log( "Hit", this._element );
+							this.trigger( "trigger", self );
+						});
+					//}
 				});
+		},
+
+		switchSprite: function( state ) {
+			this.removeComponent( this.name );
+			this.addComponent( this.name + state + "Sprite" );
 		},
 
 		checkFriend: function() {
@@ -73,6 +86,8 @@
 		},
 
 		moveTo: function() {
+			if ( this.dead ) { return; }
+
 			if (this.movePath.length > 0)
 				this.movePath.splice(0,1);
 			if(!this.isMoving)
@@ -82,6 +97,7 @@
 		},
 
 		initiateMovement: function() {
+			if ( this.dead ) { return; }
 
 			this.tilePos();
 			if (this.movePath.length > 0) {

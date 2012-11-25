@@ -6,9 +6,9 @@ Crafty.c("Teenagers", {
 			var sprites = {};
 			sprites[ key + "Sprite" ] = [ 0, data.offsetY ];
 			sprites[ key + "SmokedSprite" ] = [ 1, data.offsetY ];
-			sprites[ key + "PikedSprite" ] = [ 1, data.offsetY ];
-			sprites[ key + "TrappedSprite" ] = [ 1, data.offsetY ];
-			sprites[ key + "DeadSprite" ] = [ 1, data.offsetY ];
+			sprites[ key + "PikedSprite" ] = [ 2, data.offsetY ];
+			sprites[ key + "TrappedSprite" ] = [ 3, data.offsetY ];
+			sprites[ key + "DeadSprite" ] = [ 4, data.offsetY ];
 
 			Crafty.sprite(104, "assets/sprites/teenagers.png", sprites );
 
@@ -18,8 +18,10 @@ Crafty.c("Teenagers", {
 					h: 104,
 					x: data.initialPosition[0] * Crafty.tileSize-16,
 					y: data.initialPosition[1] * Crafty.tileSize-32,
-					z: 20
-				});
+					z: 20,
+					name: key,
+					offsetY: data.offsetY
+				})
 		});
 
 		// Don't forget the corroded sprite
