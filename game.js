@@ -70,8 +70,6 @@ window.onload = function () {
 
         
         Jeu = Crafty.e("Jeu");
-        Jeu.musique = Crafty.e("Musique");
-        Jeu.musique.jeu();
 
 	}
 
@@ -95,6 +93,7 @@ window.onload = function () {
     Crafty.scene("loading", function () {
 
     	Crafty.load([
+            'assets/sprites/url.png',
             'assets/sprites/texture64.png',
             'assets/sprites/teenagers.png',
             'assets/map.json',
@@ -109,7 +108,7 @@ window.onload = function () {
             ],function() {
 
     		
-    		Crafty.scene("main");
+    		Crafty.scene("ecran");
     		
     	});
 
@@ -120,6 +119,19 @@ window.onload = function () {
                 .css({ "text-align": "center" });
     });
 
+
+    Crafty.scene("ecran", function () {
+        Crafty.e("2D, DOM, Image, Mouse").attr({ w: 100, h: 20, x: 150, y: 120 })
+                .image("assets/sprites/url")
+                .bind("Click", function() {
+                    Crafty.scene("main");
+                })
+                ;
+
+        //createNight();
+        
+        //create our player entity with some premade components
+    });
 
     Crafty.scene("main", function () {
         Crafty.e("Inventory");

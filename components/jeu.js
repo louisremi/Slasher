@@ -77,12 +77,12 @@ Crafty.c("Jeu",{
 				Crafty('Fenetre').each(function(){
 					destPossibles[destPossibles.length] = this;
 				});
-				//dans la cuisine
-				destPossibles[destPossibles.length] = Crafty.PathFinder.tiles[11][7];
-				//dans la chambre
-				destPossibles[destPossibles.length] = Crafty.PathFinder.tiles[21][6];
-				//devant le canapé
-				destPossibles[destPossibles.length] = Crafty.PathFinder.tiles[16][11];
+
+				destPossibles[destPossibles.length] = Crafty.PathFinder.tiles[5][4];
+				destPossibles[destPossibles.length] = Crafty.PathFinder.tiles[10][4];
+				destPossibles[destPossibles.length] = Crafty.PathFinder.tiles[17][5];
+				destPossibles[destPossibles.length] = Crafty.PathFinder.tiles[9][8];
+				destPossibles[destPossibles.length] = Crafty.PathFinder.tiles[5][8];
 
 				var pasfini = false
 				//boucle sur les teens
@@ -169,6 +169,8 @@ Crafty.c("Jeu",{
                  	_this.Resume();
                  });
 
+		        this.musique = Crafty.e("Musique");
+		        this.musique.jeu();
 			  // Panique barre et gestion
 			  this.panique = { 
 			  	  nbpanique: 0,
