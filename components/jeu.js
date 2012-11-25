@@ -61,8 +61,6 @@ Crafty.c("Jeu",{
 					}
 				};
 				
-				
-				
 				var destPossibles = [];
 				Crafty('Chiotte').each(function(){
 					destPossibles[destPossibles.length] = this;
@@ -86,10 +84,12 @@ Crafty.c("Jeu",{
 				var pasfini = false
 				//boucle sur les teens
 				for( var t in this.teens ) {
+
 					if( this.teens[t].movePath.length != 0 ){
 						pasfini = true;
 						continue;
 					}
+
 					//on copie les destinations (dans le doute)
 					var tempDest = destPossibles;
 					var destRestantes = [];

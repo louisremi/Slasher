@@ -3,6 +3,7 @@
 	Crafty.c("Teenager",{
 		movePath:[],
 		init: function() {
+
 			this.requires('Move')
 				.requires('TilePos')
 				.requires('Tween')
@@ -23,7 +24,7 @@
 					trap[0].obj.each(function() {
 						this.triggerTrap(self);
 					});
-				})
+				});
 		},
 
 		checkFriend: function() {
@@ -82,4 +83,5 @@
 			return this;
 		}
 	});
+
 })(Crafty);
