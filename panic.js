@@ -16,16 +16,37 @@
 
         Jeu.musique.panic();
 
+        Crafty.sprite(104, "assets/sprites/teenagers.png", {
+        	SlasherSprite:[1,5],
+        });
+
         Crafty.PathFinder.enterPanicMode();
 
+        var position = {x:0,y:0,z:40};
+        Crafty('Door').each(function(door) {
+        	position.x = door._x;
+        	position.y = door._y;
+        })
+
+        Crafty.e('2D,DOM,Slasher, SlasherSprite,Keyboard,Collision,WiredHitBox')
+        	.attr(position)
+        	.slasher(1)
+        	.collision(
+        		new Crafty.polygon([0,64],[64,64],[64,0],[0,0]))
+        	.bind('Moved', function(from) {
+			    if(this.hit('blocked')){
+			        this.attr({x: from.x, y:from.y});
+			    }
+			});
+
         //Bouger tous les teenages vers le bord
-        Crafty.npc.each(function(teenager) {
-        	var dest = tiles[0][0];
+        Crafty.npc.forEach(function(teenager) {
+        	var dest = Crafty.PathFinder.tiles[0][0];
 
         	if(Math.round(Math.random())) {
-        		dest = tiles[0][Math.floor(Math.random()*Crafty.mapSize.h)];
+        		dest = Crafty.PathFinder.tiles[0][Math.floor(Math.random()*Crafty.mapSize.h)];
         	} else {
-				dest = tiles[Math.floor(Math.random()*Crafty.mapSize.w)][0];
+				dest = Crafty.PathFinder.tiles[Math.floor(Math.random()*Crafty.mapSize.w)][0];
         	}
 
         	var locationIsBlocked = false;
@@ -37,7 +58,7 @@
 				dest.removeComponent('window');
 			}
 
-			Crafty.PathFinder.calculatePath(])
+			var path = Crafty.PathFinder.calculatePath(teenager,dest);
 			if (!!locationIsBlocked){
 				dest.addComponent(locationIsBlocked)
 				path.pop();
