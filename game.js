@@ -124,6 +124,8 @@ window.onload = function () {
         createTrap();        
     })
 
+    Crafty.bind('PANIC',enterPanicMode);
+
     //automatically play the loading scene
     Crafty.scene("loading");
 };
