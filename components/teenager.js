@@ -18,9 +18,9 @@
 			this.requires('Collision')
 				.collision()
 				.onHit("Trap", function( trap ) {
-					console.log('Hit');
 					var self = this;
 					trap[0].obj.each(function() {
+						//console.log( "Hit", this._element );
 						this.trigger( "trigger", self );
 					});
 				});

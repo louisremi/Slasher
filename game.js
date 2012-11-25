@@ -97,7 +97,6 @@ window.onload = function () {
     	Crafty.load([
             'assets/sprites/texture64.png',
             'assets/sprites/teenagers.png',
-            //'assets/sprites/zob.png',
             'assets/map.json',
             'assets/sprites/barreEmpty.png',
             'assets/sprites/barreFull.png',
@@ -119,7 +118,7 @@ window.onload = function () {
 
 
     Crafty.scene("main", function () {
-        //Crafty.e("Inventory");
+        Crafty.e("Inventory");
         Crafty.e("Teenagers");
 
         generateWorld();

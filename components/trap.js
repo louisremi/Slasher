@@ -6,7 +6,7 @@
 		numberOffset:40,
 
 		init: function() {
-			this.requires("2D, DOM, Color, Draggable");
+			this.requires("2D, DOM, Draggable");
 
 			this.bind("trigger", function( teenager ) {
 				if ( this.preventTrigger ) { return; }
@@ -14,17 +14,25 @@
 				this.unbind("trigger");
 
 				// play animation
-				this.requires("SpriteAnimation")
+				/*this.requires("SpriteAnimation")
 					.animate("deploy", this.offset[0], this.offset[1], 3)
 					.animate("deploy", 30, 0)
 					.bind("AnimationEnd", function() {
 				    	teenager.trigger( this.effect || "die" );
 				    	this.destroy();
-				    });
+				    });*/
+
+				teenager.trigger( this.effect || "die" );
+				this.destroy();
+
 			});
 
+			
+			this.preventTrigger = true;
+			this.alpha = 0; 
 			this.bind("StartDrag", function() {
 				this.preventTrigger = true;
+				this.alpha = 1;
 			});
 
 			// a dropped trap should be adjusted to fit on a tile
@@ -61,6 +69,8 @@
 
 		restoreOrigin: function() {
 			this.attr(this.origin);
+			this.alpha = 0;
+			this.preventTrigger = true;
 		}/*,
 
 		setEffect: function(callback) {
