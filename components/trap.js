@@ -12,7 +12,7 @@
 			this.bind("trigger", function( teenager ) {
 				if ( this.preventTrigger ) { return; }
 
-				this.unbind("trigger");
+				//this.unbind("trigger");
 
 				// play animation
 				/*this.requires("SpriteAnimation")
@@ -24,7 +24,10 @@
 				    });*/
 
 				teenager.trigger( this.effect || "die" );
-				this.destroy();
+				
+				//if ( this.name != "Trap" ) {
+					this.destroy();
+				//}
 
 			});
 

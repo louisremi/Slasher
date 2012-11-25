@@ -45,7 +45,7 @@ Crafty.c("Inventory", {
 						z:menuItem._z + 1
 					})
 					.saveOrigin()
-					.attr({offset: data.offset, effect: data.effect});
+					.attr({offset: data.offset, effect: data.effect, name: key});
 
 				// ugly hack, means we're going fast
 				trap._element.style.opacity = 0;
@@ -66,30 +66,30 @@ Crafty.c("Inventory", {
 });*/
 
 Crafty.Inventory = {
-	Pikes: {
-		available: 3,
-		offsetY: 0,
-		effect: "piked"
-	},
 	Wolf: {
 		available: 3,
-		offsetY: 1,
+		offsetY: 0,
 		effect: "wolfed"
+	},
+	Acid: {
+		available: 3,
+		offsetY: 1,
+		effect: "acided"
 	},
 	Trap: {
 		available: 3,
 		offsetY: 2,
 		effect: "trapped"
 	},
-	Gaz: {
+	Pikes: {
 		available: 3,
 		offsetY: 3,
-		effect: "gazzed"
+		effect: "piked"
 	},
-	Acid: {
+	Gaz: {
 		available: 3,
 		offsetY: 4,
-		effect: "acided"
+		effect: "gazzed"
 	}
 };
 
