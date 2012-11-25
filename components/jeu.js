@@ -9,6 +9,7 @@ Crafty.c("Jeu",{
 			tour: "pnj",
 			tourPnjStarted: false,
 			tourPnjNbMouvementsFinis: 0,
+			stimulis: null,
 			Pause:function(){
 				if( this.menu )
 			  		this.menu.css({ "display": "block" });
@@ -16,7 +17,8 @@ Crafty.c("Jeu",{
 			  		this.bouton.css({ "display": "block" });
 				if( this.teens )
 			  		for( i in this.teens)
-			  			this.teens[i].pause();
+			  			if( this.teens[i] && this.teens[i].pause )
+			  				this.teens[i].pause();
 				if( this.slasher )
 			  		this.slasher.pause();
 				if( this.musique )
@@ -26,7 +28,7 @@ Crafty.c("Jeu",{
 				if( this.panique )
 			  		this.panique.pause();
 			  this.paused = true;
-			  Crafty.pause();
+			  //Crafty.pause();
 			  return this;
 			},
 			Resume:function(){
@@ -45,6 +47,9 @@ Crafty.c("Jeu",{
 			  return this;
 			},
 			TourPNJ:function(){
+
+				this.paused = false;
+				this.teens = Crafty.npc;
 				var addMvtFini = function() {
 					this.tourPnjNbMouvementsFinis++;
 					//si tous les teens ont bougés c'est au tour du joueur
@@ -55,16 +60,33 @@ Crafty.c("Jeu",{
 					}
 				};
 				
+				
+				
 				var destPossibles = [];
-				destPossibles[destPossibles.length] = [5, 5];
-				destPossibles[destPossibles.length] = [12, 5];
-				destPossibles[destPossibles.length] = [8, 5];
-				destPossibles[destPossibles.length] = [5, 10];
-				destPossibles[destPossibles.length] = [12, 10];
-				destPossibles[destPossibles.length] = [8, 10];
+				Crafty('Chiotte').each(function(){
+					destPossibles[destPossibles.length] = this;
+				});
+				Crafty('Door').each(function(){
+					destPossibles[destPossibles.length] = this;
+				});
+				/*Crafty('Telephone').each(function(){
+					destPossibles[destPossibles.length] = this;
+				});
+				Crafty('Fenetre').each(function(){
+					destPossibles[destPossibles.length] = this;
+				});*/
+				//dans la cuisine
+				destPossibles[destPossibles.length] = Crafty.PathFinder.tiles[11][7];
+				//dans la chambre
+				destPossibles[destPossibles.length] = Crafty.PathFinder.tiles[21][6];
+				//devant le canapé
+				destPossibles[destPossibles.length] = Crafty.PathFinder.tiles[16][11];
+
 				
 				//boucle sur les teens
 				for( var t in this.teens ) {
+					if( this.teens[t].movePath.length != 0 )
+						continue;
 					//on copie les destinations (dans le doute)
 					var tempDest = destPossibles;
 					var destRestantes = [];
@@ -76,16 +98,31 @@ Crafty.c("Jeu",{
 						}
 					}
 					
-					//on cherche note destination dans le restant
+					//on cherche notre destination dans le restant
 					var dest = destRestantes[parseInt(Math.floor(Math.random()*destRestantes.length))];
 					
 					//on l'enleve de la liste pour le teen suivant
 					for( var d in destPossibles )
-						if( destPossibles[d][0] == dest[0] && destPossibles[d][1] == dest[1] )
+						if( destPossibles[d] && destPossibles[d].x == dest.x && destPossibles[d].y == dest.y )
 							destPossibles[d] = null;
 					
 					//le teen y va(et modifie son trajet si il y a collision avec une zone d'effet d'une action du joueur
-					this.teens[t].go(dest, addMvtFini.bind(this) );
+					var locationIsBlocked = false;
+					if(dest.__c['blocked']) {
+						locationIsBlocked = 'blocked';
+						dest.removeComponent('blocked');
+					} else if (dest.__c['window']) {
+						locationIsBlocked = 'window';
+						dest.removeComponent('window');
+					}
+
+					var path = Crafty.PathFinder.calculatePath(this.teens[t],dest);
+					if (!!locationIsBlocked){
+						dest.addComponent(locationIsBlocked)
+						path.pop();
+					}
+					this.teens[t].setMovePath(path);
+					this.teens[t].moveTo();
 				}
 				
 				this.tourPnjStarted = true;
@@ -93,7 +130,7 @@ Crafty.c("Jeu",{
 				
 				if( this.teens )
 			  		for( i in this.teens){
-			  			if( this.teens[i])
+			  			if( this.teens[i] && this.teens[i].resume)
 			  			this.teens[i].resume();
 			  		}
 				if( this.slasher )
@@ -103,8 +140,7 @@ Crafty.c("Jeu",{
 			  		this.animations.resume();
 				if( this.panique )
 			  		this.panique.resume();
-			  this.paused = false;
-			  Crafty.pause();
+			  //Crafty.pause();
 			  return this;
 			},
 			TourJoueur:function(){
@@ -113,6 +149,9 @@ Crafty.c("Jeu",{
 			  //apparition du bouton pour valider les actions du tour
 			  
 			  //enregistrement des actions du tour
+			  var addStimuli = function( stimuli ) {
+				  this.stimulis[this.stimulis.length] = stimuli;
+			  };
 			  
 			  return this;
 			},
@@ -121,6 +160,7 @@ Crafty.c("Jeu",{
 			  var _this = this;
 			  this.requires("2D");
 			  this.teens = [];
+			  this.stimulis = [];
 			  this.menu = Crafty.e("2D, DOM, Text, Color").attr({ w: 1024, h: 600, x: 0, y: 0, z: 990 })
 			     .color("#ddd")
                  .text("Pause")
@@ -151,8 +191,10 @@ Crafty.c("Jeu",{
 				  	this.nbpanique += pourcent;
 				  	if( this.nbpanique < 0 )
 				  		this.nbpanique = 0;
-				  	if( this.nbpanique > 100 )
+				  	if( this.nbpanique > 100 ) {
 				  		this.nbpanique = 100;
+				  		Crafty.trigger('PANIC');
+				  	}
 				  	//clearTimeout( this._timeoutpanik );
 				  	this.refreshPanique();
 				  },

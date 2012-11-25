@@ -8,6 +8,13 @@ Crafty.c("Musique",{
 			slasher: null,
 			playing: null,
 			traps: null,
+
+			panic: function() {
+				Crafty.audio.play( "titre", 1, 0.7);
+				this.playing[this.playing.length] = "titre";
+
+				return this;
+			},
 			menu:function( precedent ){
 				for( id in this.playing ) {
 					Crafty.audio.togglePause(this.playing[id]);
@@ -22,14 +29,14 @@ Crafty.c("Musique",{
 				
 				return this;
 			},
-			jeu:function( precedent ){
+			jeu:function(){
 				for( id in this.playing ) 
 					Crafty.audio.togglePause(this.playing[id]);
 				this.playing = [];
 					
 				var musique = this.ingame[Math.floor((Math.random()*this.ingame.length))]; 
 				this.playing[this.playing.length] = musique;
-				Crafty.audio.play( musique, 1, 1.0, this.jeu.bind( this));
+				Crafty.audio.play( musique, -1, 1.0);
 				
 			  return this;
 			},
