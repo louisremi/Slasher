@@ -136,10 +136,18 @@ window.onload = function () {
         
         //create our player entity with some premade components
     });
-    var deaths = 0
+    var deaths = 0;
+    var escaped = 0;
     Crafty.bind('NpcDead', function() {
         deaths++;
-        if(deaths >=5) {
+        if(deaths+escaped >=5) {
+            Crafty.pause();
+        }
+    });
+
+    Crafty.bind('NpcEscape', function() {
+        escaped++;
+        if(deaths+escaped >=5) {
             Crafty.pause();
         }
     })

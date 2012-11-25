@@ -36,7 +36,6 @@
 				.onHit("Slasher",function() {
 					if (!this.dead) {
 						this.dieAHorribleDeath();
-						Crafty.trigger('NpcDead');
 					}
 				});
 		},
@@ -59,13 +58,15 @@
 				});
 			}
 
+			Crafty.trigger('NpcDead');
+
 			return this;
 		},
 
 		dieAHorribleDeath: function() {
 			this.animate('deathBySlasher', 3, this.offsetY, 6).animate('deathBySlasher',300,0);
 			this.removeComponent(this.name+'Sprite');
-			this.dead = true;
+			this.die();
 			this.stop().addComponent(this.name+'DeadSprite');
 
 			return this;
@@ -162,6 +163,11 @@
 			} else {
 				this.tilePos();
 				this.isMoving = false;
+
+				if(Crafty.panic) {
+					this.destroy();
+					Crafty.trigger('NpcEscape');
+				}
 			}
 
 			return this;
