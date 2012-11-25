@@ -139,3 +139,4 @@ var initPersos = function(map) {
         }
     }
 };
+})(Crafty);

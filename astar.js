@@ -57,7 +57,7 @@ Crafty.c("AStar",{
 			closed.push(current_node);
 			var adj = this._findAdjacent(current_node.tile);
 			for(var i in adj){
-				if (adj[i]) {
+				//if (adj[i]) {
 					if(this._nodeInArray(new Node(adj[i]),closed))
 						continue;
 					if(ignore==undefined || !ignore(current_node.tile,adj[i])){
@@ -72,7 +72,7 @@ Crafty.c("AStar",{
 							open.push(new_node);
 						}
 					}
-				}
+				//}
 			}
 		}
 		return [];

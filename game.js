@@ -89,6 +89,8 @@ window.onload = function () {
 
         Jeu.musique.panic();
 
+        //Crafty.Slasher = Crafty.e('Slasher,2D,Multiway,DOM')
+
         Crafty.PathFinder.enterPanicMode();
     }
 
