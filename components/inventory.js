@@ -21,11 +21,16 @@ Crafty.c("Inventory", {
 
 		var self = this;
 
-		$.each( Crafty.Inventory, function( key, value ) {
-			while( value-- ) {
+		$.each( Crafty.Inventory, function( key, data ) {
+			var sprite = {};
+			sprite[ key + "Sprite" ] = data.offset;
+			Crafty.sprite(32,"assets/sprites/zob.png", sprite );
+
+			while( data.available-- ) {
 				var trap = Crafty.e( [ key, key + "Sprite" ].join() )
-					.attr({w: Crafty.tileSize, h: Crafty.tileSize, x:16 + value * 3,y:offset*self.basicOffset + value * 3,z:self._z+1})
-					.saveOrigin();
+					.attr({w: Crafty.tileSize, h: Crafty.tileSize, x:16 + data.available * 3,y:offset*self.basicOffset + data.available * 3,z:self._z+1})
+					.saveOrigin()
+					.offset = data.offset;
 			}
 			offset++;
 		});
@@ -34,17 +39,23 @@ Crafty.c("Inventory", {
 	}
 });
 
-Crafty.sprite(32,"assets/sprites/zob.png",{
+/*Crafty.sprite(32,"assets/sprites/zob.png",{
 	PikesSprite:[0,0],
-	WolftrapSprite:[0,1]/*,
+	WolftrapSprite:[0,1],
 	HoleSprite:[0,1],
 	SmokeSprite:[2,0],
-	AcidSprite:[4,0]*/
-});
+	AcidSprite:[4,0]
+});*/
 
 Crafty.Inventory = {
-	Pikes: 3,
-	Wolftrap: 3/*,
+	Pikes: {
+		available: 3,
+		offset: [0,0]
+	},
+	Wolftrap: {
+		available: 3,
+		offset: [0,1]
+	}/*,
 	Hole: 3,
 	Smoke: 3,
 	Acid: 3*/

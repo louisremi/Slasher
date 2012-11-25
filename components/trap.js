@@ -15,7 +15,7 @@
 
 				// play animation
 				this.requires("SpriteAnimation")
-					.animate("deploy", 0, 0, 3)
+					.animate("deploy", this.offset[0], this.offset[1], 3)
 					.animate("deploy", 30, 0)
 					.bind("AnimationEnd", function() {
 				    	//teenager.trigger( eventName || "die" );
@@ -55,6 +55,8 @@
 				x: this._x,
 				y: this._y
 			};
+
+			return this;
 		},
 
 		restoreOrigin: function() {

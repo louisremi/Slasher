@@ -22,7 +22,7 @@
 					console.log('Hit');
 					var self = this;
 					trap[0].obj.each(function() {
-						this.triggerTrap(self);
+						this.trigger("trigger");
 					});
 				});
 		},
