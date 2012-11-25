@@ -2,6 +2,7 @@
 
 	Crafty.c("Teenager",{
 		movePath:[],
+		dead:false,
 		init: function() {
 
 			this.requires('2D, DOM, Move, TilePos, Tween, Delay, Afraidable, SpriteAnimation')
@@ -21,7 +22,8 @@
 				});
 
 			this.requires('Collision')
-				.collision()	
+
+				.collision([1+16,63+32],[63+16,63+32],[63+16,1+32],[1+16,1+32])	
 				.onHit("TrapActive", function( trap ) {
 					//if ( trap && ( trap[0].overlap > ( Crafty.tileSize * 0.75 ) ) ) {
 						var self = this;
@@ -30,6 +32,10 @@
 							this.trigger( "trigger", self );
 						});
 					//}
+				})
+				.onHit("Slasher",function() {
+					this.dieAHorribleDeath();
+					Crafty.trigger('NpcDead');
 				});
 		},
 
@@ -52,7 +58,10 @@
 		},
 
 		dieAHorribleDeath: function() {
-			this.animate('deathBySlasher', 3, 0, 6).animate('deathBySlasher',120,0);
+			this.animate('deathBySlasher', 3, this.offsetY, 6).animate('deathBySlasher',300,0);
+			this.removeComponent(this.name+'Sprite');
+			this.dead = true;
+			this.stop().addComponent(this.name+'DeadSprite');
 		},
 
 		checkFriend: function() {

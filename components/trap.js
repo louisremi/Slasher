@@ -6,7 +6,8 @@
 		numberOffset:40,
 
 		init: function() {
-			this.requires("2D, DOM, Draggable");
+			this.requires("2D, DOM, Draggable, Collision")
+				.collision([0,64],[64,64],[64,0],[0,0]);
 
 			this.bind("trigger", function( teenager ) {
 				if ( this.preventTrigger ) { return; }
