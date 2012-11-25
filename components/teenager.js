@@ -7,15 +7,11 @@
 			this.requires('2D, DOM, Move, TilePos, Tween, Delay, Afraidable, SpriteAnimation')
 				.bind("piked", function() {
 					this.switchSprite("Piked");
-					this.dead = true;
-					this.movePath = [];
-					this.stop();
+					this.die( true );
 				})
 				.bind("wolfed", function() {
 					this.switchSprite("Wolfed");
-					this.dead = true;
-					this.movePath = [];
-					this.stop();
+					this.die( true );
 				})
 				.bind('teenMoved',function() {
 					this.checkFriend();
@@ -40,6 +36,19 @@
 		switchSprite: function( state ) {
 			this.removeComponent( this.name );
 			this.addComponent( this.name + state + "Sprite" );
+		},
+
+		die: function( roundTile ) {
+			this.dead = true;
+			this.movePath = [];
+			
+			if ( roundTile ) {
+				this.attr({
+					x: Math.round( this._x / Crafty.tileSize ),
+					y: Math.round( this._y / Crafty.tileSize )
+				});
+			}
+
 		},
 
 		dieAHorribleDeath: function() {
