@@ -116,11 +116,10 @@ window.onload = function () {
 
 
     Crafty.scene("main", function () {
+        Crafty.e("Inventory");
+        Crafty.e("Teenagers")
 
         generateWorld();
-
-        Crafty.e("Inventory");
-        Crafty.e("")
 
         //createNight();
         
