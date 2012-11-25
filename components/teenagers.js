@@ -21,7 +21,7 @@ Crafty.c("Teenagers", {
 					z: 20,
 					name: key,
 					offsetY: data.offsetY
-				})
+				}).tilePos();
 		});
 
 		// Don't forget the corroded sprite
