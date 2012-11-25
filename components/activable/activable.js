@@ -14,6 +14,9 @@
 
 			var attracted = atRange[Math.floor(Math.random()*atRange.length)];
 
+			if( !attracted )
+				return;
+			
 			var location;
 
 			var locationIsBlocked = false;
