@@ -1,11 +1,24 @@
 (function(Crafty) {
 	Crafty.c('Activable',{
+		showRange:true,
+
 		init: function() {
-			this.requires('Selectable','Range');
+			this.requires('Selectable, Range, Delay');
 		},
 
 		addButton: function() {
-			this.trigger('zob');
+			if(!this.activated)
+				this.trigger('zob');
+
+			this.activated = true;
+			this.showRange = false;
+
+			var self = this;
+			this.delay(function() {
+				this.showRange = true;
+				self.activated = false;
+			},5000);
+
 			return this;
 		},
 

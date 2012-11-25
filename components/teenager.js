@@ -13,6 +13,9 @@
 				})
 				.bind('teenMoved',function() {
 					this.checkFriend();
+					if (this.panic) {
+						this.checkSlasher();
+					}
 				});
 
 			this.requires('Collision')
@@ -39,6 +42,7 @@
 		},
 
 		checkSlasher: function() {
+			var self = this;
 			Crafty('Slasher').forEach(function(slasher) {
 				if (Crafty.RayTracer.isVisible('blocked',Crafty.RayTracer.trace(self,teenager))) {
 					Jeu.musique.panic();
@@ -53,8 +57,8 @@
 						direction = 's';
 
 					if(!!direction) {
-						this.setMovePath(searchEscape(direction,this))
-						this.moveTo();
+						self.setMovePath(searchEscape(direction,self));
+						self.moveTo();
 					}
 				}
 			});
@@ -70,7 +74,7 @@
 
 		moveTo: function() {
 			if (this.movePath.length > 0)
-				var old = this.movePath.splice(0,1);
+				this.movePath.splice(0,1);
 			if(!this.isMoving)
 				this.initiateMovement();
 

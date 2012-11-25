@@ -77,6 +77,10 @@
          "tileheight":64,
          "tileproperties":
             {
+             "0":
+                {
+                 "components":"chiotte"
+                },
              "1":
                 {
                  "components":"blocked"

@@ -28,7 +28,7 @@ window.onload = function () {
         })
 
         Crafty('telephone').each(function() {
-            this.addComponent('Telephone, Range, Mouse')
+            this.addComponent('Telephone, Mouse')
                 .range(5)
                 .bind('Click', function() {
                     this.selectEntity(this.addButton.bind(this));
@@ -36,7 +36,7 @@ window.onload = function () {
         });
 
         Crafty('door').each(function() {
-            this.addComponent('Door, Range, Mouse')
+            this.addComponent('Door, Mouse')
                 .range(5)
                 .bind('Click', function() {
                     this.selectEntity(this.addButton.bind(this));
@@ -44,7 +44,7 @@ window.onload = function () {
         });
 
         Crafty('chiotte').each(function() {
-            this.addComponent('Chiotte, Range, Mouse')
+            this.addComponent('Chiotte, Mouse')
                 .range(5)
                 .bind('Click', function() {
                     this.selectEntity(this.addButton.bind(this));
@@ -53,7 +53,7 @@ window.onload = function () {
 
 
         Crafty('window').each(function() {
-            this.addComponent('Fenetre, Range, Mouse')
+            this.addComponent('Fenetre, Mouse')
                 .range(5)
                 .bind('Click', function() {
                     this.selectEntity(this.addButton.bind(this));
@@ -61,7 +61,7 @@ window.onload = function () {
         });
 
         Crafty('television').each(function() {
-            this.addComponent('Television, Range, Mouse')
+            this.addComponent('Television, Mouse')
                 .range(5)
                 .bind('Click', function() {
                     this.selectEntity(this.addButton.bind(this));
@@ -101,6 +101,10 @@ window.onload = function () {
             'assets/sprites/barreEmpty.png',
             'assets/sprites/barreFull.png',
             'assets/sprites/slasher.png',
+            'assets/sprites/onoClac.png',
+            'assets/sprites/onoPsht.png',
+            'assets/sprites/onoFlush.png',
+            'assets/sprites/onoDring.png',
             'assets/sprites/traps.png'
             ],function() {
 

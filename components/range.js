@@ -11,7 +11,8 @@ Crafty.c("Range", {
 
 		this.requires("Mouse")
 			.bind("MouseOver", function() {
-				this.rangeVisualization.show();
+				if(this.showRange)
+					this.rangeVisualization.show();
 			})
 			.bind("MouseOut", function() {
 				this.rangeVisualization.hide();
