@@ -26,8 +26,6 @@ window.onload = function () {
         Crafty('Teenager').each(function() {
             this.checkFriend();
         })
-
-
         
 
         Crafty('telephone').each(function() {
@@ -71,19 +69,7 @@ window.onload = function () {
 	}
 
     function enterPanicMode() {
-        this.screen = Crafty.e("2D, DOM, Text, Color,Tween").attr({ w: 1024, h: 600, x: 0, y: 0, z: 990 })
-                 .color("#ddd")
-                 .text("PANIC THE FUCK OUT")
-                 .css({ "text-align": "center"
-                    , "padding-top": "250px"
-                    , "font-size": "64pt"})
-                 .tween({alpha:0.0},100);
-
-        Jeu.musique.panic();
-
-        //Crafty.Slasher = Crafty.e('Slasher,2D,Multiway,DOM')
-
-        Crafty.PathFinder.enterPanicMode();
+        Crafty.enterPanicMode();
     }
 
     //method to generate the map

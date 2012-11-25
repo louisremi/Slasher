@@ -42,6 +42,19 @@
 			});
 		},
 
+		checkSlasher: function() {
+			Crafty('Slasher').forEach(function(slasher) {
+				if (Crafty.RayTracer.isVisible('blocked',Crafty.RayTracer.trace(self,teenager))) {
+					Jeu.musique.panic();
+					this.setMovePath(searchEscape(direction,this))
+				}
+			});
+		},
+
+		enterPanicMode: function() {
+			this.panic = true;
+		},
+
 		setMovePath: function (path) {
 			this.movePath = path;
 		},
