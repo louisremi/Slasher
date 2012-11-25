@@ -93,4 +93,6 @@ Crafty.Inventory = {
 	}
 };
 
+Crafty.TrapsLeft = 15;
+
 })(Crafty);

@@ -59,6 +59,10 @@
 					this.preventTrigger = false;
 					this.addComponent("TrapActive");
 
+					if ( --Crafty.trapLefts == 0 ) {
+						Crafty.e("Jeu");
+					}
+
 				}
 				
 			});
