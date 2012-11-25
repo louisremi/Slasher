@@ -46,7 +46,20 @@
 			Crafty('Slasher').forEach(function(slasher) {
 				if (Crafty.RayTracer.isVisible('blocked',Crafty.RayTracer.trace(self,teenager))) {
 					Jeu.musique.panic();
-					this.setMovePath(searchEscape(direction,this))
+					var direction;
+					if(slasher._x > this._x)
+						direction = 'w';
+					if(slasher._x < this._x)
+						direction = 'e';
+					if(slasher._y > this._y)
+						direction = 'n';
+					if(slasher._y < this._y)
+						direction = 's';
+
+					if(!!direction) {
+						this.setMovePath(searchEscape(direction,this))
+						this.moveTo();
+					}
 				}
 			});
 		},

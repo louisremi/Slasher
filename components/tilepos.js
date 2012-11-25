@@ -16,7 +16,7 @@
         },
         init:function(){
             this.requires("2D");
-        }
+        },
 
         searchEscape: function(direction,tile) {
         var newTiles;
