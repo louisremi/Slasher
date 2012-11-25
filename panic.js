@@ -12,6 +12,8 @@
 
         Jeu.musique.panic();
 
+        Crafty.panic = true;
+
         Crafty.sprite(104, "assets/sprites/teenagers.png", {
         	SlasherSprite:[1,5],
         });
