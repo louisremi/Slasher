@@ -5,10 +5,10 @@ Crafty.c("Teenagers", {
 		$.each( Crafty.Teenagers, function( key, data ) {
 			var sprites = {};
 			sprites[ key + "Sprite" ] = [ 0, data.offsetY ];
-			sprites[ key + "SmokedSprite" ] = [ 1, data.offsetY ];
-			sprites[ key + "PikedSprite" ] = [ 2, data.offsetY ];
-			sprites[ key + "TrappedSprite" ] = [ 3, data.offsetY ];
-			sprites[ key + "DeadSprite" ] = [ 4, data.offsetY ];
+			sprites[ key + "GazzedSprite" ] = [ 1, data.offsetY ];
+			sprites[ key + "PikedSprite" ] = [ 6, data.offsetY ];
+			sprites[ key + "WolfedSprite" ] = [ 2, data.offsetY ];
+			sprites[ key + "DeadSprite" ] = [ 5, data.offsetY ];
 
 			Crafty.sprite(104, "assets/sprites/teenagers.png", sprites );
 
@@ -26,7 +26,10 @@ Crafty.c("Teenagers", {
 
 		// Don't forget the corroded sprite
 		Crafty.sprite(104, "assets/sprites/teenagers.png", {
-			CorrodedSprite: [0,6]
+			AcidedSprite: [0,5]
+		});
+		Crafty.sprite(64, "assets/sprites/traps.png", {
+			TrappedSprite: [1,2]
 		});
 	}
 });
