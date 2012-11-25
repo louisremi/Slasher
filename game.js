@@ -26,7 +26,6 @@ window.onload = function () {
         Crafty('Teenager').each(function() {
             this.checkFriend();
         })
-        
 
         Crafty('telephone').each(function() {
             this.addComponent('Telephone, Range, Mouse')
@@ -61,6 +60,14 @@ window.onload = function () {
                 });
         });
 
+        Crafty('television').each(function() {
+            this.addComponent('Television, Range, Mouse')
+                .range(5)
+                .bind('Click', function() {
+                    this.selectEntity(this.addButton.bind(this));
+                });
+        });
+
         
         Jeu = Crafty.e("Jeu");
         Jeu.musique = Crafty.e("Musique");
@@ -84,10 +91,20 @@ window.onload = function () {
 			  });
     }
 
-	//the loading screen that will display while our assets load
+    //the loading screen that will display while our assets load
     Crafty.scene("loading", function () {
 
-    	Crafty.load(['assets/sprites/teenagers.png','assets/sprites/traps.png'],function() {
+    	Crafty.load([
+            'assets/sprites/texture64.png',
+            'assets/sprites/textureTeenagers64.png',
+            'assets/sprites/zob.png',
+            'assets/map.json',
+            'assets/sprites/barreEmpty.png',
+            'assets/sprites/barreFull.png',
+            'assets/sprites/slasher.png',
+            'assets/sprites/traps.png'
+            ],function() {
+
     		
     		Crafty.scene("main");
     		

@@ -188,18 +188,23 @@ Crafty.c("Jeu",{
 				  	this.refreshPanique();
 				  },
 				  refreshPanique: function() {
-				  	this.reglette.w = parseInt(this.barre.w/(100/this.nbpanique));
+				  	this.barre.h = parseInt(this.reglette.h*((100-this.nbpanique)/100));
+
 				  	/*this._timeoutpanik = setTimeout( function() {
 				  		this.addPanique( -1 );
 				  	}.bind( this), 1000 );*/
 				  },
-				  barre: Crafty.e("2D, DOM, Image")
-		             .attr({w: 481, h: 45, x: 80, y: 0, z: 50})
-		             .image("assets/barrepanik.png")
+				  slasher: Crafty.e("2D, DOM, Image")
+		             .attr({w: 98, h: 490, x: 1220, y: 10, z: 51})
+		             .image("assets/sprites/slasher.png")
 		          ,
-				  reglette: Crafty.e("2D, DOM, Color")
-		             .attr({w: 0, h: 15, x: 80, y: 15, z: 50})
-		             .color("#00F")
+				  barre: Crafty.e("2D, DOM, Image")
+		             .attr({w: 98, h: 490, x: 1285, y: 190, z: 50})
+		             .image("assets/sprites/barreEmpty.png")
+		          ,
+				  reglette: Crafty.e("2D, DOM, Image")
+		             .attr({w: 98, h: 490, x: 1285, y: 190, z: 49})
+		             .image("assets/sprites/barreFull.png")
 		        };
 
 			  //Début du jeu

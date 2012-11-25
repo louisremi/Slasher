@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="22" height="14" tilewidth="64" tileheight="64">
+ <tileset firstgid="1" source="texture64.tsx"/>
+ <layer name="grass" width="22" height="14">
+  <data encoding="base64" compression="zlib">
+   eJzjZ2BgEABifirTkkAsRQOa2u4cde/Ici+xakl1B7Fqh3v4DrR7AYjeGKs=
+  </data>
+ </layer>
+ <layer name="floor" width="22" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgF6EAcDYMADwmYWHPFB7m52AAu/aSYK4aGB8JcUgC6uWI4zIVhbOmHnuYim48OyPH/UAIAmSAHCQ==
+  </data>
+ </layer>
+ <layer name="walls" width="22" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYKAt4ABiVjTMDqXZoGpYCIhzYjFXGoh50bAgEpuBSHFigDQVxOWJtItUQKwf8AFsbtNiwIw3bPGASz8IYHMbtrDB5QdSxYmxCwSEGDD9BsLCWNQOpnhDdws2t8H8hp6HcImBsDYD4XBAzmfofFxi2DCtAQBI3QTT
+  </data>
+ </layer>
+ <layer name="doors" width="22" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBhYwEeiOLFAgkRxGBCl0F5agsHstoEGgzlsBspt2PKQDhXMxZaHzKhgLjUAAHD+ASk=
+  </data>
+ </layer>
+ <layer name="furnitures" width="22" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgF+IAiElsGiGWBWA6LOi40GhtgJMN+ETQaG+DGI2dChp30BMZIbCYgZsajlpA8MrAl20WU200LoIDGV8SmaBQwAACSOAG1
+  </data>
+ </layer>
+</map>
