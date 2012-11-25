@@ -8,7 +8,10 @@
 			this.requires('Delay');
 			this.bind("piked", function() {
 				console.log("piked")
-			});
+			})
+				.bind('checkFriendOver',function() {
+					this.delay(this.checkFriend,4000);
+				});
 
 			this.requires('Collision')
 				.collision()
@@ -19,6 +22,20 @@
 						this.triggerTrap(self);
 					});
 				})
+		},
+
+		checkFriend: function() {
+			var self = this;
+			Crafty.npc.forEach(function(teenager) {
+				if (teenager !== self) {
+					/*if (Crafty.RayTracer.isVisible('blocked',Crafty.RayTracer.trace(self,teenager)))
+						console.log(self[0]+" sees "+teenager[0]);
+					else
+						console.log(self[0]+" does not see "+teenager[0]);*/
+				}
+			});
+
+			this.trigger('checkFriendOver');
 		},
 
 		setMovePath: function (path) {

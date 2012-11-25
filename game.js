@@ -20,9 +20,14 @@ window.onload = function () {
 		});
 
         Crafty.PathFinder = Crafty.e('AStar, PathFinder').setTiles(map);
+        Crafty.RayTracer = Crafty.e('RayTracing');
 		
         Crafty('Teenager').each(function() {
             Crafty.npc.push(this);
+        })
+
+        Crafty('Teenager').each(function() {
+            this.checkFriend();
         })
 
         
@@ -112,4 +117,6 @@ window.onload = function () {
 
     //automatically play the loading scene
     Crafty.scene("loading");
+
+    Crafty.debugBar.show();
 };

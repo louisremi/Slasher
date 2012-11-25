@@ -18,21 +18,20 @@
 
 			var locationIsBlocked = false;
 			if(this.__c['blocked']) {
-				locationIsBlocked = true;
+				locationIsBlocked = 'blocked';
+
 				this.removeComponent('blocked');
 			} else if (this.__c['window']) {
-				locationIsBlocked = true;
+				locationIsBlocked = 'window';
 				this.removeComponent('window');
 			}
 
 			location = this;
 
-			location.addComponent('Color')
-
 			if (!!location) {
 				var path = Crafty.PathFinder.calculatePath(attracted,location);
-				if (locationIsBlocked){
-					this.addComponent('blocked');
+				if (!!locationIsBlocked){
+					this.addComponent(locationIsBlocked)
 					path.pop();
 				}
 				attracted.setMovePath(path);
