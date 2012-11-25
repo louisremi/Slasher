@@ -132,6 +132,8 @@ window.onload = function () {
         //create our player entity with some premade components
     });
 
+    Crafty.bind('PANIC',enterPanicMode);
+
     //automatically play the loading scene
     Crafty.scene("loading");
 };
