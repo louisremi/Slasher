@@ -1,6 +1,7 @@
 (function(Crafty) {
 
 	Crafty.c("Teenager",{
+		movePath:[],
 		init: function() {
 			this.requires('Move')
 				.requires('TilePos')
