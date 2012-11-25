@@ -6,24 +6,31 @@
 		numberOffset:40,
 
 		init: function() {
+			this.requires("2D, DOM, Color");
 
-			this.numberOfTraps = 0;				
+			this.numberOfTraps = 0;
+
+			this.bind("trigger", function( teenager ) {
+				var eventName = this.event;
+
+				Crafty.e("2D, DOM, SpriteAnimation, DeployTrap")
+					.attr({w: this._w, h: this._h, x: this._x, y: this._y, z: 30})
+				    .animate("deploy", 0, 0, 2)
+				    .animate("deploy", 30, 0)
+				    .bind("AnimationEnd", function() {
+				    	teenager.trigger( eventName || "die" );
+				    });
+
+				this.destroy();
+			});
+
+			Crafty.sprite(Crafty.tileSize, this.spriteURL || "assets/sprites/zob.png", {
+			    DeployTrap: [0,0]
+			});
 		},
 
 		setEffect: function(callback) {
 			this.effectCallback = callback;
-			return this;
-		},
-
-		triggerTrap: function( teenager ) {//console.log(teenagers, Object.keys(teenagers[0]))
-			var self = this;
-
-			this.trapAnimation(function() {
-				//teenager.trigger( self.event || "die" );
-			}, function() {
-				self.destroy();
-			});
-
 			return this;
 		},
 

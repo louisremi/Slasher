@@ -2,6 +2,8 @@
 
 Crafty.c("Pikes", {
 	init: function() {
+		this.spriteURL = "assets/sprites/zob.png";
+
 		this.requires("Trap");
 
 		this.event = "piked";
