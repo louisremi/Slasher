@@ -182,13 +182,17 @@ Crafty.c("Jeu",{
 				  		this.nbpanique = 0;
 				  	if( this.nbpanique > 100 ) {
 				  		this.nbpanique = 100;
-				  		Crafty.trigger('PANIC');
 				  	}
 				  	//clearTimeout( this._timeoutpanik );
 				  	this.refreshPanique();
+				  	if( this.nbpanique == 100 )
+				  		Crafty.trigger('PANIC');
 				  },
 				  refreshPanique: function() {
-				  	this.barre.h = parseInt(this.reglette.h*((100-this.nbpanique)/100));
+				  	if( this.nbpanique == 100 )
+				  		this.barre.h = 0;
+				  	else
+				  		this.barre.h = parseInt(this.reglette.h*((100-this.nbpanique)/100));
 
 				  	/*this._timeoutpanik = setTimeout( function() {
 				  		this.addPanique( -1 );

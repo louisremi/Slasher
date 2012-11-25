@@ -102,6 +102,10 @@ window.onload = function () {
             'assets/sprites/barreEmpty.png',
             'assets/sprites/barreFull.png',
             'assets/sprites/slasher.png',
+            'assets/sprites/onoClac.png',
+            'assets/sprites/onoPsht.png',
+            'assets/sprites/onoFlush.png',
+            'assets/sprites/onoDring.png',
             'assets/sprites/traps.png'
             ],function() {
 
