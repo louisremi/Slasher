@@ -18,7 +18,7 @@
 					.animate("deploy", this.offset[0], this.offset[1], 3)
 					.animate("deploy", 30, 0)
 					.bind("AnimationEnd", function() {
-				    	//teenager.trigger( eventName || "die" );
+				    	teenager.trigger( this.effect || "die" );
 				    	this.destroy();
 				    });
 			});
