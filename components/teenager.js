@@ -10,7 +10,10 @@
 				.requires('Delay')
 				.requires('Afraidable')
 				.bind("piked", function() {
-					console.log("piked")
+					this.addComponent("PikesSprite");
+				})
+				.bind("trapped", function() {
+					this.addComponent("WolftrapSprite");
 				})
 				.bind('teenMoved',function() {
 					this.checkFriend();
@@ -22,7 +25,7 @@
 					console.log('Hit');
 					var self = this;
 					trap[0].obj.each(function() {
-						this.trigger("trigger");
+						this.trigger( "trigger", self );
 					});
 				});
 		},

@@ -3,8 +3,6 @@ window.onload = function () {
 
     //start crafty
     Crafty.init(1408, 896);
-    //Crafty.canvas.init();
-
 
     Crafty.mapSize = {w:22,h:14};
     Crafty.tileSize = 64;
@@ -105,6 +103,7 @@ window.onload = function () {
 			  			Jeu.Pause(); 
 			  });
     }
+
     
     //the loading screen that will display while our assets load
     Crafty.scene("loading", function () {
@@ -119,6 +118,7 @@ window.onload = function () {
             'assets/sprites/slasher.png',
             'assets/sprites/traps.png'
             ],function() {
+
     		
     		Crafty.scene("main");
     		
@@ -137,6 +137,7 @@ window.onload = function () {
         generateWorld();
 
         Crafty.e("Inventory");
+        Crafty.e("")
 
         //createNight();
         
