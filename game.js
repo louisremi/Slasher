@@ -2,13 +2,10 @@ window.Jeu = null;
 window.onload = function () {
 
     //start crafty
-    Crafty.init(1024, 640);
-    //Crafty.canvas.init();
+    Crafty.init(1408, 896);
 
-    var mapSize = 32;
-
-    Crafty.mapSize = {w:32,h:20};
-    Crafty.tileSize = 32;
+    Crafty.mapSize = {w:22,h:14};
+    Crafty.tileSize = 64;
     Crafty.npc = [];
 
 	function finicharger() {
@@ -99,15 +96,10 @@ window.onload = function () {
 			  });
     }
 
-	Crafty.sprite( 54, "assets/sprites/perso.png", {
-		perso1: [0,0],
-		perso2: [1,0]
-    });
-    
-    //the loading screen that will display while our assets load
+	//the loading screen that will display while our assets load
     Crafty.scene("loading", function () {
 
-    	Crafty.load(['assets/sprites/perso.png','assets/sprites/traps.png'],function() {
+    	Crafty.load(['assets/sprites/teenagers.png','assets/sprites/traps.png'],function() {
     		
     		Crafty.scene("main");
     		
@@ -126,6 +118,7 @@ window.onload = function () {
         generateWorld();
 
         Crafty.e("Inventory");
+        Crafty.e("")
 
         //createNight();
         
