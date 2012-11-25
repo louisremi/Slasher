@@ -98,7 +98,8 @@ window.onload = function () {
     Crafty.scene("loading", function () {
 
     	Crafty.load([
-            'assets/sprites/url.png',
+            'assets/sprites/ecran-accueil.png',
+            'assets/sprites/ecran-credits.png',
             'assets/sprites/texture64.png',
             'assets/sprites/teenagers.png',
             'assets/map.json',
@@ -126,12 +127,34 @@ window.onload = function () {
 
 
     Crafty.scene("ecran", function () {
-        Crafty.e("2D, DOM, Image, Mouse").attr({ w: 100, h: 20, x: 150, y: 120 })
-                .image("assets/sprites/url")
-                .bind("Click", function() {
-                    Crafty.scene("main");
-                })
+        Jeu = { musique: Crafty.e("Musique")};
+        Jeu.musique.peur();
+
+        Crafty.e("2D, DOM, Image, Mouse").attr({ w: 1440, h: 900, x: 0, y: 0 })
+                .image("assets/sprites/ecran-accueil.png")
                 ;
+                Crafty.e( "2D, DOM,Mouse").attr({ w: 1440, h: 450, x: 0, y: 0 }).bind("Click", function() {
+
+                    Jeu.musique.stop();
+                    Crafty.scene("main");
+                });
+                Crafty.e( "2D,DOM, Mouse").attr({ w: 1440, h: 450, x: 0, y: 450 }).bind("Click", function() {
+                    Jeu.musique.stop();
+                    Crafty.scene("credits");
+                });
+
+        //createNight();
+        
+        //create our player entity with some premade components
+    });
+
+    Crafty.scene("credits", function () {
+        Jeu.musique.doubt();
+        Crafty.e("2D, DOM, Image, Mouse").attr({ w: 1440, h: 900, x: 0, y: 0 })
+                .image("assets/sprites/ecran-credits.png").bind("Click", function() {
+                    Jeu.musique.stop();
+                    Crafty.scene("ecran");
+                });
 
         //createNight();
         

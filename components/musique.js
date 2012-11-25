@@ -71,6 +71,14 @@ Crafty.c("Musique",{
 				
 			  return this;
 			},
+			stop:function(){
+				for( id in this.playing ) 
+					Crafty.audio.stop(this.playing[id]);
+				this.playing = [];
+					
+				
+			  return this;
+			},
 			mort:function(){
 				
 			  return this;
@@ -90,8 +98,8 @@ Crafty.c("Musique",{
 			  
 			  
 			  this.load( "ingame", this.ingame, ["assets/sounds/ingame.wav","assets/sounds/ingame.ogg"] );
-			  this.load( "ingame2", this.ingame, ["assets/sounds/ingame2.wav","assets/sounds/ingame2.ogg"] );
-			  this.load( "ingame3", this.ingame, ["assets/sounds/ingame3.wav","assets/sounds/ingame3.ogg"] );
+			  this.load( "ingame2", this.ingame, ["assets/sounds/in game2.wav","assets/sounds/in game2.ogg"] );
+			  this.load( "ingame3", this.ingame, ["assets/sounds/in game3.wav","assets/sounds/in game3.ogg"] );
 			  this.load( "ingame4", this.titre, ["assets/sounds/in game4.wav","assets/sounds/in game4.ogg"] );
 			  this.load( "titre", this.titre, ["assets/sounds/Titre.wav","assets/sounds/Titre.ogg"] );
 			  
