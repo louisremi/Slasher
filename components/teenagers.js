@@ -26,23 +26,23 @@ Crafty.c("Teenagers", {
 
 Crafty.Teenagers = {
 	Quarterback: {
-		initialPosition: [1,2],
+		initialPosition: [5,2],
 		offsetY: 0
 	},
 	Cheerleader: {
-		initialPosition: [1,3],
+		initialPosition: [5,3],
 		offsetY: 1
 	},
 	Geek: {
-		initialPosition: [1,4],
+		initialPosition: [5,4],
 		offsetY: 2
 	},
 	Emo: {
-		initialPosition: [1,5],
+		initialPosition: [5,5],
 		offsetY: 3
 	},
 	Gangsta: {
-		initialPosition: [1,6],
+		initialPosition: [5,6],
 		offsetY: 4
 	}
 };
