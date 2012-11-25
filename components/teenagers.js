@@ -13,7 +13,7 @@ Crafty.c("Teenagers", {
 			Crafty.sprite(104, "assets/sprites/teenagers.png", sprites )
 
 			Crafty.e( [ "Teenager", key + "Sprite" ].join() )
-				.attr({w: Crafty.tileSize, h: Crafty.tileSize, x: initialPosition[0] * Crafty.tileSize, y: initialPosition[1] * Crafty.tileSize})
+				.attr({w: Crafty.tileSize, h: Crafty.tileSize, x: data.initialPosition[0] * Crafty.tileSize, y: data.initialPosition[1] * Crafty.tileSize})
 				.crop(20,20,64,64)
 		});
 
