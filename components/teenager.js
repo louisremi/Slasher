@@ -19,7 +19,7 @@
 				});
 
 			this.requires('Collision')
-				.collision()
+				.collision([1+16,63+32],[63+16,63+32],[63+16,1+32],[1+16,1+32])
 				.onHit("Trap", function( trap ) {
 					var self = this;
 					trap[0].obj.each(function() {
@@ -34,7 +34,7 @@
 		},
 
 		dieAHorribleDeath: function() {
-			this.animate('deathBySlasher', 3, 0, 6).animate('deathBySlasher',120,0);
+			this.animate('deathBySlasher', 3, 0, 6).animate('deathBySlasher',300,0);
 		},
 
 		checkFriend: function() {
