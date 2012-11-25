@@ -27,7 +27,6 @@ window.onload = function () {
             this.checkFriend();
         })
 
-
         Crafty('telephone').each(function() {
             this.addComponent('Telephone, Range, Mouse')
                 .range(5)
@@ -77,19 +76,7 @@ window.onload = function () {
 	}
 
     function enterPanicMode() {
-        this.screen = Crafty.e("2D, DOM, Text, Color,Tween").attr({ w: 1024, h: 600, x: 0, y: 0, z: 990 })
-                 .color("#ddd")
-                 .text("PANIC THE FUCK OUT")
-                 .css({ "text-align": "center"
-                    , "padding-top": "250px"
-                    , "font-size": "64pt"})
-                 .tween({alpha:0.0},100);
-
-        Jeu.musique.panic();
-
-        //Crafty.Slasher = Crafty.e('Slasher,2D,Multiway,DOM')
-
-        Crafty.PathFinder.enterPanicMode();
+        Crafty.enterPanicMode();
     }
 
     //method to generate the map
@@ -104,7 +91,6 @@ window.onload = function () {
 			  });
     }
 
-    
     //the loading screen that will display while our assets load
     Crafty.scene("loading", function () {
 
@@ -133,11 +119,10 @@ window.onload = function () {
 
 
     Crafty.scene("main", function () {
+        Crafty.e("Inventory");
+        Crafty.e("Teenagers")
 
         generateWorld();
-
-        Crafty.e("Inventory");
-        Crafty.e("")
 
         //createNight();
         
