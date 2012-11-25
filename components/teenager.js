@@ -34,8 +34,10 @@
 					}
 				})
 				.onHit("Slasher",function() {
-					this.dieAHorribleDeath();
-					Crafty.trigger('NpcDead');
+					if (!this.dead) {
+						this.dieAHorribleDeath();
+						Crafty.trigger('NpcDead');
+					}
 				});
 		},
 
