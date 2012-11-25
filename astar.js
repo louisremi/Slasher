@@ -57,18 +57,20 @@ Crafty.c("AStar",{
 			closed.push(current_node);
 			var adj = this._findAdjacent(current_node.tile);
 			for(var i in adj){
-				if(this._nodeInArray(new Node(adj[i]),closed))
-					continue;
-				if(ignore==undefined || !ignore(current_node.tile,adj[i])){
-					if(!this._nodeInArray(new Node(adj[i]),open)) {
-						var new_node = new Node(adj[i],closed.length-1,-1,-1,-1);
-						new_node.g = 0;
-						if(weighted != undefined)
-							new_node.g += weighted(current_node.tile,new_node.tile);
-						new_node.h = this._heuristic(new_node.tile, destination.tile,start);
-						new_node.f = new_node.g+new_node.h;
+				if (adj[i]) {
+					if(this._nodeInArray(new Node(adj[i]),closed))
+						continue;
+					if(ignore==undefined || !ignore(current_node.tile,adj[i])){
+						if(!this._nodeInArray(new Node(adj[i]),open)) {
+							var new_node = new Node(adj[i],closed.length-1,-1,-1,-1);
+							new_node.g = 0;
+							if(weighted != undefined)
+								new_node.g += weighted(current_node.tile,new_node.tile);
+							new_node.h = this._heuristic(new_node.tile, destination.tile,start);
+							new_node.f = new_node.g+new_node.h;
 
-						open.push(new_node);
+							open.push(new_node);
+						}
 					}
 				}
 			}
