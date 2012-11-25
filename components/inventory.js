@@ -32,7 +32,7 @@ Crafty.c("Inventory", {
 			Crafty.sprite(Crafty.tileSize,"assets/sprites/traps.png", trapSprite );
 			Crafty.sprite(108,"assets/sprites/trapmenu.png", menuItemSprite );
 
-			var menuItem = Crafty.e( ["2D", "DOM", key + "MenuSprite" ].join() )
+			var menuItem = Crafty.e( ["2D", "DOM", key + "MenuSprite", "MenuItem" ].join() )
 				.attr({w: menuItemSize, h: menuItemSize+8, x: 0, y: offset * menuItemSize, z: 50 });
 
 			while( data.available-- ) {
@@ -65,7 +65,7 @@ Crafty.c("Inventory", {
 	SmokeSprite:[2,0],
 	AcidSprite:[4,0]
 });*/
-
+Crafty.trapLefts = 5;
 
 })(Crafty);
 
@@ -102,4 +102,9 @@ Crafty.Inventory = {
 		effect: "gazzed"
 	}
 };
+
 }
+
+
+
+

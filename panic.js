@@ -11,7 +11,7 @@
         this.screen.tween({alpha:1.0},200).tween({alpha:0.0},200).tween({x: 0},50).tween({x: 300},50);
 
         Jeu.musique.panik();
-        Jeu.musique.tronconneuse.play();
+        //Jeu.musique.tronconneuse.play();
 
         Crafty.panic = true;
 
@@ -26,7 +26,7 @@
 
         Crafty.PathFinder.enterPanicMode();
 
-        var position = {x:0,y:0,z:40};
+        var position = {x:9*Crafty.tileSize,y:9*Crafty.tileSize,z:40};
         Crafty('Door').each(function(door) {
         	position.x = door._x;
         	position.y = door._y;

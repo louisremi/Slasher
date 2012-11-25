@@ -54,7 +54,7 @@
 				attracted.moveTo();
 			}
 
-			Jeu.panique.addPanique(15);
+			Jeu.panique.addPanique(20);
 		}
 	})
 })(Crafty)

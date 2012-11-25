@@ -24,6 +24,7 @@
 				    });*/
 				if( this.sound)
 					this.sound();
+				Jeu.panique.addPanique( 25);
 				teenager.trigger( this.effect || "die" );
 				
 				//if ( this.name != "Trap" ) {
@@ -59,6 +60,10 @@
 
 					this.preventTrigger = false;
 					this.addComponent("TrapActive");
+
+					if ( --Crafty.trapLefts == 0 ) {
+						Jeu = Crafty.e("Jeu");
+					}
 
 				}
 				

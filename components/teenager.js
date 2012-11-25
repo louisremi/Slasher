@@ -16,8 +16,12 @@
 					this.die( true );
 				})
 				.bind("trapped", function() {
-					this.switchSprite( "Trapped");
+					//this.attr({x: this._x + 16, y: this._y + 32, w: 64, h: 64});
+					this.switchSprite( "Trapped" );
 					this.die( true );
+					// gros hack
+					this._element.style.left = "16px";
+					this._element.style.top = "32px";
 				})
 				.bind("gazzed", function() {
 					this.switchSprite( this.name + "Gazzed");
@@ -54,7 +58,7 @@
 				});
 		},
 
-		switchSprite: function( state ) {console.log("Switch" + state)
+		switchSprite: function( state ) {
 			this.removeComponent( this.name );
 			this.addComponent( state + "Sprite" );
 
