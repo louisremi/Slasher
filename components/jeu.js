@@ -177,6 +177,9 @@ Crafty.c("Jeu",{
 				  	
 				  },
 				  addPanique: function( pourcent ) {
+				  	if( this.nbpanique == 100 )
+				  		return;
+				  	
 				  	this.nbpanique += pourcent;
 				  	if( this.nbpanique < 0 )
 				  		this.nbpanique = 0;
@@ -203,11 +206,11 @@ Crafty.c("Jeu",{
 		             .image("assets/sprites/slasher.png")
 		          ,
 				  barre: Crafty.e("2D, DOM, Image")
-		             .attr({w: 98, h: 490, x: 1285, y: 190, z: 50})
+		             .attr({w: 98, h: 490, x: 1285, y: 180, z: 50})
 		             .image("assets/sprites/barreEmpty.png")
 		          ,
 				  reglette: Crafty.e("2D, DOM, Image")
-		             .attr({w: 98, h: 490, x: 1285, y: 190, z: 49})
+		             .attr({w: 98, h: 490, x: 1285, y: 180, z: 49})
 		             .image("assets/sprites/barreFull.png")
 		        };
 

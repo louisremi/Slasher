@@ -29,7 +29,7 @@ window.onload = function () {
 
         Crafty('telephone').each(function() {
             this.addComponent('Telephone, Range, Mouse')
-                .range(5)
+                .range(3)
                 .bind('Click', function() {
                     this.selectEntity(this.addButton.bind(this));
                 });
@@ -37,7 +37,7 @@ window.onload = function () {
 
         Crafty('door').each(function() {
             this.addComponent('Door, Range, Mouse')
-                .range(5)
+                .range(3)
                 .bind('Click', function() {
                     this.selectEntity(this.addButton.bind(this));
                 });
@@ -45,7 +45,7 @@ window.onload = function () {
 
         Crafty('chiotte').each(function() {
             this.addComponent('Chiotte, Range, Mouse')
-                .range(5)
+                .range(3)
                 .bind('Click', function() {
                     this.selectEntity(this.addButton.bind(this));
                 });
@@ -54,7 +54,7 @@ window.onload = function () {
 
         Crafty('window').each(function() {
             this.addComponent('Fenetre, Range, Mouse')
-                .range(5)
+                .range(3)
                 .bind('Click', function() {
                     this.selectEntity(this.addButton.bind(this));
                 });
@@ -62,7 +62,7 @@ window.onload = function () {
 
         Crafty('television').each(function() {
             this.addComponent('Television, Range, Mouse')
-                .range(5)
+                .range(3)
                 .bind('Click', function() {
                     this.selectEntity(this.addButton.bind(this));
                 });
