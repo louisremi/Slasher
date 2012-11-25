@@ -47,11 +47,10 @@
 		},
 
 		moveTo: function() {
-
 			if (this.movePath.length > 0)
-				this.movePath.splice(0,1);
-
-			this.initiateMovement();
+				var old = this.movePath.splice(0,1);
+			if(!this.isMoving)
+				this.initiateMovement();
 
 			return this;
 		},
@@ -60,6 +59,8 @@
 
 			this.tilePos();
 			if (this.movePath.length > 0) {
+
+				this.isMoving = true;
 				
 				var dest = this.movePath[0];
 
@@ -81,6 +82,7 @@
 				this.delay(this.initiateMovement,700);
 			} else {
 				this.tilePos();
+				this.isMoving = false;
 			}
 
 			return this;

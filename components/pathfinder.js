@@ -55,10 +55,11 @@
 			result = []
 
 			for (var i = -1;i<=1;i++) {
-				if (i+e._tileX >= 0 && i+e._tileX < Crafty.mapSize.w-1)
+				if (i+e._tileX >= 0 && i+e._tileX < Crafty.mapSize.w)
 					for (var j = -1;j<=1;j++) {
-						if (j+i == 0 || j+i == 2 || j+i == -2) continue
-						if (j+e._tileY >= 0 && j+e._tileY < Crafty.mapSize.w-1)
+						if ((j+i == 0 && j!=i) || j+i == 2 || j+i == -2) 
+							continue;
+						if (j+e._tileY >= 0 && j+e._tileY < Crafty.mapSize.h)
 							result.push(this.tiles[i+e._tileX][j+e._tileY]);
 					}
 			}
