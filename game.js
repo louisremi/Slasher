@@ -6,31 +6,62 @@ window.onload = function () {
     //Crafty.canvas.init();
     
     var mapSize = 32;
-    var tileSize = 32;
 
     Crafty.mapSize = {w:32,h:20};
     Crafty.tileSize = 32;
+    Crafty.npc = [];
 
 	function finicharger() {
 		var map = [];
 		for( i=0;i<  mapSize; i++)
 			map[i] = [];
 		Crafty("MapTile").each(function(){
-			map[this._x/tileSize][this._y/tileSize] = this.tilePos(); 
+			map[this._x/Crafty.tileSize][this._y/Crafty.tileSize] = this.tilePos(); 
 		});
-		
-		/*Crafty.PathFinder = Crafty.e('AStar, PathFinder').setTiles(map);
 
-        var move = true;
+        Crafty.PathFinder = Crafty.e('AStar, PathFinder').setTiles(map);
+        Crafty.RayTracer = Crafty.e('RayTracing');
+		
         Crafty('Teenager').each(function() {
-            this.moveRandom();
-        })*/
+            Crafty.npc.push(this);
+        })
+
+        Crafty('Teenager').each(function() {
+            this.checkFriend();
+        })
+
+        
 
         Crafty('telephone').each(function() {
             this.addComponent('Telephone, Range, Mouse')
                 .range(5)
                 .bind('Click', function() {
-                    this.selectEntity(this.addButton);
+                    this.selectEntity(this.addButton.bind(this));
+                });
+        });
+
+        Crafty('door').each(function() {
+            this.addComponent('Door, Range, Mouse')
+                .range(5)
+                .bind('Click', function() {
+                    this.selectEntity(this.addButton.bind(this));
+                });
+        });
+
+        Crafty('chiotte').each(function() {
+            this.addComponent('Chiotte, Range, Mouse')
+                .range(5)
+                .bind('Click', function() {
+                    this.selectEntity(this.addButton.bind(this));
+                });
+        });
+
+
+        Crafty('window').each(function() {
+            this.addComponent('Fenetre, Range, Mouse')
+                .range(5)
+                .bind('Click', function() {
+                    this.selectEntity(this.addButton.bind(this));
                 });
         });
 	}
@@ -40,7 +71,10 @@ window.onload = function () {
         Crafty.e("TiledLevel, Input").tiledLevel('assets/map.json?v'+ (Math.random() * 1E9 |0) ,'DOM',finicharger)
         	.bind('KeyDown', function (e) { 
 			  	if (e.key == Crafty.keys['ESC']) 
-			  		Jeu.Pause(); 
+			  		if( Jeu.paused )
+			  			Jeu.Resume();
+			  		else
+			  			Jeu.Pause(); 
 			  });;
     }
 
@@ -83,4 +117,6 @@ window.onload = function () {
 
     //automatically play the loading scene
     Crafty.scene("loading");
+
+    Crafty.debugBar.show();
 };

@@ -1,23 +1,44 @@
 (function(Crafty) {
 	Crafty.c('Activable',{
 		init: function() {
-			this.requires('Selectable');
+			this.requires('Selectable','Range');
 		},
-
-		_action:function() {},
 
 		addButton: function() {
-			Crafty.e('Mouse, 2D, DOM, Text, Color')
-				.attr({x:this._x+100,y:this._y+10,h:30,w:90,z:this._x+1})
-				.color('#666')
-				.css({'border':'solid 1px #000'})
-				.text('Action')
-				.textColor('#000')
-				.bind('Click',function() {
-					this._action();
-				});
-
-				return this;
+			this.trigger('zob');
+			return this;
 		},
+
+		attract: function() {
+			var atRange = this.search('Teenager');
+
+			var attracted = atRange[Math.floor(Math.random()*atRange.length)];
+
+			var location;
+
+			var locationIsBlocked = false;
+			if(this.__c['blocked']) {
+				locationIsBlocked = 'blocked';
+
+				this.removeComponent('blocked');
+			} else if (this.__c['window']) {
+				locationIsBlocked = 'window';
+				this.removeComponent('window');
+			}
+
+			location = this;
+
+			if (!!location) {
+				var path = Crafty.PathFinder.calculatePath(attracted,location);
+				if (!!locationIsBlocked){
+					this.addComponent(locationIsBlocked)
+					path.pop();
+				}
+				attracted.setMovePath(path);
+				attracted.moveTo();
+			}
+
+			Jeu.panique.addPanique(15);
+		}
 	})
 })(Crafty)

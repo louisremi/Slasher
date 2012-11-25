@@ -8,7 +8,10 @@
 			this.requires('Delay');
 			this.bind("piked", function() {
 				console.log("piked")
-			});
+			})
+				.bind('checkFriendOver',function() {
+					this.delay(this.checkFriend,4000);
+				});
 
 			this.requires('Collision')
 				.collision()
@@ -20,10 +23,26 @@
 				})
 		},
 
-		moveRandom: function() {
-			this.tilePos();
+		checkFriend: function() {
+			var self = this;
+			Crafty.npc.forEach(function(teenager) {
+				if (teenager !== self) {
+					/*if (Crafty.RayTracer.isVisible('blocked',Crafty.RayTracer.trace(self,teenager)))
+						console.log(self[0]+" sees "+teenager[0]);
+					else
+						console.log(self[0]+" does not see "+teenager[0]);*/
+				}
+			});
 
-			this.movePath = Crafty.PathFinder.calculatePath(this,Crafty.PathFinder.tiles[3][3]);
+			this.trigger('checkFriendOver');
+		},
+
+		setMovePath: function (path) {
+			this.movePath = path;
+		},
+
+		moveTo: function() {
+			this.tilePos();
 
 			if (this.movePath.length > 0)
 				this.movePath.splice(0,1);
@@ -52,8 +71,11 @@
 				this.movePath.splice(0,1);
 
 				this.delay(this.initiateMovement,700);
-			} else 
-				return
+			} else {
+				this.tilePos();
+			}
+
+			return this;
 		}
 	});
 })(Crafty);

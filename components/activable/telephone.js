@@ -1,18 +1,22 @@
 (function(Crafty) {
 	Crafty.c('Telephone',{
 		init:function() {
-			this.requires('Activable');
+			this.requires('Activable')
+				.bind('zob',function() {
+					this._action();
+				});
 		},
 
 		_action: function() {
-			this.removeButton();
 			Crafty.e('2D,Tween,Text,DOM')
-				.attr({x:this._x+100,y:this._y+10,h:30,w:90,z:this._x+1})
-				.text('Action')
+				.attr({x:this._x+50,y:this._y-20,h:30,w:90,z:this._x+1})
+				.text('Dring !')
 				.textColor('#0F0')
-				.tween({alpha:'0.0'},200);
+				.tween({alpha:'0.0'},70);
+			Jeu.musique.leurres.telephone.play();
 
-				return this;
+			this.attract();
+			return this;
 		}
 	})
 })(Crafty)
