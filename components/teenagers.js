@@ -20,8 +20,6 @@ Crafty.c("Teenagers", {
 					y: data.initialPosition[1] * Crafty.tileSize-32,
 					z: 20
 				});
-
-			//console.log( "teenager", teenager._element );
 		});
 
 		// Don't forget the corroded sprite

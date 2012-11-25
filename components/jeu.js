@@ -49,6 +49,9 @@ Crafty.c("Jeu",{
 			},
 			TourPNJ:function(){
 
+				if(Crafty.panic)
+					return;
+
 				this.paused = false;
 				this.teens = Crafty.npc;
 				var addMvtFini = function() {

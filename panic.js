@@ -5,9 +5,11 @@
 	};
 
 	Crafty.enterPanicMode = function() {
+
 		this.screen = Crafty.e("2D, DOM, Image, Tween, Delay").attr({ w: 1071, h: 460, x: 120, y: 200, z: 990 })
                 .image("assets/sprites/uiPanic.png");
         this.screen.tween({alpha:1.0},200).tween({alpha:0.0},200).tween({x: 0},50).tween({x: 300},50);
+
 
         Jeu.musique.panic();
 
