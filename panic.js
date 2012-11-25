@@ -5,6 +5,8 @@
 	};
 
 	Crafty.enterPanicMode = function() {
+
+		Crafty.panic = true;
 		this.screen = Crafty.e("2D, DOM, Text, Color,Tween").attr({ w: 1024, h: 600, x: 0, y: 0, z: 990 })
                  .color("#ddd")
                  .text("PANIC THE FUCK OUT")
