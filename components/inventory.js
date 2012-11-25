@@ -36,7 +36,7 @@ Crafty.c("Inventory", {
 
 Crafty.sprite(32,"assets/sprites/zob.png",{
 	PikesSprite:[0,0],
-	WolfTrapSprite:[0,1]/*,
+	WolftrapSprite:[0,1]/*,
 	HoleSprite:[0,1],
 	SmokeSprite:[2,0],
 	AcidSprite:[4,0]*/
@@ -44,7 +44,7 @@ Crafty.sprite(32,"assets/sprites/zob.png",{
 
 Crafty.Inventory = {
 	Pikes: 3,
-	WolfTrap: 3/*,
+	Wolftrap: 3/*,
 	Hole: 3,
 	Smoke: 3,
 	Acid: 3*/
