@@ -74,7 +74,7 @@
 
 		moveTo: function() {
 			if (this.movePath.length > 0)
-				var old = this.movePath.splice(0,1);
+				this.movePath.splice(0,1);
 			if(!this.isMoving)
 				this.initiateMovement();
 
