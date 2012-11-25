@@ -4,11 +4,7 @@
 		movePath:[],
 		init: function() {
 
-			this.requires('Move')
-				.requires('TilePos')
-				.requires('Tween')
-				.requires('Delay')
-				.requires('Afraidable')
+			this.requires('2D, DOM, Move, TilePos, Tween, Delay, Afraidable')
 				.bind("piked", function() {
 					this.addComponent("PikesSprite");
 				})
@@ -90,7 +86,7 @@
 				
 				var dest = this.movePath[0];
 
-				this.tween({x:dest._x,y:dest._y},30);
+				this.tween({x:dest._x-16,y:dest._y-32},30);
 
 				/*if (dest._x < this._x)
 					this.move('w',Crafty.tileSize);

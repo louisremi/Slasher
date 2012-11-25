@@ -10,8 +10,8 @@
             return this;
         },
         tilePos:function(){
-            this._tileX = (this._x / Crafty.tileSize)|0;
-            this._tileY = (this._y / Crafty.tileSize)|0;
+            this._tileX = ((this._x+32) / Crafty.tileSize)|0;
+            this._tileY = ((this._y+40) / Crafty.tileSize)|0;
             return this;
         },
         init:function(){
