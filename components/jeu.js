@@ -89,25 +89,9 @@ Crafty.c("Jeu",{
 						pasfini = true;
 						continue;
 					}
-
-					//on copie les destinations (dans le doute)
-					var tempDest = destPossibles;
-					var destRestantes = [];
-					
-					//on ajoute les destinations qui n'ont pas été enlevés de la liste
-					for( var d in tempDest ) {
-						if( tempDest[d] != null ) {
-							destRestantes[destRestantes.length] = tempDest[d];
-						}
-					}
 					
 					//on cherche notre destination dans le restant
-					var dest = destRestantes[parseInt(Math.floor(Math.random()*destRestantes.length))];
-					
-					//on l'enleve de la liste pour le teen suivant
-					for( var d in destPossibles )
-						if( destPossibles[d] && destPossibles[d].x == dest.x && destPossibles[d].y == dest.y )
-							destPossibles[d] = null;
+					var dest = destPossibles.splice(parseInt(Math.floor(Math.random()*destPossibles.length)),1)[0];
 					
 					//le teen y va(et modifie son trajet si il y a collision avec une zone d'effet d'une action du joueur
 					var locationIsBlocked = false;

@@ -13,7 +13,7 @@ window.onload = function () {
 
 	function finicharger() {
 		var map = [];
-		for( i=0;i<  mapSize; i++)
+		for( i=0;i<  Crafty.mapSize.w; i++)
 			map[i] = [];
 		Crafty("MapTile").each(function(){
 			map[this._x/Crafty.tileSize][this._y/Crafty.tileSize] = this.tilePos(); 
@@ -83,6 +83,8 @@ window.onload = function () {
                  .tween({alpha:0.0},100);
 
         Jeu.musique.panic();
+
+        //Crafty.Slasher = Crafty.e('Slasher,2D,Multiway,DOM')
 
         Crafty.PathFinder.enterPanicMode();
     }
