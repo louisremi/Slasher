@@ -30,6 +30,7 @@ window.onload = function () {
             this.checkFriend();
         })
 
+
         
 
         Crafty('telephone').each(function() {
@@ -64,6 +65,12 @@ window.onload = function () {
                     this.selectEntity(this.addButton.bind(this));
                 });
         });
+
+        
+        Jeu = Crafty.e("Jeu");
+        Jeu.musique = Crafty.e("Musique");
+        Jeu.musique.jeu();
+
 	}
 
     function enterPanicMode() {
@@ -115,9 +122,6 @@ window.onload = function () {
 
 
     Crafty.scene("main", function () {
-    	Jeu = Crafty.e("Jeu");
-    	Jeu.musique = Crafty.e("Musique");
-    	Jeu.musique.jeu();
     	
         generateWorld();
 

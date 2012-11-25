@@ -128,8 +128,7 @@ Crafty.c("Jeu",{
 					this.teens[t].moveTo();
 				}
 
-				if( pasfini )
-					setTimeout( this.TourPNJ().bind( this), 5000 );
+				setTimeout( this.TourPNJ().bind( this), 5000 );
 				
 				this.tourPnjStarted = true;
 				
@@ -181,7 +180,7 @@ Crafty.c("Jeu",{
                  	,"display": "none"})
                  .bind("Click", function() {
                  	_this.Resume();
-                 } );
+                 });
 
 			  // Panique barre et gestion
 			  this.panique = { 
