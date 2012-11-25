@@ -11,10 +11,7 @@
 					console.log("piked")
 				})
 				.bind('teenMoved',function() {
-					this.checkFriend;
-				})
-				.bind('pleaseMove',function() {
-					this.initiateMovement();
+					this.checkFriend();
 				});
 
 			this.requires('Collision')
@@ -32,14 +29,12 @@
 			var self = this;
 			Crafty.npc.forEach(function(teenager) {
 				if (teenager !== self) {
-					/*if (Crafty.RayTracer.isVisible('blocked',Crafty.RayTracer.trace(self,teenager)))
+					if (Crafty.RayTracer.isVisible('blocked',Crafty.RayTracer.trace(self,teenager)))
 						console.log(self[0]+" sees "+teenager[0]);
 					else
-						console.log(self[0]+" does not see "+teenager[0]);*/
+						console.log(self[0]+" does not see "+teenager[0]);
 				}
 			});
-
-			this.trigger('checkFriendOver');
 		},
 
 		setMovePath: function (path) {

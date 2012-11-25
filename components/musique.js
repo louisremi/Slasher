@@ -8,6 +8,7 @@ Crafty.c("Musique",{
 			slasher: null,
 			playing: null,
 			traps: null,
+
 			panic: function() {
 				Crafty.audio.play( "titre", 1, 0.7);
 				this.playing[this.playing.length] = "titre";
@@ -28,7 +29,7 @@ Crafty.c("Musique",{
 				
 				return this;
 			},
-			jeu:function( precedent ){
+			jeu:function(){
 				for( id in this.playing ) 
 					Crafty.audio.togglePause(this.playing[id]);
 				this.playing = [];
