@@ -1,10 +1,27 @@
 (function(Crafty) {
 	Crafty.c('Fenetre',{
 		init:function() {
-			this.requires('Activable')
+			this.requires('Activable,Collision')
 				.bind('zob',function() {
 					this._action();
+				})
+				.onHit('Teenager',function() {
+					this.changeSprite();
+				})
+				.onHit('Slasher',function() {
+					this.changeSprite();
 				});
+		},
+
+		changeSprite : function() {
+			if (this.__c['tileSprite14']) {
+				this.removeComponent('tileSprite14');
+				this.addComponent('upWindowBreak');
+				Crafty.PathFinder.tiles[this._tileX][this._tileY+1].removeComponent('tileSprite24');
+				Crafty.PathFinder.tiles[this._tileX][this._tileY+1].addComponent('downWindowBreak');
+			}
+
+			return this;
 		},
 
 		_action: function() {

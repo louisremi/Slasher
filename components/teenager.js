@@ -4,7 +4,7 @@
 		movePath:[],
 		init: function() {
 
-			this.requires('2D, DOM, Move, TilePos, Tween, Delay, Afraidable')
+			this.requires('2D, DOM, Move, TilePos, Tween, Delay, Afraidable, SpriteAnimation')
 				.bind("piked", function() {
 					this.switchSprite("Piked");
 					this.dead = true;
@@ -25,7 +25,7 @@
 				});
 
 			this.requires('Collision')
-				.collision()
+				.collision()	
 				.onHit("TrapActive", function( trap ) {
 					//if ( trap && ( trap[0].overlap > ( Crafty.tileSize * 0.75 ) ) ) {
 						var self = this;
@@ -40,6 +40,10 @@
 		switchSprite: function( state ) {
 			this.removeComponent( this.name );
 			this.addComponent( this.name + state + "Sprite" );
+		},
+
+		dieAHorribleDeath: function() {
+			this.animate('deathBySlasher', 3, 0, 6).animate('deathBySlasher',120,0);
 		},
 
 		checkFriend: function() {

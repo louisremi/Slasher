@@ -8,9 +8,9 @@
 		},
 
 		_action: function() {
-			Crafty.e('2D,Tween,Text,DOM')
-				.attr({x:this._x+50,y:this._y-20,h:30,w:100,z:this._x+1})
-				.text('BLABLABLA !')
+			Crafty.e('2D,Tween,Image,DOM')
+				.attr({x:this._x+32-140,y:this._y-120,h:120,w:2500,z:this._x+1})
+				.image('assets/sprites/uiTV.png')
 				//.textColor('#0F0')
 				.tween({alpha:'0.0'},70);
 			Jeu.musique.leurres.television.play();
