@@ -4,7 +4,7 @@ window.onload = function () {
     //start crafty
     Crafty.init(1024, 640);
     //Crafty.canvas.init();
-    
+
     var mapSize = 32;
 
     Crafty.mapSize = {w:32,h:20};
@@ -29,6 +29,7 @@ window.onload = function () {
         Crafty('Teenager').each(function() {
             this.checkFriend();
         })
+
 
         
 
@@ -64,6 +65,12 @@ window.onload = function () {
                     this.selectEntity(this.addButton.bind(this));
                 });
         });
+
+        
+        Jeu = Crafty.e("Jeu");
+        Jeu.musique = Crafty.e("Musique");
+        Jeu.musique.jeu();
+
 	}
 
     function enterPanicMode() {
@@ -89,7 +96,7 @@ window.onload = function () {
 			  			Jeu.Resume();
 			  		else
 			  			Jeu.Pause(); 
-			  });;
+			  });
     }
 
 	Crafty.sprite( 54, "assets/sprites/perso.png", {
@@ -115,14 +122,15 @@ window.onload = function () {
 
 
     Crafty.scene("main", function () {
-    	Jeu = Crafty.e("Jeu");
-    	Jeu.musique = Crafty.e("Musique");
-    	Jeu.musique.jeu();
-    	
+
         generateWorld();
 
-        createTrap();        
-    })
+        Crafty.e("Inventory");
+
+        //createNight();
+        
+        //create our player entity with some premade components
+    });
 
     Crafty.bind('PANIC',enterPanicMode);
 

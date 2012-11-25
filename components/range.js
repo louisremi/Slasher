@@ -22,7 +22,7 @@ Crafty.c("Range", {
 		// setter
 		if ( value !== undefined ) {
 			this.range = this.rangeVisualization.range = value;
-			this.rangeCircle = new Crafty.circle( this._x, this._y, this.range * Crafty.tileSize );
+			this.rangeCircle = new Crafty.circle( this._x + Crafty.tileSize/2, this._y + Crafty.tileSize/2, this.range * Crafty.tileSize );
 
 			return this;
 		}
