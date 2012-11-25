@@ -8,15 +8,11 @@
 			this.requires('2D, DOM, Move, TilePos, Tween, Delay, Afraidable, SpriteAnimation')
 				.bind("piked", function() {
 					this.switchSprite("Piked");
-					this.dead = true;
-					this.movePath = [];
-					this.stop();
+					this.die( true );
 				})
 				.bind("wolfed", function() {
 					this.switchSprite("Wolfed");
-					this.dead = true;
-					this.movePath = [];
-					this.stop();
+					this.die( true );
 				})
 				.bind('teenMoved',function() {
 					this.checkFriend();
@@ -29,13 +25,13 @@
 
 				.collision([1+16,63+32],[63+16,63+32],[63+16,1+32],[1+16,1+32])	
 				.onHit("TrapActive", function( trap ) {
-					//if ( trap && ( trap[0].overlap > ( Crafty.tileSize * 0.75 ) ) ) {
+					if ( -trap[0].overlap > ( Crafty.tileSize * 0.75 ) ) {
 						var self = this;
 						trap[0].obj.each(function() {
 							//console.log( "Hit", this._element );
 							this.trigger( "trigger", self );
 						});
-					//}
+					}
 				})
 				.onHit("Slasher",function() {
 					if (!this.dead) {
@@ -48,6 +44,22 @@
 		switchSprite: function( state ) {
 			this.removeComponent( this.name );
 			this.addComponent( this.name + state + "Sprite" );
+
+			return this;
+		},
+
+		die: function( roundTile ) {
+			this.dead = true;
+			this.movePath = [];
+			
+			if ( roundTile ) {
+				this.attr({
+					x: Math.round( this._x / Crafty.tileSize ),
+					y: Math.round( this._y / Crafty.tileSize )
+				});
+			}
+
+			return this;
 		},
 
 		dieAHorribleDeath: function() {
@@ -55,6 +67,8 @@
 			this.removeComponent(this.name+'Sprite');
 			this.dead = true;
 			this.stop().addComponent(this.name+'DeadSprite');
+
+			return this;
 		},
 
 		checkFriend: function() {
@@ -67,6 +81,8 @@
 						console.log(self[0]+" does not see "+teenager[0]);*/
 				}
 			});
+
+			return this;
 		},
 
 		checkSlasher: function() {
@@ -90,14 +106,20 @@
 					}
 				}
 			});
+
+			return this;
 		},
 
 		enterPanicMode: function() {
 			this.panic = true;
+
+			return this;
 		},
 
 		setMovePath: function (path) {
 			this.movePath = path;
+
+			return this;
 		},
 
 		moveTo: function() {
