@@ -30,6 +30,7 @@ window.onload = function () {
             this.checkFriend();
         })
 
+
         
 
         Crafty('telephone').each(function() {
@@ -64,6 +65,12 @@ window.onload = function () {
                     this.selectEntity(this.addButton.bind(this));
                 });
         });
+
+        
+        Jeu = Crafty.e("Jeu");
+        Jeu.musique = Crafty.e("Musique");
+        Jeu.musique.jeu();
+
 	}
 
     function enterPanicMode() {
@@ -115,23 +122,15 @@ window.onload = function () {
 
 
     Crafty.scene("main", function () {
-    	Jeu = Crafty.e("Jeu");
-    	Jeu.musique = Crafty.e("Musique");
-    	Jeu.musique.jeu();
-    	
+
         generateWorld();
 
-<<<<<<< HEAD
         Crafty.e("Inventory");
 
         //createNight();
         
         //create our player entity with some premade components
-        
-=======
-        createTrap();        
->>>>>>> c705925e1002b29b2df9e9b5f7de4010ddf5fe0d
-    })
+    });
 
     //automatically play the loading scene
     Crafty.scene("loading");
