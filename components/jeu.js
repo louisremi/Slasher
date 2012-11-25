@@ -7,6 +7,8 @@ Crafty.c("Jeu",{
 			panique: null,
 			paused: false,
 			tour: "pnj",
+			tourPnjStarted: false,
+			tourPnjNbMouvementsFinis: 0,
 			Pause:function(){
 				if( this.menu )
 			  		this.menu.css({ "display": "block" });
@@ -43,6 +45,52 @@ Crafty.c("Jeu",{
 			  return this;
 			},
 			TourPNJ:function(){
+				var addMvtFini = function() {
+					this.tourPnjNbMouvementsFinis++;
+					//si tous les teens ont bougés c'est au tour du joueur
+					if( this.tourPnjNbMouvementsFinis == this.teens.length ){
+						this.tour = "joueur";
+						this.tourPnjStarted = false;
+						this.tourPnjNbMouvementsFinis = 0;
+					}
+				};
+				
+				var destPossibles = [];
+				destPossibles[destPossibles.length] = [5, 5];
+				destPossibles[destPossibles.length] = [12, 5];
+				destPossibles[destPossibles.length] = [8, 5];
+				destPossibles[destPossibles.length] = [5, 10];
+				destPossibles[destPossibles.length] = [12, 10];
+				destPossibles[destPossibles.length] = [8, 10];
+				
+				//boucle sur les teens
+				for( var t in this.teens ) {
+					//on copie les destinations (dans le doute)
+					var tempDest = destPossibles;
+					var destRestantes = [];
+					
+					//on ajoute les destinations qui n'ont pas été enlevés de la liste
+					for( var d in tempDest ) {
+						if( tempDest[d] != null ) {
+							destRestantes[destRestantes.length] = tempDest[d];
+						}
+					}
+					
+					//on cherche note destination dans le restant
+					var dest = destRestantes[parseInt(Math.floor(Math.random()*destRestantes.length))];
+					
+					//on l'enleve de la liste pour le teen suivant
+					for( var d in destPossibles )
+						if( destPossibles[d][0] == dest[0] && destPossibles[d][1] == dest[1] )
+							destPossibles[d] = null;
+					
+					//le teen y va(et modifie son trajet si il y a collision avec une zone d'effet d'une action du joueur
+					this.teens[t].go(dest, addMvtFini.bind(this) );
+				}
+				
+				this.tourPnjStarted = true;
+				
+				
 				if( this.teens )
 			  		for( i in this.teens){
 			  			if( this.teens[i]
@@ -50,6 +98,7 @@ Crafty.c("Jeu",{
 			  		}
 				if( this.slasher )
 			  		this.slasher.resume();
+			  	//animations des actions contre les teens
 				if( this.animations )
 			  		this.animations.resume();
 				if( this.panique )
@@ -60,6 +109,10 @@ Crafty.c("Jeu",{
 			},
 			TourJoueur:function(){
 			  this.paused = false;
+			  
+			  //apparition du bouton pour valider les actions du tour
+			  
+			  //enregistrement des actions du tour
 			  
 			  return this;
 			},
