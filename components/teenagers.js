@@ -10,11 +10,18 @@ Crafty.c("Teenagers", {
 			sprites[ key + "TrappedSprite" ] = [ 1, data.offsetY ];
 			sprites[ key + "DeadSprite" ] = [ 1, data.offsetY ];
 
-			Crafty.sprite(104, "assets/sprites/teenagers.png", sprites )
+			Crafty.sprite(104, "assets/sprites/teenagers.png", sprites );
 
-			Crafty.e( [ "Teenager", key + "Sprite" ].join() )
-				.attr({w: Crafty.tileSize, h: Crafty.tileSize, x: data.initialPosition[0] * Crafty.tileSize, y: data.initialPosition[1] * Crafty.tileSize})
-				.crop(20,20,64,64)
+			var teenager = Crafty.e( [ "Teenager", key + "Sprite" ].join() )
+				.attr({
+					w: 104,
+					h: 104,
+					x: data.initialPosition[0] * Crafty.tileSize-16,
+					y: data.initialPosition[1] * Crafty.tileSize-32,
+					z: 20
+				});
+
+			//console.log( "teenager", teenager._element );
 		});
 
 		// Don't forget the corroded sprite
