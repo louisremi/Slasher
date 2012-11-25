@@ -1,4 +1,4 @@
-window.Jeu = null;
+
 window.onload = function () {
 
     //start crafty
@@ -7,6 +7,8 @@ window.onload = function () {
     Crafty.mapSize = {w:22,h:14};
     Crafty.tileSize = 64;
     Crafty.npc = [];
+
+    Jeu = { musique: Crafty.e("Musique")};
 
 	function finicharger() {
 		var map = [];
@@ -74,7 +76,7 @@ window.onload = function () {
         });
 
         
-        Jeu = Crafty.e("Jeu");
+        
 
 	}
 
@@ -96,7 +98,7 @@ window.onload = function () {
 
     //the loading screen that will display while our assets load
     Crafty.scene("loading", function () {
-
+        Jeu = { musique: Crafty.e("Musique")};
     	Crafty.load([
             'assets/sprites/ecran-accueil.png',
             'assets/sprites/ecran-credits.png',
@@ -128,7 +130,7 @@ window.onload = function () {
 
 
     Crafty.scene("ecran", function () {
-        Jeu = { musique: Crafty.e("Musique")};
+        
         Jeu.musique.peur();
 
         Crafty.e("2D, DOM, Image, Mouse").attr({ w: 1440, h: 900, x: 0, y: 0 })
@@ -176,6 +178,7 @@ window.onload = function () {
     });
 
     Crafty.scene("main", function () {
+        InventoryLoad();
         Crafty.e("Inventory");
         Crafty.e("Teenagers");
 
@@ -185,11 +188,18 @@ window.onload = function () {
         
         //create our player entity with some premade components
     });
-    var deaths = 0
+    Crafty.deaths = 0;
+    Crafty.escaped = 0;
     Crafty.bind('NpcDead', function() {
-        deaths++;
-        if(deaths >=5) {
-            //Crafty.pause();
+        Crafty.deaths++;
+        if(Crafty.deaths+Crafty.escaped >=5) {
+            Crafty.scene("over");
+        }
+    });
+
+    Crafty.bind('NpcEscape', function() {
+        Crafty.escaped++;
+        if(Crafty.deaths+Crafty.escaped >=5) {
             Crafty.scene("over");
         }
     })

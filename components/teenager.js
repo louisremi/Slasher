@@ -36,7 +36,6 @@
 				.onHit("Slasher",function() {
 					if (!this.dead) {
 						this.dieAHorribleDeath();
-						Crafty.trigger('NpcDead');
 					}
 				});
 		},
@@ -58,17 +57,19 @@
 					y: Math.round( this._y / Crafty.tileSize )
 				});
 			}
-			if( 1 ) {
+			if( this.name == "Emo") {
 				Jeu.musique.morts.fille1.play();
-		    } else if( 0 ) {
+		    } else if( this.name == "Cheerleader" ) {
 				Jeu.musique.morts.fille2.play();
-		    } else if( 0 ) {
+		    } else if( this.name == "Geek" ) {
 				Jeu.musique.morts.mec1.play();
-		    } else if( 0 ) {
+		    } else if( this.name == "Quarterback" ) {
 				Jeu.musique.morts.mec2.play();
 		    } else {
 				Jeu.musique.morts.mec3.play();
 		    }
+
+			Crafty.trigger('NpcDead');
 
 			return this;
 		},
@@ -76,20 +77,8 @@
 		dieAHorribleDeath: function() {
 			this.animate('deathBySlasher', 3, this.offsetY, 6).animate('deathBySlasher',300,0);
 			this.removeComponent(this.name+'Sprite');
-			this.dead = true;
+			this.die();
 			this.stop().addComponent(this.name+'DeadSprite');
-
-			if( 1 ) {
-				Jeu.musique.morts.fille1.play();
-		    } else if( 0 ) {
-				Jeu.musique.morts.fille2.play();
-		    } else if( 0 ) {
-				Jeu.musique.morts.mec1.play();
-		    } else if( 0 ) {
-				Jeu.musique.morts.mec2.play();
-		    } else {
-				Jeu.musique.morts.mec3.play();
-		    }
 
 			return this;
 		},
@@ -113,15 +102,15 @@
 			Crafty('Slasher').forEach(function(slasher) {
 				if (Crafty.RayTracer.isVisible('blocked',Crafty.RayTracer.trace(self,teenager))) {
 					
-					if( 1 ) {
+			if( this.name == "Emo") {
 						Jeu.musique.peurs.fille1.play();
-				    } else if( 0 ) {
+		    } else if( this.name == "Cheerleader" ) {
 						Jeu.musique.peurs.fille2.play();
-				    } else if( 0 ) {
+		    } else if( this.name == "Geek" ) {
 						Jeu.musique.peurs.mec1.play();
-				    } else if( 0 ) {
+		    } else if( this.name == "Quarterback" ) {
 						Jeu.musique.peurs.mec2.play();
-				    } else {
+		    } else {
 						Jeu.musique.morts.mec3.play();
 				    }
 
@@ -197,6 +186,11 @@
 			} else {
 				this.tilePos();
 				this.isMoving = false;
+
+				if(Crafty.panic) {
+					this.destroy();
+					Crafty.trigger('NpcEscape');
+				}
 			}
 
 			return this;

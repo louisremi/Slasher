@@ -277,7 +277,16 @@ Crafty.c("Musique",{
 			  this.load( "Etudiante_Peur_02", this.peurs.fille1.musique, ["assets/sounds/Etudiante_Peur_02.wav","assets/sounds/Etudiante_Peur_02.ogg"] );
 			  this.load( "Etudiant_Peur_03", this.peurs.mec3.musique, ["assets/sounds/Etudiant_Peur_03.wav","assets/sounds/Etudiant_Peur_03.ogg"] );
 
-			  
+
+			this.tronconeuse={ 
+			  			musique: [], 
+			  			play: function(){
+							Crafty.audio.play( "ChainSaw_Looped_Source_WIP", -1, 1);
+			  			}
+			  		}
+			  this.load( "ChainSaw_Looped_Source_WIP", this.tronconeuse.musique, ["assets/sounds/ChainSaw_Looped_Source_WIP.ogg"] );
+
+
 			  
 
 			},

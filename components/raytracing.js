@@ -13,10 +13,10 @@
 			var norm = Math.sqrt(Math.pow(normal.x,2) + Math.pow(normal.y,2));
 			normal = {x:normal.x*(Crafty.tileSize/2)/norm,y:normal.y*(Crafty.tileSize/2)/norm};
 
-			var ray = new Crafty.polygon([origin._x + (Crafty.tileSize/2) + (normal.x/2),origin.y+(Crafty.tileSize/2)-(normal.y/2)],
-				[origin._x + (Crafty.tileSize/2) - (normal.x/2),origin.y+(Crafty.tileSize/2)+(normal.y/2)],
-				[dest._x + (Crafty.tileSize/2) - (normal.x/2),dest.y+(Crafty.tileSize/2)+(normal.y/2)],
-				[dest._x + (Crafty.tileSize/2) + (normal.x/2),dest.y+(Crafty.tileSize/2)-(normal.y/2)]);
+			var ray = new Crafty.polygon([origin._x+16 + (Crafty.tileSize/2) + (normal.x/2),origin._y+32+(Crafty.tileSize/2)-(normal.y/2)],
+				[origin._x+16 + (Crafty.tileSize/2) - (normal.x/2),origin._y+32+(Crafty.tileSize/2)+(normal.y/2)],
+				[dest._x+16 + (Crafty.tileSize/2) - (normal.x/2),dest._y+32+(Crafty.tileSize/2)+(normal.y/2)],
+				[dest._x+16 + (Crafty.tileSize/2) + (normal.x/2),dest._y+32+(Crafty.tileSize/2)-(normal.y/2)]);
 
 			return ray;
 		},

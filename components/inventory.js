@@ -45,7 +45,7 @@ Crafty.c("Inventory", {
 						z:menuItem._z + 1
 					})
 					.saveOrigin()
-					.attr({offset: data.offset, effect: data.effect});
+					.attr({offset: data.offset, effect: data.effect, sound: data.sound});
 
 				// ugly hack, means we're going fast
 				trap._element.style.opacity = 0;
@@ -65,32 +65,40 @@ Crafty.c("Inventory", {
 	AcidSprite:[4,0]
 });*/
 
+
+})(Crafty);
+
+function InventoryLoad() {
 Crafty.Inventory = {
 	Pikes: {
 		available: 3,
 		offsetY: 0,
-		effect: "piked"
+		effect: "piked",
+		sound: Jeu.musique.traps.pieux.play
 	},
 	Wolf: {
 		available: 3,
 		offsetY: 1,
-		effect: "wolfed"
+		effect: "wolfed",
+		sound: Jeu.musique.traps.wolfTrap.play
 	},
 	Trap: {
 		available: 3,
 		offsetY: 2,
-		effect: "trapped"
+		effect: "trapped",
+		sound: Jeu.musique.traps.floorTrap.play
 	},
 	Gaz: {
 		available: 3,
 		offsetY: 3,
-		effect: "gazzed"
+		effect: "gazzed",
+		sound: null
 	},
 	Acid: {
 		available: 3,
 		offsetY: 4,
-		effect: "acided"
+		effect: "acided",
+		sound: Jeu.musique.traps.acid.play
 	}
 };
-
-})(Crafty);
+}

@@ -22,7 +22,8 @@
 				    	teenager.trigger( this.effect || "die" );
 				    	this.destroy();
 				    });*/
-
+				if( this.sound)
+					this.sound();
 				teenager.trigger( this.effect || "die" );
 				this.destroy();
 

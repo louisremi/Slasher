@@ -192,6 +192,10 @@ Crafty.c("Jeu",{
 				  		this.nbpanique = 100;
 				  	}
 				  	//clearTimeout( this._timeoutpanik );
+				  	if( this.nbpanique > 25 && this.nbpanique < 50 )
+				  		Jeu.musique.doubt.play();
+				  	if( this.nbpanique > 50 && this.nbpanique < 100 )
+				  		Jeu.musique.peur.play();
 				  	this.refreshPanique();
 				  	if( this.nbpanique == 100 )
 				  		Crafty.trigger('PANIC');
