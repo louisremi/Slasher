@@ -49,14 +49,14 @@ window.onload = function () {
 
     //method to generate the map
     function generateWorld() {
-        Crafty.e("TiledLevel, Input").tiledLevel('assets/map.json?v'+ (Math.random() * 1E9 |0) ,'DOM',finicharger)
+        Crafty.e("TiledLevel, Input").tiledLevel('assets/level01.json?v'+ (Math.random() * 1E9 |0) ,'DOM',finicharger)
         	.bind('KeyDown', function (e) { 
 			  	if (e.key == Crafty.keys['ESC']) 
 			  		if( Jeu.paused )
 			  			Jeu.Resume();
 			  		else
 			  			Jeu.Pause(); 
-			  });
+			});
     }
 
     //the loading screen that will display while our assets load
