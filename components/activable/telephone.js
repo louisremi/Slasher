@@ -13,7 +13,7 @@
 				.image('assets/sprites/onoDring.png')
 				//.textColor('#0F0')
 				.tween({alpha:'0.0'},70);
-			Jeu.musique.leurres.telephone.play();
+			musique.leurres.telephone.play();
 
 			this.attract();
 			return this;

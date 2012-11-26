@@ -13,7 +13,7 @@
 				.image('assets/sprites/onoFlush.png')
 				//.textColor('#0F0')
 				.tween({alpha:'0.0'},70);
-			Jeu.musique.leurres.toilettes.play();
+			musique.leurres.toilettes.play();
 
 
 			this.attract();

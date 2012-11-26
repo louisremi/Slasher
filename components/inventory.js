@@ -75,25 +75,25 @@ Crafty.Inventory = {
 		available: 3,
 		offsetY: 0,
 		effect: "wolfed",
-		sound: Jeu.musique.traps.wolfTrap.play
+		sound: musique.traps.wolfTrap.play
 	},
 	Acid: {
 		available: 3,
 		offsetY: 1,
-		sound: Jeu.musique.traps.acid.play,
+		sound: musique.traps.acid.play,
 		effect: "acided"
 	},
 	Trap: {
 		available: 3,
 		offsetY: 2,
 		effect: "trapped",
-		sound: Jeu.musique.traps.floorTrap.play
+		sound: musique.traps.floorTrap.play
 	},
 	Pikes: {
 		available: 3,
 		offsetY: 3,
 		effect: "piked",
-		sound: Jeu.musique.traps.pieux.play
+		sound: musique.traps.pieux.play
 	},
 	Gaz: {
 		available: 3,

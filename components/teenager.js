@@ -76,15 +76,15 @@
 				});
 			}
 			if( this.name == "Emo") {
-				Jeu.musique.morts.fille1.play();
+				musique.morts.fille1.play();
 		    } else if( this.name == "Cheerleader" ) {
-				Jeu.musique.morts.fille2.play();
+				musique.morts.fille2.play();
 		    } else if( this.name == "Geek" ) {
-				Jeu.musique.morts.mec1.play();
+				musique.morts.mec1.play();
 		    } else if( this.name == "Quarterback" ) {
-				Jeu.musique.morts.mec2.play();
+				musique.morts.mec2.play();
 		    } else {
-				Jeu.musique.morts.mec3.play();
+				musique.morts.mec3.play();
 		    }
 
 			Crafty.trigger('NpcDead');
@@ -121,15 +121,15 @@
 				if (Crafty.RayTracer.isVisible('blocked',Crafty.RayTracer.trace(self,teenager))) {
 					
 			if( this.name == "Emo") {
-						Jeu.musique.peurs.fille1.play();
+						musique.peurs.fille1.play();
 		    } else if( this.name == "Cheerleader" ) {
-						Jeu.musique.peurs.fille2.play();
+						musique.peurs.fille2.play();
 		    } else if( this.name == "Geek" ) {
-						Jeu.musique.peurs.mec1.play();
+						musique.peurs.mec1.play();
 		    } else if( this.name == "Quarterback" ) {
-						Jeu.musique.peurs.mec2.play();
+						musique.peurs.mec2.play();
 		    } else {
-						Jeu.musique.morts.mec3.play();
+						musique.morts.mec3.play();
 				    }
 
 					var direction;

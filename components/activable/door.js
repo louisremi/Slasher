@@ -13,7 +13,7 @@
 				.image('assets/sprites/onoClac.png')
 				//.textColor('#0F0')
 				.tween({alpha:'0.0'},70);
-			Jeu.musique.leurres.porte.play();
+			musique.leurres.porte.play();
 
 			this.attract();
 

@@ -13,7 +13,7 @@
 				.image('assets/sprites/uiTV.png')
 				//.textColor('#0F0')
 				.tween({alpha:'0.0'},70);
-			Jeu.musique.leurres.television.play();
+			musique.leurres.television.play();
 
 			this.attract();
 			

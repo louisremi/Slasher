@@ -22,8 +22,8 @@ Crafty.c("Jeu",{
 			  				this.teens[i].pause();
 				if( this.slasher )
 			  		this.slasher.pause();
-				if( this.musique )
-			  		this.musique.menu();
+				if( musique )
+			  		musique.menu();
 				if( this.animations )
 			  		this.animations.pause();
 				if( this.panique )
@@ -33,8 +33,8 @@ Crafty.c("Jeu",{
 			  return this;
 			},
 			Resume:function(){
-				if( this.musique )
-			  		this.musique.jeu();
+				if( musique )
+			  		musique.jeu();
 				if( this.menu )
 			  		this.menu.css({ "display": "none" });
 				if( this.bouton )
@@ -170,8 +170,8 @@ Crafty.c("Jeu",{
                  	_this.Resume();
                  });
 
-		        this.musique = Crafty.e("Musique");
-		        this.musique.jeu();
+		        musique = Crafty.e("Musique");
+		        musique.jeu();
 			  // Panique barre et gestion
 			  this.panique = { 
 			  	  nbpanique: 0,
@@ -194,9 +194,9 @@ Crafty.c("Jeu",{
 				  	}
 				  	//clearTimeout( this._timeoutpanik );
 				  	/*if( this.nbpanique > 25 && this.nbpanique < 50 )
-				  		Jeu.musique.doubt.play();
+				  		musique.doubt.play();
 				  	if( this.nbpanique > 50 && this.nbpanique < 100 )
-				  		Jeu.musique.peur.play();*/
+				  		musique.peur.play();*/
 				  	this.refreshPanique();
 				  	if( this.nbpanique == 100 )
 				  		Crafty.trigger('PANIC');

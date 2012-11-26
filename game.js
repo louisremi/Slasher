@@ -8,7 +8,7 @@ window.onload = function () {
     Crafty.tileSize = 64;
     Crafty.npc = [];
 
-    Jeu = { musique: Crafty.e("Musique")};
+    musique= Crafty.e("Musique");
 
 	function finicharger() {
 		var map = [];
@@ -131,18 +131,18 @@ window.onload = function () {
 
     Crafty.scene("ecran", function () {
         
-        Jeu.musique.peur();
+        musique.peur();
 
         Crafty.e("2D, DOM, Image, Mouse").attr({ w: 1440, h: 900, x: 0, y: 0 })
                 .image("assets/sprites/ecran-accueil.png")
                 ;
                 Crafty.e( "2D, DOM,Mouse").attr({ w: 1440, h: 450, x: 0, y: 0 }).bind("Click", function() {
 
-                    Jeu.musique.stop();
+                    musique.stop();
                     Crafty.scene("main");
                 });
                 Crafty.e( "2D,DOM, Mouse").attr({ w: 1440, h: 450, x: 0, y: 450 }).bind("Click", function() {
-                    Jeu.musique.stop();
+                    musique.stop();
                     Crafty.scene("credits");
                 });
 
@@ -152,10 +152,10 @@ window.onload = function () {
     });
 
     Crafty.scene("credits", function () {
-        Jeu.musique.doubt();
+        musique.doubt();
         Crafty.e("2D, DOM, Image, Mouse").attr({ w: 1440, h: 900, x: 0, y: 0 })
                 .image("assets/sprites/ecran-credits.png").bind("Click", function() {
-                    Jeu.musique.stop();
+                    musique.stop();
                     Crafty.scene("ecran");
                 });
 
@@ -165,10 +165,10 @@ window.onload = function () {
     });
 
     Crafty.scene("over", function () {
-        Jeu.musique.doubt();
+        musique.doubt();
         Crafty.e("2D, DOM, Image, Mouse").attr({ w: 1440, h: 900, x: 0, y: 0 })
                 .image("assets/sprites/ecran-scores.png").bind("Click", function() {
-                    Jeu.musique.stop();
+                    musique.stop();
                     Crafty.scene("ecran");
                 });
 
@@ -178,6 +178,12 @@ window.onload = function () {
     });
 
     Crafty.scene("main", function () {
+
+        Crafty.trapLefts = 5;
+        Crafty.panic = false;
+        Crafty.deaths = 0;
+        Crafty.escaped = 0;
+
         InventoryLoad();
         Crafty.e("Inventory");
         Crafty.e("Teenagers");
@@ -188,8 +194,6 @@ window.onload = function () {
         
         //create our player entity with some premade components
     });
-    Crafty.deaths = 0;
-    Crafty.escaped = 0;
     Crafty.bind('NpcDead', function() {
         Crafty.deaths++;
         if(Crafty.deaths+Crafty.escaped >=5) {
