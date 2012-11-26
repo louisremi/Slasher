@@ -170,8 +170,49 @@ Crafty.c("Jeu",{
                  	_this.Resume();
                  });
 
-		        musique = Crafty.e("Musique");
-		        musique.jeu();
+		        
+
+	        Crafty('telephone').each(function() {
+	            this.addComponent('Telephone, Mouse')
+	                .range(3)
+	                .bind('Click', function() {
+	                    this.selectEntity(this.addButton.bind(this));
+	                });
+	        });
+
+	        Crafty('door').each(function() {
+	            this.addComponent('Door, Mouse')
+	                .range(3)
+	                .bind('Click', function() {
+	                    this.selectEntity(this.addButton.bind(this));
+	                });
+	        });
+
+	        Crafty('chiotte').each(function() {
+	            this.addComponent('Chiotte, Mouse')
+	                .range(3)
+	                .bind('Click', function() {
+	                    this.selectEntity(this.addButton.bind(this));
+	                });
+	        });
+
+
+	        Crafty('window').each(function() {
+	            this.addComponent('Fenetre, Mouse')
+	                .range(3)
+	                .bind('Click', function() {
+	                    this.selectEntity(this.addButton.bind(this));
+	                });
+	        });
+
+	        Crafty('television').each(function() {
+	            this.addComponent('Television, Mouse')
+	                .range(3)
+	                .bind('Click', function() {
+	                    this.selectEntity(this.addButton.bind(this));
+	                });
+	        });
+        
 			  // Panique barre et gestion
 			  this.panique = { 
 			  	  nbpanique: 0,

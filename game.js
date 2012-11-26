@@ -11,6 +11,9 @@ window.onload = function () {
     musique= Crafty.e("Musique");
 
 	function finicharger() {
+        musique = Crafty.e("Musique");
+        musique.jeu();
+
 		var map = [];
 		for( i=0;i<  Crafty.mapSize.w; i++)
 			map[i] = [];
@@ -23,9 +26,10 @@ window.onload = function () {
             this.collision([0,64],[64,64],[64,0],[0,0]);
         })
 
+
         Crafty.PathFinder = Crafty.e('AStar, PathFinder').setTiles(map);
         Crafty.RayTracer = Crafty.e('RayTracing');
-		
+        
         Crafty('Teenager').each(function() {
             Crafty.npc.push(this);
         })
@@ -33,47 +37,6 @@ window.onload = function () {
         Crafty('Teenager').each(function() {
             this.checkFriend();
         })
-
-        Crafty('telephone').each(function() {
-            this.addComponent('Telephone, Mouse')
-                .range(3)
-                .bind('Click', function() {
-                    this.selectEntity(this.addButton.bind(this));
-                });
-        });
-
-        Crafty('door').each(function() {
-            this.addComponent('Door, Mouse')
-                .range(3)
-                .bind('Click', function() {
-                    this.selectEntity(this.addButton.bind(this));
-                });
-        });
-
-        Crafty('chiotte').each(function() {
-            this.addComponent('Chiotte, Mouse')
-                .range(3)
-                .bind('Click', function() {
-                    this.selectEntity(this.addButton.bind(this));
-                });
-        });
-
-
-        Crafty('window').each(function() {
-            this.addComponent('Fenetre, Mouse')
-                .range(3)
-                .bind('Click', function() {
-                    this.selectEntity(this.addButton.bind(this));
-                });
-        });
-
-        Crafty('television').each(function() {
-            this.addComponent('Television, Mouse')
-                .range(3)
-                .bind('Click', function() {
-                    this.selectEntity(this.addButton.bind(this));
-                });
-        });
 
         
         
@@ -98,7 +61,6 @@ window.onload = function () {
 
     //the loading screen that will display while our assets load
     Crafty.scene("loading", function () {
-        Jeu = { musique: Crafty.e("Musique")};
     	Crafty.load([
             'assets/sprites/ecran-accueil.png',
             'assets/sprites/ecran-credits.png',
